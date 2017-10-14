@@ -1,0 +1,28 @@
+{
+	"name": "Highly Automated Welcome Tool",
+	"version": "0.6.8-SW",
+	"author": [
+		"Krzysztof Krzyżaniak",
+		"Maciej Błaszkowski",
+		"Jack Phoenix"
+	],
+	"license-name": "GPL-2.0+",
+	"url": "https://www.mediawiki.org/wiki/Extension:HAWelcome",
+	"description": "Welcomes new users after their first edit",
+	"type": "other",
+	"MessagesDirs": {
+		"HAWelcome": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"HAWelcomeJob": "HAWelcome.class.php"
+	},
+	"JobClasses": {
+		"HAWelcome": "HAWelcomeJob"
+	},
+	"Hooks": {
+		"RevisionInsertComplete": "HAWelcomeJob::revisionInsertComplete"
+	},
+	"manifest_version": 1
+}

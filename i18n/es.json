@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bola"
+		]
+	},
+	"welcome-user-page": "==Sobre mi==\n''Esta es tu página de usuario. ¡Edítala para hablar sobre ti a la comunidad!''\n\n==Mis contribuciones==\n*[[Special:Contributions/{{PAGENAME}}|Contribuciones del usuario]]\n\n==Mis páginas favoritas==\n*¡Añade aquí los vínculos a las páginas favoritas del wiki!\n*Página favorita #2\n*Página favorita #3",
+	"welcome-message-user": "¡Hola, bienvenido(a) a {{SITENAME}}! Muchas gracias por tu edición en [[:$1]].\n\nPor favor, si tienes alguna duda, no seas tímido, deja un mensaje en [[$2|mi discusión]] para ver si puedo ayudarte con cualquier cosa. $3",
+	"welcome-message-anon": "¡Hola, bienvenido(a) a {{SITENAME}}! Muchas gracias por tu edición en [[:$1]].\n\n¿Por qué no '''[[Special:UserLogin|te creas una cuenta y te identificas?]]'''. De esta forma será mucho más fácil saber qué páginas has editado y se te atribuirá tu trabajo en el wiki, además te será de ayuda a la hora de comunicarte con el resto de la comunidad.\n\nPor favor, si tienes alguna duda, no seas tímido, deja un mensaje en [[$2|mi discusión]] para ver si puedo ayudarte con cualquier cosa. $3",
+	"welcome-message-log": "Bienvenida"
+}

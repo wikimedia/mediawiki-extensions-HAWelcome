@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"welcome-user-page": "==Quem sou==\n''Esta é sua página de utilizador. Por favor, edite esta página e apresente-se à comunidade!''\n\n==As minhas contribuições==\n*[[Special:Contributions/{{PAGENAME}}|Contribuições deste utilizador]]\n\n==As minhas páginas preferidas==\n*Adicione links para as suas páginas preferidas nesta wiki!\n*Página preferida #2\n*Página preferida #3",
+	"welcome-message-user": "Olá, bem-vindo(a) à {{SITENAME}}! Obrigado pela sua edição da página [[:$1]].\n\nPor favor, deixe uma mensagem na [[$2|minha página de discussão]] se eu puder ajudar nalguma coisa! $3",
+	"welcome-message-anon": "Olá, bem-vindo(a) à {{SITENAME}}! Obrigado pela sua edição da página [[:$1]].\n\n'''[[Special:UserLogin|Por favor, registe-se e crie um utilizador]]'''. É uma forma fácil de registar as suas contribuições e facilita a comunicação com os restantes utilizadores.\n\nPor favor, deixe uma mensagem na [[$2|minha página de discussão]] se eu puder ajudar nalguma coisa! $3",
+	"welcome-message-log": "boas-vindas a novo colaborador"
+}

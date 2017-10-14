@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"AnakngAraw"
+		]
+	},
+	"welcome-user-page": "==Tungkol sa akin==\n''Ito ang iyong pahina ng tagagamit. Pakibago ang pahinang ito upang makapagsabi sa pamayanan ng hinggil sa sarili mo!''\n\n==Mga ambag ko==\n*[[Special:Contributions/{{PAGENAME}}|Mga ambag ng tagagamit]]\n\n==Mga paborito kong pahina==\n*Nagdaragdag dito ng mga kawing sa iyong paboritong mga pahina sa wiki!\n*Paboritong pahina #2\n*Paboritong pahina #3",
+	"welcome-message-user": "Kumusta, maligayang pagdating sa {{SITENAME}}! Salamat sa pamamatnugot mo sa pahinang [[:$1]].\n\nMangyaring mag-iwan ng isang mensahe sa [[$2|pahina ko ng usapan]] kung makakatulong ako sa anumang bagay! $3",
+	"welcome-message-anon": "Kumusta, maligayang pagdating sa {{SITENAME}}! Salamat sa pamamatnugot mo sa pahinang [[:$1]].\n\n'''[[Special:UserLogin|Mangyaring lumagda at lumikha ng isang pangalan ng tagagamit]]'''. Isa itong madaling paraan upang masubaybay ang mga ambag mo at makatutulong sa iyong makipag-ugnayan sa iba pang nasa pamayanan.\n\nMangyaring mag-iwan ng isang mensahe sa [[$2|pahina ko ng talakayan]] kung makakatulong ako sa anumang bagay! $3",
+	"welcome-message-log": "maligayang binabati ang bagong tagaambag"
+}

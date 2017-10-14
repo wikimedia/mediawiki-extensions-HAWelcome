@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"welcome-user-page": "==Sobre min==\n''Esta é a súa páxina de usuario. Edita esta páxina para contarlles aos demais o que queiras acerca de ti!''\n\n==As miñas contribucións==\n*[[Special:Contributions/{{PAGENAME}}|As miñas contribucións]]\n\n==As miñas páxinas favoritas==\n*Engada ligazóns cara ás súas páxinas preferidas deste wiki!\n*Ligazón cara á páxina #2\n*Ligazón cara á páxina #3",
+	"welcome-message-user": "Ola, benvido(a) a {{SITENAME}}! Grazas pola súa edición na páxina \"[[:$1]]\".\n\nPor favor, deixe unha mensaxe [[$2|na miña páxina de conversa]] se quere que lle axude con algunha cousa! $3",
+	"welcome-message-anon": "Ola, benvido(a) a {{SITENAME}}! Grazas pola súa edición na páxina \"[[:$1]]\".\n\n'''Por favor, [[Special:UserLogin|rexístrese e cree unha conta de usuario]]'''. É un xeito doado de manter baixo control as súas achegas e axuda á comunicación co resto da comunidade.\n\nPor favor, deixe unha mensaxe [[$2|na miña páxina de conversa]] se quere que lle axude con algunha cousa! $3",
+	"welcome-message-log": "benvida ao novo colaborador"
+}

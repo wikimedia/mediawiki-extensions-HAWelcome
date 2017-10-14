@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"welcome-user-page": "==A prepaus de moi==\n''Aquesta pagina es vòstra pagina personala. I podètz apondre d'entresenhas que vos concernisson !''\n\n==Mas contribucions==\n*[[Special:Contributions/{{PAGENAME}}|Mas contribucions]]\n\n==Mas paginas preferidas==\n*Podètz plaçar aicí de ligams cap a vòstras paginas preferidas del wiki !\n*Ligam cap a la pagina #2\n*Ligam cap a la pagina #3",
+	"welcome-message-user": "Bonjorn, benvenguda sus {{SITENAME}} ! Mercés d'aver modificada la pagina [[:$1]].\n\nPodètz daissar un messatge sus ma pagina de [[$2|discussion]] se vos pòdi ajudar per qué que siá ! $3",
+	"welcome-message-anon": "Bonjorn, benvenguda sus {{SITENAME}}. Mercés per vòstra contribucion a la pagina [[:$1]].\n\n'''Mercés de vos [[Special:UserLogin|connectar o de crear un compte]]'''. Es un mejan simple de gardar una traça de vòstras contribucions e aquò facilita la comunicacion amb la rèsta de la comunautat.\n\nTrantalhetz pas a daissar un messatge sus [[$2|ma pagina de discussion]] se vos pòdi ajudar per qué que siá ! $3",
+	"welcome-message-log": "Aculhir un novèl utilizaire"
+}

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Irwangatot"
+		]
+	},
+	"welcome-user-page": "==Tentang saya==\n''Ini adalah halaman pengguna Anda. Silahkan sunting halaman ini untuk memberitahu komunitas tentang diri Anda!''\n\n==Kontribusi saya==\n*[[Special:Contributions/{{PAGENAME}}|Kontribusi pengguna]]\n\n==Halaman kesukaan saya==\n*Tambahkan pranala ke halaman kesukaan anda pada wiki di sini!\n*Halaman kesukaan # 2\n*Halaman kesukaan # 3",
+	"welcome-message-user": "Hi, selamat datang di {{SITENAME}}! Terima kasih untuk suntingan anda dihalaman [[:$1]].\n\nSilakan tinggalkan pesan di [[$2|Pembicaraan halaman saya]] jika saya dapat membantu! $3"
+}

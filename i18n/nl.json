@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mark van Alphen",
+			"McDutchie",
+			"Siebrand Mazeland"
+		]
+	},
+	"welcome-user-page": "==Over mij==\n''Dit is jouw gebruikerspagina. Bewerk alsjeblieft deze pagina om de gemeenschap over jezelf te vertellen!''\n\n==Mijn bijdragen==\n*[[Special:Contributions/{{PAGENAME}}|Gebruiker's bijdragen]]\n\n==Mijn favoriete pagina's==\n*Voeg hier links toe van je favoriete pagina's op deze wiki!\n*Favoriete pagina #2\n*Favoriete pagina #3",
+	"welcome-message-user": "Hallo, welkom bij {{SITENAME}}! Bedankt voor uw bewerking van de pagina [[:$1]].\n\nLaat gerust een bericht achter op [[$2|mijn overlegpagina]] als ik u ergens mee kan helpen! $3",
+	"welcome-message-anon": "Hallo, welkom bij {{SITENAME}}! Dank u wel voor uw werk aan de pagina [[:$1]].\n\n'''[[Special:UserLogin|Maak alstublieft een gebruiker aan of meld u aan]]'''.\nHet is een eenvoudige manier om uw bijdragen te volgen en helpt u bij het onderhouden van contacten met de rest van de gemeenschap.\n\nLaat alstublieft een bericht achter op [[$2|mijn overleg pagina]] als ik u ergens mee kan helpen! $3",
+	"welcome-message-log": "nieuwe gebruiker aan het verwelkomen"
+}

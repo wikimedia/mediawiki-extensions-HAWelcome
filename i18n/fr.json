@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cywil",
+			"Marc-Philipp Beuter",
+			"TulipVorlax"
+		]
+	},
+	"welcome-user-page": "==À propos de moi==\n''Cette page est votre page personnelle. Ici vous pouvez donner des informations sur vous !''\n\n==Mes contributions==\n*[[Special:Contributions/{{PAGENAME}}|Mes contributions]]\n\n==Mes pages favorisées==\n*Ici vous pouvez placer des liens vers vos pages préférées du wiki !\n*Lien vers page #2\n*Lien vers page #3",
+	"welcome-message-user": "Bonjour $4 ! Bienvenue sur {{SITENAME}}.\n\nNous sommes heureux que vous participez à {{SITENAME}} et que vous ayez modifié la page [[:$1]].\n\nS'il y a des questions, vous pouvez les poser sur ma page de [[$2|discussion]] !\n\n$3",
+	"welcome-message-anon": "Bonjour, bienvenue sur {{SITENAME}}. Merci pour votre contribution à la page [[:$1]].\n\n'''Merci de vous [[Special:UserLogin|connecter ou de créer un nom compte]]'''. C'est un moyen simple de garder une trace de vos contributions et facilite la communication avec le reste de la communauté.\n\nN'hésitez pas à laisser un message sur [[$2|ma page de discussion]] si je peux vous aider pour quoi que ce soit ! $3",
+	"welcome-message-log": "Accueillir un nouvel utilisateur"
+}

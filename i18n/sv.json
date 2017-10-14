@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kozley"
+		]
+	},
+	"welcome-user-page": "==Om mig==\n''Detta är din användarsida. Redigera den här sidan för att berätta gemenskapen om dig själv!''\n\n==Mina bidrager==\n*[[Special:Contributions/{{PAGENAME}}|Användarbidrager]]\n\n==Mina favoritsidor==\n*Lägg till länkar till dina favoritsidor på wikin här!\n*Favoritsida #2\n*Favoritsida #3",
+	"welcome-message-user": "Hej $4, välkommen till {{SITENAME}}! Tack för din ändring till [[:$1]] sidan.\n\nLämna ett meddelande på [[$2|min diskussionssida]] om jag kan hjälpa till med något! $3",
+	"welcome-message-anon": "Hej, välkommen till {{SITENAME}}. Tack för din ändring till [[:$1]] sidan.\n\n'''[[Special:UserLogin|Logga in och skapa ett användarnamn]]'''. Det är ett enkelt sätt att hålla koll på era inlägg och hjälper dig att kommunicera med resten av gemenskapen.\n\nLämna ett meddelande på [[$2|min diskussionssida]] om jag kan hjälpa till med något! $3",
+	"welcome-message-log": "välkomna nya bidragsgivare"
+}
