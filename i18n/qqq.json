@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mainframe98"
+		]
+	},
+	"welcome-user": "{{notranslate}}",
+	"welcome-enabled": "{{notranslate}}",
+	"welcome-user-page": "Default text that will be used to create the user page when a user makes their first edit.",
+	"welcome-message-user": "Welcome message sent to new registered users.\n\nParameters:\n* $1 - Name of the page the user edited\n* $2 - Talk page of the welcoming user\n* $3 - Signature of the welcoming user",
+	"welcome-message-anon": "Welcome message sent to anonymous users.\n\nParameters:\n* $1 - Name of the page the user edited\n* $2 - Talk page of the welcoming user\n* $3 - Signature of the welcoming user",
+	"welcome-message-log": "Edit summary used when leaving a message on the talk page",
+	"welcome-user-name": "{{name}}",
+	"welcome-user-desc": "{{desc|name=HAWelcome|url=https://www.mediawiki.org/wiki/Extension:HAWelcome}}",
+	"right-welcomeexempt": "{{doc-right|welcomeexempt}}"
+}

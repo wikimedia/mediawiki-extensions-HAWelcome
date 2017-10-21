@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Krzysztof Krzyżaniak <eloy@wikia-inc.com>"
+			"Krzysztof Krzyżaniak <eloy@wikia-inc.com>",
+			"Mainframe98"
 		]
 	},
 	"welcome-user": "@latest",
@@ -9,5 +10,8 @@
 	"welcome-user-page": "==About me==\n''This is your user page. Please edit this page to tell the community about yourself!''\n\n==My contributions==\n*[[Special:Contributions/{{PAGENAME}}|User contributions]]\n\n==My favorite pages==\n*Add links to your favorite pages on the wiki here!\n*Favorite page #2\n*Favorite page #3",
 	"welcome-message-user": "Hi, welcome to {{SITENAME}}! Thanks for your edit to the [[:$1]] page.\n\nPlease leave a message on [[$2|my talk page]] if I can help with anything! $3",
 	"welcome-message-anon": "Hi, welcome to {{SITENAME}}! Thanks for your edit to the [[:$1]] page.\n\n'''[[Special:UserLogin|Please sign in and create a user name]]'''. It's an easy way to keep track of your contributions and helps you communicate with the rest of the community.\n\nPlease leave a message on [[$2|my talk page]] if I can help with anything! $3",
-	"welcome-message-log": "welcoming new contributor"
+	"welcome-message-log": "welcoming new contributor",
+	"welcome-user-name": "Highly Automated Welcome Tool",
+	"welcome-user-desc": "Welcomes new users after their first edit",
+	"right-welcomeexempt": "Flags user as exempt from welcome tool messages"
 }

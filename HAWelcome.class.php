@@ -21,17 +21,14 @@ class HAWelcomeJob extends Job {
 		$mAnon,
 		$mSysop;
 
-	const WELCOMEUSER = 'ShoutWiki';
-
 	/**
 	 * Construct a job
 	 *
 	 * @param Title $title The title linked to
 	 * @param array $params Job parameters (table, start and end page_ids)
-	 * @param int $id job_id, 0 by default
 	 */
-	public function __construct( $title, $params, $id = 0 ) {
-		parent::__construct( 'HAWelcome', $title, $params, $id );
+	public function __construct( $title, $params ) {
+		parent::__construct( 'HAWelcome', $title, $params );
 
 		$this->mUserId   = $params['user_id'];
 		$this->mUserIP   = $params['user_ip'];
@@ -45,9 +42,7 @@ class HAWelcomeJob extends Job {
 			$this->mUser = User::newFromId( $this->mUserId );
 		}
 
-		/**
-		 * fallback
-		 */
+		// Fallback
 		if ( !$this->mUser ) {
 			$this->mUser = User::newFromName( $this->mUserName );
 		}
@@ -57,91 +52,88 @@ class HAWelcomeJob extends Job {
 	 * Main entry point
 	 */
 	public function run() {
-		global $wgUser, $wgTitle, $wgLanguageCode;
+		global $wgLanguageCode, $wgHAWelcomeWelcomeUsername;
 
-		/**
-		 * overwrite $wgUser for ~~~~ expanding
-		 */
 		$sysop = trim( wfMessage( 'welcome-user' )->plain() );
-		if ( !in_array( $sysop, [ '@disabled', '-' ] ) ) {
-			$tmpUser = $wgUser;
-			$wgUser = User::newFromName( self::WELCOMEUSER );
-			$flags = 0;
-			if ( $wgUser && $wgUser->isBot() ) {
-				$flags = EDIT_FORCE_BOT;
-			}
+		if ( in_array( $sysop, [ '@disabled', '-' ] ) ) {
+			return true;
+		}
 
-			if ( $this->mUser && $this->mUser->getName() !== self::WELCOMEUSER && !$wgUser->isBlocked() ) {
-				/**
-				 * check again if talk page exists
-				 */
-				$talkPage = $this->mUser->getUserPage()->getTalkPage();
+		$welcomeUser = User::newFromName( $wgHAWelcomeWelcomeUsername );
+		$flags = 0;
+		if ( $welcomeUser && $welcomeUser->isBot() ) {
+			$flags = EDIT_FORCE_BOT;
+		}
 
-				if ( $talkPage ) {
-					$this->mSysop = $this->getLastSysop();
-					$tmpTitle     = $wgTitle;
-					$sysopPage    = $this->mSysop->getUserPage()->getTalkPage();
-					$signature    = $this->expandSig();
+		if ( $this->mUser && $this->mUser->getName() !== $wgHAWelcomeWelcomeUsername && !$welcomeUser->isBlocked() ) {
+			// Check again if talk page exists
+			$talkPage = $this->mUser->getUserPage()->getTalkPage();
 
-					$wgTitle     = $talkPage;
-					$welcomeMsg  = false;
-					$talkArticle = new Article( $talkPage, 0 );
+			if ( $talkPage ) {
+				$this->mSysop = $this->getLastSysop();
+				$sysopTalkPage = $this->mSysop->getUserPage()->getTalkPage();
+				$signature = $this->expandSig();
 
-					if ( !$talkArticle->exists() ) {
-						if ( $this->mAnon ) {
-							if ( $this->isEnabled( 'message-anon' ) ) {
-								$welcomeMsg = wfMessage(
-									'welcome-message-anon'
-								)->inLanguage( $wgLanguageCode )->params(
-									$this->getPrefixedText(),
-									$sysopPage->getPrefixedText(),
-									$signature,
-									wfEscapeWikiText( $this->mUser->getName() )
-								)->text();
-							}
-						} else {
-							/**
-							 * now create user page (if it doesn't exist already, of course)
-							 */
-							if ( $this->isEnabled( 'page-user' ) ) {
-								$userPage = $this->getUserPage();
-								if ( $userPage ) {
-									$wgTitle = $userPage;
-									$userArticle = new Article( $userPage, 0 );
-									if ( !$userArticle->exists() ) {
-										$pageMsg = wfMessage( 'welcome-user-page' )->inContentLanguage()->text();
-										$content = ContentHandler::makeContent( $pageMsg, $userPage );
-										$userArticle->doEditContent( $content, '', $flags );
-									}
+				$welcomeMsg = false;
+				$talkWikiPage = WikiPage::factory( $talkPage );
+
+				if ( !$talkWikiPage->exists() ) {
+					if ( $this->mAnon ) {
+						if ( $this->isEnabled( 'message-anon' ) ) {
+							$welcomeMsg = wfMessage(
+								'welcome-message-anon'
+							)->inLanguage( $wgLanguageCode )->params(
+								$this->getPrefixedText(),
+								$sysopTalkPage->getPrefixedText(),
+								$signature,
+								wfEscapeWikiText( $this->mUser->getName() )
+							)->text();
+						}
+					} else {
+						// Now create user page (if it doesn't exist already, of course)
+						if ( $this->isEnabled( 'page-user' ) ) {
+							$userPage = $this->getUserPage();
+							if ( $userPage ) {
+								$userWikiPage = WikiPage::factory( $userPage );
+
+								if ( !$userWikiPage->exists() ) {
+									$pageMsg = wfMessage( 'welcome-user-page' )->inContentLanguage()->text();
+									$content = ContentHandler::makeContent( $pageMsg, $userPage );
+									$userWikiPage->doEditContent(
+										$content,
+										'',
+										$flags,
+										0,
+										$welcomeUser
+									);
 								}
 							}
-
-							if ( $this->isEnabled( 'message-user' ) ) {
-								$welcomeMsg = wfMessage(
-									'welcome-message-user'
-								)->inLanguage( $wgLanguageCode )->params(
-									$this->getPrefixedText(),
-									$sysopPage->getPrefixedText(),
-									$signature,
-									wfEscapeWikiText( $this->mUser->getName() )
-								)->text();
-							}
 						}
-						if ( $welcomeMsg ) {
-							$wgTitle = $talkPage; /* is it necessary there? */
-							$content = ContentHandler::makeContent( $welcomeMsg, $talkPage );
-							$talkArticle->doEditContent(
-								$content,
-								wfMessage( 'welcome-message-log' )->inContentLanguage()->escaped(),
-								$flags
-							);
+
+						if ( $this->isEnabled( 'message-user' ) ) {
+							$welcomeMsg = wfMessage(
+								'welcome-message-user'
+							)->inLanguage( $wgLanguageCode )->params(
+								$this->getPrefixedText(),
+								$sysopTalkPage->getPrefixedText(),
+								$signature,
+								wfEscapeWikiText( $this->mUser->getName() )
+							)->text();
 						}
 					}
-					$wgTitle = $tmpTitle;
+
+					if ( $welcomeMsg ) {
+						$content = ContentHandler::makeContent( $welcomeMsg, $talkPage );
+						$talkWikiPage->doEditContent(
+							$content,
+							wfMessage( 'welcome-message-log' )->inContentLanguage()->escaped(),
+							$flags,
+							0,
+							$welcomeUser
+						);
+					}
 				}
 			}
-
-			$wgUser = $tmpUser;
 		}
 
 		return true;
@@ -153,92 +145,115 @@ class HAWelcomeJob extends Job {
 	 * @return User class instance
 	 */
 	public function getLastSysop() {
-		global $wgMemc;
+		global $wgMemc, $wgHAWelcomeWelcomeUsername, $wgHAWelcomeStaffGroupName;
 
-		/**
-		 * maybe already loaded?
-		 */
+		// Maybe already loaded?
 		if ( !$this->mSysop ) {
 			$sysop = trim( wfMessage( 'welcome-user' )->plain() );
 			if ( !in_array( $sysop, [ '@disabled', '-' ] ) ) {
 				if ( in_array( $sysop, [ '@latest', '@sysop' ] ) ) {
-					/**
-					 * first: check memcached, maybe we have already stored id of sysop
-					 */
-					$sysopId = $wgMemc->get( wfMemcKey( 'last-sysop-id' ) );
+					// First: check memcached, maybe we have already stored id of sysop
+					$sysopId = $wgMemc->get( $wgMemc->makeKey( 'last-sysop-id' ) );
 					if ( $sysopId ) {
 						$this->mSysop = User::newFromId( $sysopId );
 					} else {
-						/**
-						 * second: check database, could be expensive for database
-						 */
+						// Second: check database, could be expensive for database
 						$dbr = wfGetDB( DB_REPLICA );
 
 						/**
-						 * get all users which are sysops/sysops or staff
-						 * but not bots
+						 * Get all users which are sysops/sysops or staff but not bots
 						 *
 						 * @todo check $db->makeList( $array )
 						 */
+
+						$groups = [ 'ug_group' => [ 'sysop', 'bot' ] ];
+
+						$bots = [];
+						$admins = [];
+						$res = $dbr->select(
+							'user_groups',
+							UserGroupMembership::selectFields(),
+							$dbr->makeList( $groups, LIST_OR ),
+							__METHOD__
+						);
+
+						foreach ( $res as $row ) {
+							$ugm = UserGroupMembership::newFromRow( $row );
+							if ( !$ugm->isExpired() ) {
+								if ( $ugm->getGroup() === 'bot' ) {
+									$bots[] = $ugm->getUserId();
+								} else {
+									$admins[] = $ugm->getUserId();
+								}
+							}
+						}
+
 						// ShoutWiki patch begin
 						// Tweaked code for SW compatibility
 						// If we should fetch staff member names, then they'll
 						// be fetched from global_user_groups table
+						// However, we should only do so when the GlobalUserrights extension is
+						// installed.
 						// @author Jack Phoenix <jack@shoutwiki.com>
 						// @date October 13, 2009
-						$groups = [ 'ug_group' => [ 'sysop', 'bot' ] ];
-						$wantStaff = false;
-						if ( $sysop !== '@sysop' ) {
-							$wantStaff = true;
-						}
+						$wantStaff = $sysop !== '@sysop' && ExtensionRegistry::getInstance()->isLoaded( 'GlobalUserrights' );
+						$staff = [];
 
-						$bots   = [];
-						$admins = [];
-						$res = $dbr->select(
-							[ 'user_groups' ],
-							[ 'ug_user', 'ug_group' ],
-							$dbr->makeList( $groups, LIST_OR ),
-							__METHOD__
-						);
 						if ( $wantStaff ) {
-							// If we should fetch staffers, fetch 'em from the
-							// correct table
+							// If we should fetch staffers, fetch 'em from the correct table
 							$res2 = $dbr->select(
-								[ 'global_user_groups' ],
-								[ 'gug_user', 'gug_group' ],
-								[ 'gug_group' => 'staff' ],
+								'global_user_groups',
+								GlobalUserGroupMembership::selectFields(),
+								[ 'gug_group' => $wgHAWelcomeStaffGroupName ],
 								__METHOD__
 							);
+
+							$lookup = CentralIdLookup::factory();
+
 							foreach ( $res2 as $row2 ) {
-								$admins[] = $row2->gug_user;
-							}
-						}
-						// End ShoutWiki patch
-						foreach ( $res as $row ) {
-							if ( $row->ug_group == 'bot' ) {
-								$bots[] = $row->ug_user;
-							} else {
-								$admins[] = $row->ug_user;
+								$gugm = GlobalUserGroupMembership::newFromRow( $row2 );
+								if ( !$gugm->isExpired() ) {
+									// Get the local user id, since GlobalUserrights stores
+									// central ID's. This is a two step process, because you can't
+									// get a local ID directly from a central Id.
+									$staffMember = $lookup->localUserFromCentralId( $gugm->getUserId() );
+									$staff[] = $staffMember->getId();
+								}
 							}
 						}
 
-						/**
-						 * remove bots from admins
-						 */
+						// Merge arrays - Add the staff members to the list of potential welcomers
+						$admins += $staff;
+
+						// End ShoutWiki patch
+
+						// Remove bots from admins.
+						// Some bots also have administrator privileges, but since they are not
+						// real users, they shouldn't be welcoming new users.
 						$admins = [ 'rev_user' => array_unique( array_diff( $admins, $bots ) ) ];
+
+						// Get the sysop who was active last
 						$row = $dbr->selectRow(
 							'revision',
 							[ 'rev_user', 'rev_user_text' ],
 							[
 								$dbr->makeList( $admins, LIST_OR ),
-								'rev_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( time() - 5184000 ) ) // 60 days ago (24*60*60*60)
+								'rev_timestamp > ' .
+								$dbr->addQuotes( $dbr->timestamp( time() - 5184000 ) ) // 60 days ago (24*60*60*60)
 							],
 							__METHOD__,
 							[ 'ORDER BY' => 'rev_timestamp DESC' ]
 						);
+
 						if ( $row && $row->rev_user ) {
 							$this->mSysop = User::newFromId( $row->rev_user );
-							$wgMemc->set( wfMemcKey( 'last-sysop-id' ), $row->rev_user, 86400 );
+							$wgMemc->set( $wgMemc->makeKey( 'last-sysop-id' ), $row->rev_user, 86400 );
+						} elseif ( $wantStaff ) {
+							$staffCount = count( $staff );
+							// Pick a random staff member so no-one gets left out
+							$index = mt_rand( 0, $staffCount - 1 );
+							$this->mSysop = User::newFromId( $staffCount[$index] );
+							$wgMemc->set( $wgMemc->makeKey( 'last-sysop-id' ), $staffCount[$index], 86400 );
 						}
 					}
 				} else {
@@ -246,13 +261,11 @@ class HAWelcomeJob extends Job {
 				}
 			}
 
-			/**
-			 * fallback, if still user is unknown we use welcome user
-			 */
+			// Fallback, if the user is still unknown we use welcome user
 			if ( $this->mSysop instanceof User && $this->mSysop->getId() ) {
 				wfDebugLog( 'HAWelcome', 'Found sysop: ' . $this->mSysop->getName() );
 			} else {
-				$this->mSysop = User::newFromName( self::WELCOMEUSER );
+				$this->mSysop = User::newFromName( $wgHAWelcomeWelcomeUsername );
 			}
 		}
 
@@ -260,124 +273,32 @@ class HAWelcomeJob extends Job {
 	}
 
 	/**
-	 * Static method called as hook
-	 *
-	 * @param Revision $revision Revision object
-	 * @param string $url URL to external object
-	 * @param string $flags Flags for this revision
-	 * @return bool True means process other hooks
-	 */
-	public static function revisionInsertComplete( &$revision, $url, $flags ) {
-		global $wgRequest, $wgUser, $wgCommandLineMode, $wgMemc;
-
-		/**
-		 * Do not create job when DB is locked (rt#12229)
-		 */
-		if ( wfReadOnly() ) {
-			return true;
-		}
-
-		/**
-		 * Revision has valid Title field but sometimes not filled
-		 */
-		$title = $revision->getTitle();
-		if ( !$title ) {
-			$title = Title::newFromId( $revision->getPage(), Title::GAID_FOR_UPDATE );
-			$revision->setTitle( $title );
-		}
-
-		/**
-		 * get groups for user rt#12215
-		 */
-		$groups = $wgUser->getEffectiveGroups();
-		$invalid = [
-			'bot' => true,
-			'staff' => true,
-			'sysop' => true,
-			'bureaucrat' => true
-		];
-		$canWelcome = true;
-		foreach ( $groups as $group ) {
-			if ( isset( $invalid[$group] ) && $invalid[$group] ) {
-				$canWelcome = false;
-				wfDebugLog( 'HAWelcome', "Skipping welcome since user is in $group group" );
-				break;
-			}
-		}
-
-		/**
-		 * put possible welcomer into memcached, RT#14067
-		 */
-		if ( $wgUser->getId() && self::isWelcomer( $wgUser ) ) {
-			$wgMemc->set( wfMemcKey( 'last-sysop-id' ), $wgUser->getId(), 86400 );
-			wfDebugLog( 'HAWelcome', 'Storing possible welcomer in memcached' );
-		}
-
-		if ( $title && !$wgCommandLineMode && $canWelcome ) {
-			$welcomer = trim( wfMessage( 'welcome-user' )->inContentLanguage()->plain() );
-
-			if ( $welcomer !== '@disabled' && $welcomer !== '-' ) {
-				/**
-				 * check if talk page for wgUser exists
-				 *
-				 * @todo check editcount for user
-				 */
-				$talkPage = $wgUser->getUserPage()->getTalkPage();
-				if ( $talkPage ) {
-					$talkArticle = new Article( $talkPage, 0 );
-					if ( !$talkArticle->exists() ) {
-						$welcomeJob = new HAWelcomeJob(
-							$title,
-							[
-								'is_anon'   => $wgUser->isAnon(),
-								'user_id'   => $wgUser->getId(),
-								'user_ip'   => $wgRequest->getIP(),
-								'user_name' => $wgUser->getName(),
-							]
-						);
-						$welcomeJob->insert();
-					}
-				}
-			}
-		}
-
-		return true;
-	}
-
-	/**
-	 * HACK, expand signature from message for sysop
+	 * Expand signature from a message or preference for sysop
+	 * @return string
 	 */
 	private function expandSig() {
-		global $wgContLang, $wgUser;
+		global $wgContLang, $wgHAWelcomeSignatureFromPreferences;
 
 		$this->mSysop = $this->getLastSysop();
-		$tmpUser = $wgUser;
-		$wgUser = $this->mSysop;
+
 		$sysopName = wfEscapeWikiText( $this->mSysop->getName() );
-		$signature = sprintf(
-			'-- [[%s:%s|%s]] ([[%s:%s|%s]]) %s',
-			$wgContLang->getNsText( NS_USER ),
-			$sysopName,
-			$sysopName,
-			$wgContLang->getNsText( NS_USER_TALK ),
-			$sysopName,
-			wfMessage( 'talkpagelinktext' )->inContentLanguage()->text(),
-			$wgContLang->timeanddate( wfTimestampNow( TS_MW ) )
-		);
-		$wgUser = $tmpUser;
+		$signature = wfMessage( 'signature' )->params( $sysopName, $sysopName )->plain();
+
+		$signature = "-- $signature";
+
+		if ( $wgHAWelcomeSignatureFromPreferences ) {
+			// Nickname references to the preference that stores the custom signature
+			$signature = $this->mSysop->getOption( 'nickname', $signature );
+		}
+
+		// Append timestamp
+		$signature .= ' ' . $wgContLang->timeanddate( wfTimestampNow() );
 
 		return $signature;
 	}
 
 	/**
-	 * @return Title instance of Title object
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
-
-	/**
-	 * @return Title instance of Title object
+	 * @return string the prefixed title with spaces
 	 */
 	public function getPrefixedText() {
 		return $this->title->getPrefixedText();
@@ -392,6 +313,7 @@ class HAWelcomeJob extends Job {
 	public function isEnabled( $what ) {
 		$return = false;
 		$message = wfMessage( 'welcome-enabled' )->inContentLanguage()->plain();
+
 		if (
 			in_array( $what, [ 'page-user', 'message-anon', 'message-user' ] ) &&
 			strpos( $message, $what ) !== false
@@ -401,31 +323,6 @@ class HAWelcomeJob extends Job {
 		}
 
 		return $return;
-	}
-
-	/**
-	 * Check if user can welcome other users
-	 *
-	 * @param User $user Instance of User class
-	 * @return bool Status of the operation
-	 */
-	public static function isWelcomer( &$user ) {
-		$sysop  = trim( wfMessage( 'welcome-user' )->plain() );
-		$groups = $user->getEffectiveGroups();
-		$result = false;
-
-		/**
-		 * bots can't welcome
-		 */
-		if ( !in_array( 'bot', $groups ) ) {
-			if ( $sysop === '@sysop' ) {
-				$result = in_array( 'sysop', $groups ) ? true : false;
-			} else {
-				$result = in_array( 'sysop', $groups ) || in_array( 'staff', $groups ) ? true : false;
-			}
-		}
-
-		return $result;
 	}
 
 	/**
@@ -440,6 +337,7 @@ class HAWelcomeJob extends Job {
 	 */
 	private function getUserPage() {
 		$userPage = $this->mUser->getUserPage();
+
 		if ( class_exists( 'UserProfile' ) ) {
 			// SocialProfile is installed -> the user
 			// might've opted in for the social profile
@@ -449,9 +347,11 @@ class HAWelcomeJob extends Job {
 			// This is somewhat c+p from UserProfile's
 			// UserProfile.php, the ArticleFromTitle hook callback
 			global $wgUserPageChoice;
+
 			if ( $wgUserPageChoice ) {
 				$profile = new UserProfile( $this->mUser->getName() );
 				$profileData = $profile->getProfile();
+
 				if (
 					isset( $profileData['user_id'] ) &&
 					$profileData['user_id'] &&
@@ -464,6 +364,7 @@ class HAWelcomeJob extends Job {
 				}
 			}
 		}
+
 		return $userPage;
 	}
 }

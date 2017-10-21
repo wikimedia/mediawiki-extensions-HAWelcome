@@ -1,0 +1,34 @@
+Highly Automated Welcome Tool
+
+The Highly Automated Welcome Tool or HAWelcome for short, helps sysops welcome new editors. By default it creates their user page and leaves a welcome message on their talk page, but this is configurable on-wiki.
+
+== Configuration options ==
+=== In LocalSettings.php ===
+HAWelcome adds two new configuration variables:
+* $wgHAWelcomeWelcomeUsername - This configuration variable contains the name of the user that should leave the welcome message. If this user is flagged as a bot, the edits will be marked as a bot edit. For compatibility with ShoutWiki's setup, the default value is ShoutWiki.
+* $wgHAWelcomeStaffGroupName - Name of the group that can serve as a fallback when no sysops have been active in the last 60 days. This is the staff group by default.
+* $wgHAWelcomeSignatureFromPreferences - This configuration variable toggles if the signature of the welcomer should be the one they have set in their preferences. This is false by default, and messages will use the default signature.
+=== On-wiki ===
+HAWelcome adds three new configuration messages:
+* welcome-user - Determines of which user the signature should be placed under the welcome message. This can be a username, or any of the special values:
+** @sysop - The most recently active sysop, with no fallback on staff
+** @latest - The most recently active sysop or staff when no sysops have been active in 60 days
+** @disabled - Don't leave welcome messages. In addition to @disabled, the message content may also be set to a single dash (-)
+* welcome-enabled - Determines which action to preform. It can be any combination of the following:
+** page-user - Create a user page for a registered user. The content of the user page is controlled by the message welcome-user-page
+** message-anon - Leave welcome messages for anonymous users. The content of the message is controlled by the message welcome-message-anon
+** message-user - Leave welcome messages for registered users. The content of the message is controlled by the message welcome-message-user
+
+== User rights ==
+There is one user right, assigned to the groups bot, staff, sysop and bureaucrat by default: welcomeexempt. Users with this right will not receive a message or have their user page created when they make their first edit. This feature was backported from Wikia.
+
+== Features ==
+* When the user rights are changed, and the user is the last active sysop, the cached value will be removed from cache. Tweaked to only remove the cache entry when the group sysop is removed. This feature was backported from Wikia.
+* When GlobalUserrights is installed, the global user groups table will too be checked for staff users.
+* When SocialProfile is installed, and the user has opted to use the social profile, the user page will be created in the UserWiki: namespace rather than the User: namespace.
+
+== Known limitations ==
+* Structured Discussions nor LiquidThreads are not supported. No welcome message will be left on the talk page of users with a Structured Discussions or LiquidThreads talk page.
+
+== License ==
+HAWelcome is licensed under GPL-2.0+. See LICENSE.
