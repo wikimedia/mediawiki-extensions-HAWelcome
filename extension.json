@@ -1,7 +1,7 @@
 {
 	"name": "Highly Automated Welcome Tool",
 	"namemsg": "welcome-user-name",
-	"version": "0.7.0",
+	"version": "0.7.1",
 	"author": [
 		"Krzysztof Krzyżaniak",
 		"Maciej Błaszkowski",

@@ -18,6 +18,7 @@ HAWelcome adds three new configuration messages:
 ** page-user - Create a user page for a registered user. The content of the user page is controlled by the message welcome-user-page
 ** message-anon - Leave welcome messages for anonymous users. The content of the message is controlled by the message welcome-message-anon
 ** message-user - Leave welcome messages for registered users. The content of the message is controlled by the message welcome-message-user
+** board-welcome - Leave a welcome message on the UserBoard. The content of the message is controlled by the message user-board-welcome-message
 
 == User rights ==
 There is one user right, assigned to the groups bot, staff, sysop and bureaucrat by default: welcomeexempt. Users with this right will not receive a message or have their user page created when they make their first edit. This feature was backported from Wikia.
@@ -26,6 +27,7 @@ There is one user right, assigned to the groups bot, staff, sysop and bureaucrat
 * When the user rights are changed, and the user is the last active sysop, the cached value will be removed from cache. Tweaked to only remove the cache entry when the group sysop is removed. This feature was backported from Wikia.
 * When GlobalUserrights is installed, the global user groups table will too be checked for staff users.
 * When SocialProfile is installed, and the user has opted to use the social profile, the user page will be created in the UserWiki: namespace rather than the User: namespace.
+* When SocialProfile is installed, a message can be left on the UserBoard.
 
 == Known limitations ==
 * Structured Discussions nor LiquidThreads are not supported. No welcome message will be left on the talk page of users with a Structured Discussions or LiquidThreads talk page.

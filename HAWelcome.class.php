@@ -120,6 +120,27 @@ class HAWelcomeJob extends Job {
 								wfEscapeWikiText( $this->mUser->getName() )
 							)->text();
 						}
+
+						$msgObj = wfMessage( 'user-board-welcome-message' )->inContentLanguage();
+						// Send a welcome message on UserBoard provided it's installed and enabled
+						if (
+							class_exists( 'UserBoard' ) &&
+							$this->isEnabled( 'board-welcome' ) &&
+							!$msgObj->isDisabled()
+						) {
+							// Send the message
+							$board = new UserBoard();
+							$board->sendBoardMessage(
+								$this->mSysop->getId(), // sender's UID
+								$this->mSysop->getName(), // sender's name
+								$this->mUser->getId(),
+								$this->mUser->getName(),
+								// passing the senderName as an argument here so that we can do
+								// stuff like [[User talk:$1|contact me]] or w/e in the message
+								$msgObj->params( $this->mSysop->getName() )->parse()
+							// the final argument is message type: 0 (default) for public
+							);
+						}
 					}
 
 					if ( $welcomeMsg ) {
