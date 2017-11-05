@@ -5,8 +5,8 @@
 			"Dragonòt"
 		]
 	},
-	"welcome-user-page": "==A propòsit ëd mi==\n''Sta sì a l'é soa pàgina utent. Për piasì ch'a modìfica sta pàgina-sì për parlé ëd chiel a la comunità!''\n\n==Mie contribussion==\n*[[Special:Contributions/{{PAGENAME}}|Contribussion ëd l'utent]]\n\n==Mie pàgine preferìe==\n*Ch'a gionta ambelessì j'anliure a soe pàgine preferìe dzora a la wiki!\n*Pàgina preferìa #2\n*Pàgina preferìa #3",
+	"welcome-user-page": "==A propòsit ëd mi==\n''Costa-sì a l'é soa pàgina utent. Për piasì ch'a modìfica sta pàgina-sì për parlé ëd chiel a la comunità!''\n\n==Mie contribussion==\n*[[Special:Contributions/{{PAGENAME}}|Contribussion ëd l'utent]]\n\n==Mie pàgine preferìe==\n*Ch'a gionta ambelessì j'anliure a soe pàgine preferìe dzora a la wiki!\n*Pàgina preferìa #2\n*Pàgina preferìa #3",
 	"welcome-message-user": "Cerea, bin ëvnù a {{SITENAME}}! Mersì për soe modìfiche a la pàgina [[:$1]].\n\nPër piasì ch'a lassa un mëssagi dzora a [[$2|mia pàgina ëd discussion]] se i peuss giuté con cheicòs! $3",
-	"welcome-message-anon": "Cerea, bin ëvnù su {{SITENAME}}! Mersì për soa modìfica a la pàgina [[:$1]].\n\n'''[[Special:UserLogin|Per piasì ch'a intra e ch'a crea un nòm utent]]'''. A l'é na manera belfé ëd manten-e na marca ëd soe contribussion e a lo giuta a comuniché con ël rest ëd la comunità.\n\nPër piasì ch'a lassa un mëssagi su [[$2|mia pàgina ëd discussion]] s'i peuss giuté con cheicòs! $3",
-	"welcome-message-log": "bin ëvnù a un neuv contribudor"
+	"welcome-message-anon": "Cerea, bin ëvnù su {{SITENAME}}! Mersì për soa modìfica a la pàgina [[:$1]].\n\n'''[[Special:UserLogin|Per piasì ch'a intra e ch'a crea në stranòm]]'''. A l'é na manera belfé ëd manten-e na marca ëd soe contribussion e a lo giuta a comuniché con ël rest ëd la comunità.\n\nPër piasì ch'a lassa un mëssagi su [[$2|mia pàgina ëd discussion]] s'i peuss giuté con cheicòs! $3",
+	"welcome-message-log": "bin ëvnù a un neuv contributor"
 }

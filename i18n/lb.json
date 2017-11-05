@@ -4,5 +4,7 @@
 			"Robby"
 		]
 	},
-	"welcome-message-log": "Begréissung vun engem neien Auteur"
+	"welcome-message-log": "Begréissung vun engem neien Auteur",
+	"welcome-user-name": "Automatiséierte Begréissungs-Tool",
+	"welcome-user-desc": "Begréisst nei Benotzer no hirer éischter Ännerung"
 }

@@ -1,11 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tim 'Avatar' Bartel"
+			"Tim 'Avatar' Bartel",
+			"Metalhead64"
 		]
 	},
 	"welcome-user-page": "==Über mich==\n''Das ist deine Benutzerseite. Hier kannst du den anderen ein paar Informationen über dich verraten!''\n\n==Meine Beiträge==\n*[[Special:Contributions/{{PAGENAME}}|Benutzerbeiträge]]\n\n==Meine beliebtesten Seiten==\n*Hier kannst du Links zu deinen beliebtesten Artikeln im Wiki hinzufügen!\n*Link auf Seite #2\n*Link auf Seite #3",
-	"welcome-message-user": "Hi, {{SITENAME}} freut sich, dass du zu uns gestoßen bist! Danke für deine Bearbeitung auf der Seite [[:$1]].\n\nFalls du irgendwelche Hilfe brauchen solltest, kannst du mir gerne eine Nachricht auf [[$2|meiner Diskussionsseite]] hinterlassen! $3",
+	"welcome-message-user": "Hallo! {{SITENAME}} freut sich, dass du zu uns gestoßen bist. Danke für deine Bearbeitung auf der Seite [[:$1]].\n\nFalls du irgendwelche Hilfe brauchen solltest, kannst du mir gerne eine Nachricht auf [[$2|meiner Diskussionsseite]] hinterlassen! $3",
 	"welcome-message-anon": "Hi, {{SITENAME}} freut sich, dass du zu uns gestoßen bist! Danke für deine Bearbeitung auf der Seite [[:$1]].\n\n'''[[Special:UserLogin|Bitte lege dir ein Benutzerkonto an]]'''. So kannst du ganz einfach deine Beiträge im Überblick behalten und dich besser mit dem Rest der Community verständigen.\n\nFalls du irgendwelche Hilfe brauchen solltest, kannst du mir gerne eine Nachricht auf [[$2|meiner Diskussionsseite]] hinterlassen! $3",
-	"welcome-message-log": "Begrüßung eines neuen Autors"
+	"welcome-message-log": "Begrüßung eines neuen Autors",
+	"welcome-user-name": "Highly Automated Welcome Tool",
+	"welcome-user-desc": "Heißt neue Benutzer nach ihrer ersten Bearbeitung willkommen",
+	"right-welcomeexempt": "Benutzer als Ausnahme für Nachrichten des Willkommenswerkzeugs markieren"
 }

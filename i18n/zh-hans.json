@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"welcome-user-page": "==关于我==\n这是您的用户页。请编辑此页面来告诉社群有关您自己的详情！\n\n==我的贡献==\n*[[Special:Contributions/{{PAGENAME}}|用户贡献]]\n\n==我最喜欢的页面==\n*在这里添加至您在wiki上最喜欢的页面链接吧！\n*喜欢的页面#2\n*喜欢的页面#3",
+	"welcome-message-user": "您好，欢迎来到{{SITENAME}}！感谢您编辑[[:$1]]页面。\n\n请在[[$2|我的讨论页]]留下消息，只要我能帮助您什么就好！$3",
+	"welcome-message-anon": "您好，欢迎来到{{SITENAME}}！感谢您编辑[[:$1]]页面。\n\n'''[[Special:UserLogin|请登录并创建用户名]]'''。这是对您的贡献保持追踪的最佳方式，并帮助您与社群其他成员沟通。\n\n请在[[$2|我的讨论页]]留下消息，只要我能帮助您什么就好！$3",
+	"welcome-message-log": "欢迎新贡献者",
+	"welcome-user-name": "高自动化欢迎工具",
+	"welcome-user-desc": "在首次编辑后欢迎新用户",
+	"right-welcomeexempt": "标记用户作为欢迎工具消息的例外"
+}
