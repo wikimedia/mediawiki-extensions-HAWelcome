@@ -43,6 +43,9 @@
 			"welcomeexempt": true
 		}
 	},
+	"AvailableRights": [
+		"welcomeexempt"
+	],
 	"config": {
 		"HAWelcomeWelcomeUsername": "ShoutWiki",
 		"HAWelcomeStaffGroupName": "staff",
