@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gifh"
+			"Gifh",
+			"Beta16"
 		]
 	},
 	"welcome-user-page": "==Qualcosa su di me==\n''Questa è la tua pagina utente. Modifica liberamente questa pagina per farti conoscere dalla comunità!''\n\n==I miei contributi==\n*[[Special:Contributions/{{PAGENAME}}|Contributi utente]]\n\n==Le mie pagine preferite==\n*Aggiungi i collegamenti alle tue pagine preferite su questo wiki!\n*Pagina preferita n.2\n*Pagina preferita n.3",
-	"welcome-message-user": "Ciao $4, benvenuto su {{SITENAME}}! Grazie per la tua modifica sulla pagina [[:$1]].\n\nLascia un messaggio sulla [[$2|pagina delle mie discussioni]], se posso esserti utile per qualunque problema! $3",
+	"welcome-message-user": "Ciao, benvenuto su {{SITENAME}}! Grazie per la tua modifica sulla pagina [[:$1]].\n\nLascia un messaggio sulla [[$2|pagina delle mie discussioni]], se posso esserti utile per qualsiasi cosa! $3",
 	"welcome-message-anon": "Ciao, benvenuto su {{SITENAME}}. Grazie per la tua modifica sulla pagina [[:$1]].\n\n'''[[Special:UserLogin|Se lo desideri, puoi registrarti con il tuo nome utente]]'''. È un modo facile e comodo per tenere traccia delle tue collaborazioni e ti aiuta nelle comunicazioni con il resto della comunità.\n\nLascia un messaggio sulla [[$2|pagina delle mie discussioni]], se posso esserti utile per qualunque problema! $3",
 	"welcome-message-log": "Benvenuto a un nuovo collaboratore"
 }
