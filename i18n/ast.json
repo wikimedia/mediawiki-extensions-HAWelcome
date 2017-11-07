@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"welcome-user-page": "==Tocante a mio==\n''Esta ye la to páxina d'usuariu. ¡Edítala pa falar sobre ti a la comunidá!''\n\n==Les mios contribuciones==\n*[[Special:Contributions/{{PAGENAME}}|Contribuciones del usuariu]]\n\n==Les mios páxines favorites==\n*¡Añade equí los venceyos a les páxines favorites de la wiki!\n*Páxina favorita #2\n*Páxina favorita #3",
+	"welcome-message-user": "¡Bones, bienveníu(a) a {{SITENAME}}! Gracies pola to edición na páxina [[:$1]].\n\nDexa un mensaxe na [[$2|mio páxina d'alderique]] si puedo ayudate con cualquier cosa. $3",
+	"welcome-message-anon": "¡Bones, bienveníu(a) a {{SITENAME}}! Gracies pola to edición na páxina [[:$1]].\n\n'''[[Special:UserLogin|Encamentámoste crear una cuenta y aniciar sesión]]'''. Ye una forma fácil de siguir les tos contribuciones y t'ayuda a comunicate col restu de la comunidá.\n\nDexa un mensaxe na [[$2|mio páxina d'alderique]] si puedo ayudate con cualquier cosa. $3",
+	"welcome-message-log": "bienvenida a un nuevu collaborador",
+	"welcome-user-name": "Highly Automated Welcome Tool",
+	"welcome-user-desc": "Da la bienvenida a los usuarios nuevos dempués de la so primera edición",
+	"right-welcomeexempt": "Marcar un usuariu como llibre de mensaxes de la ferramienta de bienvenida"
+}
