@@ -6,7 +6,7 @@
 	},
 	"welcome-user-page": "Γύρω από μένα\nΑυτή είναι η σελίδα σας χρήστη. Παρακαλώ επεξεργαστείτε αυτήν την σελίδα για να μιλήστε στην κοινότητα για σας.\nΟι συνεισφορές μου\n*[[Special:Contributions/{{PAGENAME}}|User contributions]]\n-Οι αγαπημένες μου σελίδες\nΠροσθέτει συνδέσμους στις αγαπημένες σας σελίδες στο wiki εδώ!\nΑγαπημένη σελίδα #2\nΑγαπημένη σελίδα #3",
 	"welcome-message-user": "Hola, bienvenido al {{SITENAME}}! Gracias por su edicion en la pagina  {{:$1}}\nPor favor dejar un mensaje [[$2|my talk page]] en caso que quiere ayuda en algo! $3",
-	"welcome-message-anon": "Hola, beinvenido  en el{{SITENAME}}! Gracias por tu edicion pagina [[:$1]] .$3\n'''[[Special:UserLogin|Please sign in and create a user name]]'''. Es muy facil de seguir a sus contribuciones y te ayuda con el resto de comunidad.  \nPor favor dejar un mensaje en {{$2|my talk page}}, si esto ayuda el algo.",
+	"welcome-message-anon": "Hola, bienvenido  en el{{SITENAME}}! Gracias por tu edicion pagina [[:$1]] .$3\n'''[[Special:UserLogin|Please sign in and create a user name]]'''. Es muy facil de seguir a sus contribuciones y te ayuda con el resto de comunidad.  \nPor favor dejar un mensaje en {{$2|my talk page}}, si esto ayuda el algo.",
 	"welcome-message-log": "Καλώς ήλθες νέε χρήστη",
 	"welcome-user-name": "Αυτοματοποιημένο Εργαλείο Υποδοχής",
 	"welcome-user-desc": "Καλωσορίζει νέους χρήστες μετά από την πρώτη έκδοση",
