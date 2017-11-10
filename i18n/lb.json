@@ -7,5 +7,6 @@
 	"welcome-user-page": "== Iwwer mech ==\n''Dëst ass Är Benotzersäit. Hei kënnt Dir Aneren eppes iwwer Iech matdeelen!''\n\n== Meng Kontributiounen==\n*[[Special:Contributions/{{PAGENAME}}|Benotzerkontributiounen]]\n\n== Meng léiwste Säiten ==\n* Hei kënnt Dir Linken op Är léifst Artikelen an dëser Wiki derbäisetzen!\n*Link op d'Säit #2\n*Link op d'Säit #3",
 	"welcome-message-log": "Begréissung vun engem neien Auteur",
 	"welcome-user-name": "Automatiséierte Begréissungs-Tool",
-	"welcome-user-desc": "Begréisst nei Benotzer no hirer éischter Ännerung"
+	"welcome-user-desc": "Begréisst nei Benotzer no hirer éischter Ännerung",
+	"right-welcomeexempt": "Markéiert de Benotzer als Ausnam fir Message vum Begréissungs-Tool"
 }
