@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jack Phoenix <jack@countervandalism.net>"
+			"Jack Phoenix"
 		]
 	},
 	"welcome-user-page": "==Tietoa minusta==\n''Tämä on käyttäjäsivusi. Ole hyvä ja muokkaa tätä sivua kertoaksesi yhteisölle itsestäsi!''\n\n==Omat muokkaukseni==\n*[[Special:Contributions/{{PAGENAME}}|Käyttäjän muokkaukset]]\n\n==Omat suosikkisivuni==\n*Lisää suosikkisivujasi tähän!\n*Suosikkisivu #2\n*Suosikkisivu #3",

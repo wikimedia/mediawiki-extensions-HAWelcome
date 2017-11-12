@@ -6,7 +6,7 @@
  * @ingroup JobQueue
  * @author Krzysztof Krzyżaniak (eloy) <eloy@wikia-inc.com>
  * @author Maciej Błaszkowski (Marooned) <marooned at wikia-inc.com>
- * @author Jack Phoenix <jack@countervandalism.net>
+ * @author Jack Phoenix
  * @date 2009-12-27 (r8975)
  * @copyright Copyright © Krzysztof Krzyżaniak for Wikia Inc.
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
