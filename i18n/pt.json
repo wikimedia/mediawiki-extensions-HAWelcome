@@ -4,7 +4,7 @@
 			"Hamilton Abreu"
 		]
 	},
-	"welcome-user-page": "==Quem sou==\n''Esta é sua página de utilizador. Por favor, edite esta página e apresente-se à comunidade!''\n\n==As minhas contribuições==\n*[[Special:Contributions/{{PAGENAME}}|Contribuições deste utilizador]]\n\n==As minhas páginas preferidas==\n*Adicione links para as suas páginas preferidas nesta wiki!\n*Página preferida #2\n*Página preferida #3",
+	"welcome-user-page": "==Quem sou==\n''Esta é sua página de utilizador. Por favor, edite esta página e apresente-se à comunidade!''\n\n==As minhas contribuições==\n*[[Special:Contributions/{{PAGENAME}}|Contribuições deste utilizador]]\n\n==As minhas páginas preferidas==\n*Adicione hiperligações para as suas páginas preferidas nesta wiki!\n*Página preferida #2\n*Página preferida #3",
 	"welcome-message-user": "Olá, bem-vindo(a) à wiki {{SITENAME}}! Obrigado pela sua edição da página [[:$1]].\n\nDeixe uma mensagem na [[$2|minha página de discussão]] se eu puder ajudar nalguma coisa! $3",
 	"welcome-message-anon": "Olá, bem-vindo(a) à wiki {{SITENAME}}! Obrigado pela sua edição da página [[:$1]].\n\n'''[[Special:UserLogin|Registe-se e crie um utilizador, por favor]]'''. É uma forma fácil de registar as suas contribuições e facilita a comunicação com os restantes utilizadores.\n\nDeixe uma mensagem na [[$2|minha página de discussão]] se eu puder ajudar nalguma coisa! $3",
 	"welcome-message-log": "boas-vindas a novo colaborador",
