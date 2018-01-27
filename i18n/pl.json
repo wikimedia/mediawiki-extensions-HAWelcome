@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Misiek95",
-			"Sp5uhe"
+			"Sp5uhe",
+			"Chrumps"
 		]
 	},
 	"welcome-user-page": "==O mnie==\n''To jest Twoja strona użytkownika. Wyedytuj ją i powiedz społeczności coś o sobie!''\n\n==Mój wkład==\n*[[Special:Contributions/{{PAGENAME}}|wkład]]\n\n==Moje ulubione strony==\n*Dodaj tu linki do swoich ulubionych stron wiki!\n*Drugi link.\n*I trzeci.",
 	"welcome-message-user": "Witaj w {{GRAMMAR:MS.lp|{{SITENAME}}}}! Dziękujemy za poprawienie artykułu [[:$1]].\n\nZostaw wiadomość na [[$2|mojej stronie dyskusji]] jeśli potrzebujesz jakiejkolwiek pomocy! $3",
 	"welcome-message-anon": "Witaj w {{GRAMMAR:MS.lp|{{SITENAME}}}}. Dziękujemy za poprawienie strony [[:$1]].\n\n'''[[Special:UserLogin|Możesz się zarejestrować i założyć konto]]'''. Ułatwi Ci to kontrolę własnego wkładu i pomoże w komunikacji z resztą społeczności.\n\nZostaw wiadomość na [[$2|mojej stronie dyskusji]] jeśli potrzebujesz jakiejkolwiek pomocy! $3",
-	"welcome-message-log": "powitanie"
+	"welcome-message-log": "powitanie",
+	"welcome-user-desc": "Wita nowych użytkowników po pierwszej edycji"
 }
