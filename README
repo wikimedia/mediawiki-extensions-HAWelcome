@@ -33,4 +33,4 @@ There is one user right, assigned to the groups bot, staff, sysop and bureaucrat
 * Structured Discussions nor LiquidThreads are not supported. No welcome message will be left on the talk page of users with a Structured Discussions or LiquidThreads talk page.
 
 == License ==
-HAWelcome is licensed under GPL-2.0+. See LICENSE.
+HAWelcome is licensed under GPL-2.0-or-later. See LICENSE.

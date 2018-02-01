@@ -8,7 +8,7 @@
 		"Jack Phoenix",
 		"Mainframe98"
 	],
-	"license-name": "GPL-2.0+",
+	"license-name": "GPL-2.0-or-later",
 	"url": "https://www.mediawiki.org/wiki/Extension:HAWelcome",
 	"descriptionmsg": "welcome-user-desc",
 	"type": "other",
