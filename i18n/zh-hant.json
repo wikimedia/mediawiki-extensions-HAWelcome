@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"welcome-user-page": "== 關於我 ==\n''這是您的使用者頁頁面，請編輯此頁面來向社群介紹您自己吧！''\n\n== 我的貢獻 ==\n*[[Special:Contributions/{{PAGENAME}}|使用者貢獻]]\n\n== 我的個人最愛頁面 ==\n*於此添加在 wiki 上您的最愛頁面連結吧！\n*最愛頁面 #2\n*最愛頁面 #3",
+	"welcome-message-user": "嗨，歡迎來到 {{SITENAME}}！感謝您編輯[[:$1]]頁面。\n\n若有我可以協助您的地方，請在[[$2|我的對話頁]]留下訊息！$3",
+	"welcome-message-anon": "嗨，歡迎來到 {{SITENAME}}！感謝您編輯[[:$1]]頁面。\n\n'''[[Special:UserLogin|請建立使用者名稱並登入]]'''是個能夠保持追蹤您的貢獻，以及幫助您與社群溝通的最簡易方式。\n\n若有我可以協助您的地方，請在[[$2|我的對話頁]]留下訊息！$3",
+	"welcome-message-log": "歡迎新貢獻者",
+	"welcome-user-name": "高度自動化歡迎工具",
+	"welcome-user-desc": "在新使用者做出首次編輯後歡迎他們",
+	"right-welcomeexempt": "標記使用者為歡迎工具訊息的例外"
+}
