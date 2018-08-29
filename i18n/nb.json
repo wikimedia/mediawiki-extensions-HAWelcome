@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"welcome-user-page": "== Om meg ==\n''Dette er brukersida di. Rediger denne siden for å fortelle fellesskapet litt om deg selv!''\n\n== Mine bidrag ==\n* [[Special:Contributions/{{PAGENAME}}|Brukerbidrag]]\n\n== Mine favorittsider ==\n* Legg til lenker til dine favorittsider på wikien her!\n* Favorittside #2\n* Favorittside #3",
+	"welcome-message-user": "Hei, og velkommen til {{SITENAME}}! Takk for redigeringen din på siden [[:$1]].\n\nLegg gjerne igjen en beskjed på [[$2|diskusjonssiden min]] om det er noe jeg kan hjelpe deg med! $3",
+	"welcome-message-anon": "Hei, og velkommen til {{SITENAME}}! Takk for redigeringen din på siden [[:$1]].\n\n'''[[Special:UserLogin|Vennligst registrer deg og opprett et brukernavn]]'''. Det er en enkel måte å holde styr på bidragene dine, og hjelper deg med å kommunisere med resten av fellesskapet.\n\nLegg gjerne igjen en beskjed på [[$2|diskusjonssiden min]] om det er noe jeg kan hjelpe deg med! $3",
+	"welcome-message-log": "ønsker ny bruker velkommen",
+	"welcome-user-name": "Veldig automatisert velkomstverktøy",
+	"welcome-user-desc": "Ønsker nye brukere velkommen etter at de har gjort sin første redigering",
+	"right-welcomeexempt": "Flagger bruker som unntatt fra velkomstverktøybeskjeder"
+}
