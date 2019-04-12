@@ -4,5 +4,11 @@
 			"Joetaras"
 		]
 	},
-	"welcome-message-log": "Bovègne a 'nu collabboratore nuève"
+	"welcome-user-page": "==Sus a me==\n''Queste jè 'a pàgene utende toje. Cange accumme vuè sta pàgene pe farte canoscere da 'a comunitate!''\n\n==Le condrebbute mie==\n*[[Special:Contributions/{{PAGENAME}}|Condrebbute de l'utende]]\n\n==Le pàggene preferite mie==\n*Aggiunge le collegaminde a le pàggene preferite sus a sta uicchi!\n*Pàgena preferite n.2\n*Pàgena preferite n.3",
+	"welcome-message-user": "Cià, bovègne sus a {{SITENAME}}! Grazie pu cangiamende tune sus a pàgene [[:$1]].\n\nLasse 'nu messàgge sus 'a [[$2|pàgene de le 'ngazzaminde mie]], ce te pozze dà 'na mane pe quidde ca vuè! $3",
+	"welcome-message-anon": "Cià, bovègne sus a {{SITENAME}}! Grazie pu cangiamende tune sus a pàgene [[:$1]].\n\n'''[[Special:UserLogin|Ce vuè, puè reggistrarte cu 'u nome utende tune]]'''. Jè 'nu mode facile e comode pe tenè tracce de le collabboraziune tune e te dèje 'na mane jndr'à le comunicaziune cu 'u reste d'a comunitate.\n\nLasse 'nu messàgge sus 'a [[$2|pàgene de le 'ngazzaminde mie]], ce te pozze dà 'na mane pe quidde ca vuè! $3",
+	"welcome-message-log": "Bovègne a 'nu collabboratore nuève",
+	"welcome-user-name": "Strumende de Bovègne automatizzate assaije probbie",
+	"welcome-user-desc": "Bovègne a le utinde nuève apprisse 'u lore prime cangiamende",
+	"right-welcomeexempt": "Signe l'utende cumme non conziderate da le messàgge d'u strumende de bovègne"
 }
