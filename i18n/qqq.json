@@ -12,5 +12,6 @@
 	"welcome-message-log": "Edit summary used when leaving a message on the talk page",
 	"welcome-user-name": "{{name}}",
 	"welcome-user-desc": "{{desc|name=HAWelcome|url=https://www.mediawiki.org/wiki/Extension:HAWelcome}}",
+	"action-welcomeexempt": "{{doc-action|welcomeexempt}}",
 	"right-welcomeexempt": "{{doc-right|welcomeexempt}}"
 }
