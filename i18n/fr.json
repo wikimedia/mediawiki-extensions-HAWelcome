@@ -6,7 +6,8 @@
 			"TulipVorlax",
 			"Wladek92",
 			"DePlusJean",
-			"Urhixidur"
+			"Urhixidur",
+			"Gomoko"
 		]
 	},
 	"welcome-user-page": "== À propos de moi ==\n''Cette page est votre page personnelle. Cet espace vous permet de vous décrire auprès de la communauté !''\n\n== Mes contributions ==\n*[[Special:Contributions/{{PAGENAME}}|Mes contributions]]\n\n== Mes pages favorisées ==\n*Ici, vous pouvez placer des liens vers vos pages préférées du wiki !\n*Lien vers page #2\n*Lien vers page #3",
@@ -15,5 +16,6 @@
 	"welcome-message-log": "Accueillir un nouvel utilisateur",
 	"welcome-user-name": "Outil d'accueil fortement automatisé",
 	"welcome-user-desc": "Accueil des nouveaux utilisateurs après leur première modification",
+	"action-welcomeexempt": "marque l’utilisateur comme dispensé des messages de l’outil d’accueil",
 	"right-welcomeexempt": "Marque l'utilisateur comme exempté des messages de bienvenue dans les outils"
 }
