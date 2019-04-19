@@ -10,5 +10,6 @@
 	"welcome-message-log": "歡迎新貢獻者",
 	"welcome-user-name": "高度自動化歡迎工具",
 	"welcome-user-desc": "在新使用者做出首次編輯後歡迎他們",
-	"right-welcomeexempt": "標記使用者為歡迎工具訊息的例外"
+	"action-welcomeexempt": "標記為免於接收歡迎工具訊息的使用者",
+	"right-welcomeexempt": "標記為免於接收歡迎工具訊息的使用者"
 }
