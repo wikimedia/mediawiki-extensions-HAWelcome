@@ -12,5 +12,6 @@
 	"welcome-message-anon": "Hallo, welkom bij {{SITENAME}}! Dank u wel voor uw werk aan de pagina [[:$1]].\n\n'''[[Special:UserLogin|Maak alstublieft een gebruiker aan of meld u aan]]'''.\nHet is een eenvoudige manier om uw bijdragen te volgen en helpt u bij het onderhouden van contacten met de rest van de gemeenschap.\n\nLaat alstublieft een bericht achter op [[$2|mijn overleg pagina]] als ik u ergens mee kan helpen! $3",
 	"welcome-message-log": "nieuwe gebruiker aan het verwelkomen",
 	"welcome-user-desc": "Stuurt een welkomstbericht aan gebruikers na hun eerste bewerking",
+	"action-welcomeexempt": "uitgezonderd te zijn van het ontvangen van welkomstberichten",
 	"right-welcomeexempt": "Uitgezonderd zijn van het ontvangen van welkomstberichten"
 }
