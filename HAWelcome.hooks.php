@@ -50,7 +50,7 @@ class HAWelcomeHooks {
 		if ( $title && !$wgCommandLineMode && $canWelcome ) {
 			$welcomer = trim( wfMessage( 'welcome-user' )->inContentLanguage()->plain() );
 
-			if ( in_array( $welcomer, [ '@disabled', '-' ] ) ) {
+			if ( !in_array( $welcomer, [ '@disabled', '-' ] ) ) {
 				// Check if talk page for current user exists, if they have made any edits, and
 				// if the content model is wikitext. Only wikitext talk pages are supported.
 				$talkPage = $user->getUserPage()->getTalkPage();
