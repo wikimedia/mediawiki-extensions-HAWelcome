@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"welcome-message-log": "uoči novog sudionika",
+	"welcome-user-name": "Visoko automatizirani alat za prisluškivanje",
+	"welcome-user-desc": "Zainteresira nove korisnike prilikom prvog uređivanja, želeći im dobrodošlicu",
+	"action-welcomeexempt": "označavanje korisnik kao izuzetak iz poruke alata za dobrodošlice",
+	"right-welcomeexempt": "Označava korisnika kao izuzetak iz poruke alata za dobrodošlice"
+}
