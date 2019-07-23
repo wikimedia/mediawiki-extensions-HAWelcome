@@ -120,27 +120,6 @@ class HAWelcomeJob extends Job {
 								wfEscapeWikiText( $this->mUser->getName() )
 							)->text();
 						}
-
-						$msgObj = wfMessage( 'user-board-welcome-message' )->inContentLanguage();
-						// Send a welcome message on UserBoard provided it's installed and enabled
-						if (
-							class_exists( 'UserBoard' ) &&
-							$this->isEnabled( 'board-welcome' ) &&
-							!$msgObj->isDisabled()
-						) {
-							// Send the message
-							$board = new UserBoard();
-							$board->sendBoardMessage(
-								$this->mSysop->getId(), // sender's UID
-								$this->mSysop->getName(), // sender's name
-								$this->mUser->getId(),
-								$this->mUser->getName(),
-								// passing the senderName as an argument here so that we can do
-								// stuff like [[User talk:$1|contact me]] or w/e in the message
-								$msgObj->params( $this->mSysop->getName() )->parse()
-							// the final argument is message type: 0 (default) for public
-							);
-						}
 					}
 
 					if ( $welcomeMsg ) {
@@ -153,6 +132,27 @@ class HAWelcomeJob extends Job {
 							$welcomeUser
 						);
 					}
+				}
+
+				$msgObj = wfMessage( 'user-board-welcome-message' )->inContentLanguage();
+				// Send a welcome message on UserBoard provided it's installed and enabled
+				if (
+					class_exists( 'UserBoard' ) &&
+					$this->isEnabled( 'board-welcome' ) &&
+					!$msgObj->isDisabled()
+				) {
+					// Send the message
+					$board = new UserBoard();
+					$board->sendBoardMessage(
+						$this->mSysop->getId(), // sender's UID
+						$this->mSysop->getName(), // sender's name
+						$this->mUser->getId(),
+						$this->mUser->getName(),
+						// passing the senderName as an argument here so that we can do
+						// stuff like [[User talk:$1|contact me]] or w/e in the message
+						$msgObj->params( $this->mSysop->getName() )->text()
+						// the final argument is message type: 0 (default) for public
+					);
 				}
 			}
 		}
@@ -328,15 +328,22 @@ class HAWelcomeJob extends Job {
 	/**
 	 * Check if some (or all) functionality is disabled/enabled
 	 *
-	 * @param string|bool $what Default false, possible values: page-user, message-anon, message-user
+	 * @param string|bool $what Default false, possible values: page-user, message-anon, message-user, board-welcome
 	 * @return bool Disabled or not
 	 */
 	public function isEnabled( $what ) {
 		$return = false;
 		$message = wfMessage( 'welcome-enabled' )->inContentLanguage()->plain();
 
+		$validValues = [
+			'page-user',
+			'message-anon',
+			'message-user',
+			'board-welcome'
+		];
+
 		if (
-			in_array( $what, [ 'page-user', 'message-anon', 'message-user' ] ) &&
+			in_array( $what, $validValues ) &&
 			strpos( $message, $what ) !== false
 		)
 		{
@@ -372,11 +379,14 @@ class HAWelcomeJob extends Job {
 			if ( $wgUserPageChoice ) {
 				$profile = new UserProfile( $this->mUser->getName() );
 				$profileData = $profile->getProfile();
-
 				if (
 					isset( $profileData['user_id'] ) &&
 					$profileData['user_id'] &&
-					$profileData['user_page_type'] === 1
+					// empty profile data can also mean brand new user account
+					// (e.g. if you create a new account and trigger this code by making an
+					// edit before filling out your profile data, profile data shows up as
+					// empty, even the user_id, which definitely sounds like a bug, but anyway)
+					$profileData['user_page_type'] === 1 || empty( $profileData['user_page_type'] )
 				)
 				{
 					// SocialProfile as the User: page, wikitext user page
