@@ -13,5 +13,6 @@
 	"welcome-message-log": "powitanie",
 	"welcome-user-name": "Zautomatyzowane narzędzie powitalne",
 	"welcome-user-desc": "Wita nowych użytkowników po pierwszej edycji",
+	"action-welcomeexempt": "oznaczania użytkownika jako wykluczonego z wiadomości powitalnych",
 	"right-welcomeexempt": "Oznacza użytkownika jako wykluczonego z wiadomości powitalnych"
 }
