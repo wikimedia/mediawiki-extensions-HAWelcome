@@ -52,7 +52,7 @@
 		"HAWelcomeSignatureFromPreferences": false
 	},
 	"requires": {
-		"MediaWiki": ">= 1.29.0"
+		"MediaWiki": ">= 1.32.0"
 	},
 	"manifest_version": 1
 }
