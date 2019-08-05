@@ -326,9 +326,10 @@ class HAWelcomeJob extends Job {
 	 * @return string
 	 */
 	private function expandSig() {
-		global $wgContLang, $wgHAWelcomeSignatureFromPreferences;
+		global $wgHAWelcomeSignatureFromPreferences;
 
 		$this->mSysop = $this->getLastSysop();
+		$contLang = MediaWiki\MediaWikiServices::getInstance()->getContentLanguage();
 
 		$sysopName = wfEscapeWikiText( $this->mSysop->getName() );
 		$signature = wfMessage( 'signature' )->params( $sysopName, $sysopName )->plain();
@@ -341,7 +342,7 @@ class HAWelcomeJob extends Job {
 		}
 
 		// Append timestamp
-		$signature .= ' ' . $wgContLang->timeanddate( wfTimestampNow() );
+		$signature .= ' ' . $contLang->timeanddate( wfTimestampNow() );
 
 		return $signature;
 	}
