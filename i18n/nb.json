@@ -10,5 +10,6 @@
 	"welcome-message-log": "ønsker ny bruker velkommen",
 	"welcome-user-name": "Veldig automatisert velkomstverktøy",
 	"welcome-user-desc": "Ønsker nye brukere velkommen etter at de har gjort sin første redigering",
+	"action-welcomeexempt": "flagge bruker som unntatt fra velkomstverktøymeldinger",
 	"right-welcomeexempt": "Flagger bruker som unntatt fra velkomstverktøybeskjeder"
 }
