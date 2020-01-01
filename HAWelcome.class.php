@@ -166,7 +166,7 @@ class HAWelcomeJob extends Job {
 	 * @return User class instance
 	 */
 	public function getLastSysop() {
-		global $wgActorTableSchemaMigrationStage, $wgMemc, $wgHAWelcomeWelcomeUsername, $wgHAWelcomeStaffGroupName;
+		global $wgMemc, $wgHAWelcomeWelcomeUsername, $wgHAWelcomeStaffGroupName;
 
 		// Maybe already loaded?
 		if ( !$this->mSysop ) {
@@ -253,46 +253,35 @@ class HAWelcomeJob extends Job {
 						// real users, they shouldn't be welcoming new users.
 						$uniqueHumanAdmins = array_unique( array_diff( $admins, $bots ) );
 
-						// Get the sysop who was active last
-						if ( $wgActorTableSchemaMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
-							$revQuery = MediaWiki\MediaWikiServices::getInstance()->getRevisionStore()->getQueryInfo();
-							$actorIds = [];
-							// Convert user IDs to actor IDs because new tables don't care about UIDs
-							foreach ( $uniqueHumanAdmins as $uniqueHumanAdmin ) {
-								$user = User::newFromId( $uniqueHumanAdmin );
-								if ( $user ) {
-									$actorIds[] = $user->getActorId();
-								}
+						$actorIds = [];
+
+						// Convert user IDs to actor IDs because new tables don't care about UIDs
+						foreach ( $uniqueHumanAdmins as $uniqueHumanAdmin ) {
+							$user = User::newFromId( $uniqueHumanAdmin );
+							if ( $user ) {
+								$actorIds[] = $user->getActorId();
 							}
-							$admins = [
-								'revactor_actor' => $actorIds
-							];
-							$row = $dbr->selectRow(
-								$revQuery['tables'],
-								$revQuery['fields'],
-								[
-									$dbr->makeList( $admins, LIST_OR ),
-									'revactor_timestamp > ' .
-										$dbr->addQuotes( $dbr->timestamp( time() - 5184000 ) ) // 60 days ago (24*60*60*60)
-								],
-								__METHOD__,
-								[ 'ORDER BY' => 'revactor_timestamp DESC' ],
-								$revQuery['joins']
-							);
-						} else {
-							$admins = [ 'rev_user' => $uniqueHumanAdmins ];
-							$row = $dbr->selectRow(
-								'revision',
-								[ 'rev_user', 'rev_user_text' ],
-								[
-									$dbr->makeList( $admins, LIST_OR ),
-									'rev_timestamp > ' .
-										$dbr->addQuotes( $dbr->timestamp( time() - 5184000 ) ) // 60 days ago (24*60*60*60)
-								],
-								__METHOD__,
-								[ 'ORDER BY' => 'rev_timestamp DESC' ]
-							);
 						}
+
+						$admins = [
+							'revactor_actor' => $actorIds
+						];
+
+						$revQuery = MediaWiki\MediaWikiServices::getInstance()->getRevisionStore()->getQueryInfo();
+
+						// Get the sysop who was active last
+						$row = $dbr->selectRow(
+							$revQuery['tables'],
+							$revQuery['fields'],
+							[
+								$dbr->makeList( $admins, LIST_OR ),
+								'revactor_timestamp > ' .
+									$dbr->addQuotes( $dbr->timestamp( time() - 5184000 ) ) // 60 days ago (24*60*60*60)
+							],
+							__METHOD__,
+							[ 'ORDER BY' => 'revactor_timestamp DESC' ],
+							$revQuery['joins']
+						);
 
 						if ( $row && $row->rev_user ) {
 							$this->mSysop = User::newFromId( $row->rev_user );
