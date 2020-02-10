@@ -144,10 +144,8 @@ class HAWelcomeJob extends Job {
 					// Send the message
 					$board = new UserBoard();
 					$board->sendBoardMessage(
-						$this->mSysop->getId(), // sender's UID
-						$this->mSysop->getName(), // sender's name
-						$this->mUser->getId(),
-						$this->mUser->getName(),
+						$this->mSysop,
+						$this->mUser,
 						// passing the senderName as an argument here so that we can do
 						// stuff like [[User talk:$1|contact me]] or w/e in the message
 						$msgObj->params( $this->mSysop->getName() )->text()
