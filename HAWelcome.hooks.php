@@ -28,12 +28,7 @@ class HAWelcomeHooks {
 			return true;
 		}
 
-		// Revision has valid Title field but sometimes not filled
 		$title = $revision->getTitle();
-		if ( !$title ) {
-			$title = Title::newFromID( $revision->getPage(), Title::GAID_FOR_UPDATE );
-			$revision->setTitle( $title );
-		}
 
 		// Get groups for user rt#12215
 		$canWelcome = !$user->isAllowed( 'welcomeexempt' );
