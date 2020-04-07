@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Garrasdalua",
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Garrasdalua"
 		]
 	},
 	"welcome-user-page": "==Sobre mim==\n''Esta é sua pagina de usuário. Por favor, edite esta pagina para contar mais sobre voce para a comunidade!''\n\n==Minhas contribuições==\n*[[Special:Contributions/{{PAGENAME}}|Contribuições do usuário]]\n\n==Minhas Páginas favoritas==\n*Adicione links para suas páginas favoritas da wiki!\n*Pagina favorita #2\n*Pagina favorita #3",

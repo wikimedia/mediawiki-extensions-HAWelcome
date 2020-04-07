@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hedda",
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"Hedda"
 		]
 	},
 	"welcome-user-page": "==Hakkımda==\n''Burası kullanıcı sayfan. Topluluğa kendinden bahsetmek için lütfen bu sayfayı düzenleyin!''\n\n==Katkılarım==\n*[[Special:Contributions/{{PAGENAME}}|Kullanıcı katkıları]]\n\n==Favori sayfalarım==\n* Buraya wiki favori sayfalarınıza bağlantılar ekleyin!\n* Favori sayfa #2\n* Favori sayfa #3",

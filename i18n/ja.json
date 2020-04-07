@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tommy6",
-			"Omotecho"
+			"Omotecho",
+			"Tommy6"
 		]
 	},
 	"welcome-user-page": "== 自己紹介 ==\n''ここはあなたの利用者ページです。このページを編集してコミュニティに自己紹介してみましょう。\n\n== 貢献 ==\n*[[Special:Contributions/{{PAGENAME}}|利用者の貢献]]\n\n== お気に入り ==\n*ここにウィキのいちばんお気に入りのページをリンクしてみましょう\n*お気に入り 第2位\n*お気に入り 第3位",

@@ -2,12 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Cywil",
+			"DePlusJean",
+			"Gomoko",
 			"Marc-Philipp Beuter",
 			"TulipVorlax",
-			"Wladek92",
-			"DePlusJean",
 			"Urhixidur",
-			"Gomoko"
+			"Wladek92"
 		]
 	},
 	"welcome-user-page": "== À propos de moi ==\n''Cette page est votre page personnelle. Cet espace vous permet de vous décrire auprès de la communauté !''\n\n== Mes contributions ==\n*[[Special:Contributions/{{PAGENAME}}|Mes contributions]]\n\n== Mes pages favorisées ==\n*Ici, vous pouvez placer des liens vers vos pages préférées du wiki !\n*Lien vers page #2\n*Lien vers page #3",

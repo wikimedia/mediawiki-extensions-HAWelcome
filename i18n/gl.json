@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toliño",
-			"Banjo"
+			"Banjo",
+			"Toliño"
 		]
 	},
 	"welcome-user-page": "==Sobre min==\n''Esta é a súa páxina de usuario. Edita esta páxina para contarlles aos demais o que queiras acerca de ti!''\n\n==As miñas contribucións==\n*[[Special:Contributions/{{PAGENAME}}|As miñas contribucións]]\n\n==As miñas páxinas favoritas==\n*Engada ligazóns cara ás súas páxinas preferidas deste wiki!\n*Ligazón cara á páxina #2\n*Ligazón cara á páxina #3",

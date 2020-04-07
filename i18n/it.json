@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gifh",
-			"Beta16"
+			"Beta16",
+			"Gifh"
 		]
 	},
 	"welcome-user-page": "==Qualcosa su di me==\n''Questa è la tua pagina utente. Modifica liberamente questa pagina per farti conoscere dalla comunità!''\n\n==I miei contributi==\n*[[Special:Contributions/{{PAGENAME}}|Contributi utente]]\n\n==Le mie pagine preferite==\n*Aggiungi i collegamenti alle tue pagine preferite su questo wiki!\n*Pagina preferita n.2\n*Pagina preferita n.3",

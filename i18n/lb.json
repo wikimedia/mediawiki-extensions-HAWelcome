@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby",
-			"Les Meloures"
+			"Les Meloures",
+			"Robby"
 		]
 	},
 	"welcome-user-page": "== Iwwer mech ==\n''Dëst ass Är Benotzersäit. Hei kënnt Dir Aneren eppes iwwer Iech matdeelen!''\n\n== Meng Kontributiounen==\n*[[Special:Contributions/{{PAGENAME}}|Benotzerkontributiounen]]\n\n== Meng léifste Säiten ==\n* Hei kënnt Dir Linken op Är léifst Artikelen an dëser Wiki derbäisetzen!\n*Link op d'Säit #2\n*Link op d'Säit #3",
