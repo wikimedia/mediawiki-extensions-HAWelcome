@@ -11,6 +11,9 @@
  * @copyright Copyright © Krzysztof Krzyżaniak for Wikia Inc.
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
+
+use MediaWiki\MediaWikiServices;
+
 class HAWelcomeJob extends Job {
 
 	private
@@ -164,15 +167,17 @@ class HAWelcomeJob extends Job {
 	 * @return User class instance
 	 */
 	public function getLastSysop() {
-		global $wgMemc, $wgHAWelcomeWelcomeUsername, $wgHAWelcomeStaffGroupName;
+		global $wgHAWelcomeWelcomeUsername, $wgHAWelcomeStaffGroupName;
 
 		// Maybe already loaded?
 		if ( !$this->mSysop ) {
 			$sysop = trim( wfMessage( 'welcome-user' )->plain() );
+
 			if ( !in_array( $sysop, [ '@disabled', '-' ] ) ) {
 				if ( in_array( $sysop, [ '@latest', '@sysop' ] ) ) {
-					// First: check memcached, maybe we have already stored id of sysop
-					$sysopId = $wgMemc->get( $wgMemc->makeKey( 'last-sysop-id' ) );
+					// First: check cache, maybe we have already stored id of sysop
+					$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+					$sysopId = $cache->get( $cache->makeKey( 'last-sysop-id' ) );
 					if ( $sysopId ) {
 						$this->mSysop = User::newFromId( $sysopId );
 					} else {
@@ -265,7 +270,7 @@ class HAWelcomeJob extends Job {
 							'revactor_actor' => $actorIds
 						];
 
-						$revQuery = MediaWiki\MediaWikiServices::getInstance()->getRevisionStore()->getQueryInfo();
+						$revQuery = MediaWikiServices::getInstance()->getRevisionStore()->getQueryInfo();
 
 						// Get the sysop who was active last
 						$row = $dbr->selectRow(
@@ -283,13 +288,13 @@ class HAWelcomeJob extends Job {
 
 						if ( $row && $row->rev_user ) {
 							$this->mSysop = User::newFromId( $row->rev_user );
-							$wgMemc->set( $wgMemc->makeKey( 'last-sysop-id' ), $row->rev_user, 86400 );
+							$cache->set( $cache->makeKey( 'last-sysop-id' ), $row->rev_user, 86400 );
 						} elseif ( $wantStaff ) {
 							$staffCount = count( $staff );
 							// Pick a random staff member so no-one gets left out
 							$index = mt_rand( 0, $staffCount - 1 );
 							$this->mSysop = User::newFromId( $staffCount[$index] );
-							$wgMemc->set( $wgMemc->makeKey( 'last-sysop-id' ), $staffCount[$index], 86400 );
+							$cache->set( $cache->makeKey( 'last-sysop-id' ), $staffCount[$index], 86400 );
 						}
 					}
 				} else {
@@ -316,7 +321,7 @@ class HAWelcomeJob extends Job {
 		global $wgHAWelcomeSignatureFromPreferences;
 
 		$this->mSysop = $this->getLastSysop();
-		$contLang = MediaWiki\MediaWikiServices::getInstance()->getContentLanguage();
+		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
 
 		$sysopName = wfEscapeWikiText( $this->mSysop->getName() );
 		$signature = wfMessage( 'signature' )->params( $sysopName, $sysopName )->plain();

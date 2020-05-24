@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class HAWelcomeHooks {
 	/**
 	 * Static method called as hook for RevisionInsertComplete
@@ -19,7 +21,7 @@ class HAWelcomeHooks {
 	 * @return bool True means process other hooks
 	 */
 	public static function onPageContentSaveComplete( WikiPage $article, User $user, Content $content, $summary, $isMinor, $isWatch, $section, $flags, Revision $revision, $status, $baseRevId, $undidRevId ) {
-		global $wgCommandLineMode, $wgMemc;
+		global $wgCommandLineMode;
 
 		$request = RequestContext::getMain();
 
@@ -36,10 +38,11 @@ class HAWelcomeHooks {
 			wfDebugLog( 'HAWelcome', 'Skipping welcome since user has welcomeexempt right' );
 		}
 
-		// Put possible welcomer into memcached, RT#14067
+		// Put possible welcomer into cache, RT#14067
 		if ( $user->getId() && self::isWelcomer( $user ) ) {
-			$wgMemc->set( $wgMemc->makeKey( 'last-sysop-id' ), $user->getId(), 86400 );
-			wfDebugLog( 'HAWelcome', 'Storing possible welcomer in memcached' );
+			$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+			$cache->set( $cache->makeKey( 'last-sysop-id' ), $user->getId(), 86400 );
+			wfDebugLog( 'HAWelcome', 'Storing possible welcomer in cache' );
 		}
 
 		if ( $title && !$wgCommandLineMode && $canWelcome ) {
@@ -111,12 +114,11 @@ class HAWelcomeHooks {
 	 * @return bool
 	 */
 	public static function onUserGroupsChanged( User $user, array $added, array $removed, $performer, $reason ) {
-		global $wgMemc;
-
 		// Only remove the cache key if the user has the sysop group removed since other group
 		// changes are not relevant
-		if ( $user->getId() === $wgMemc->get( $wgMemc->makeKey( 'last-sysop-id' ) ) && in_array( 'sysop', $removed ) ) {
-			$wgMemc->delete( $wgMemc->makeKey( 'last-sysop-id' ) );
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		if ( $user->getId() === $cache->get( $cache->makeKey( 'last-sysop-id' ) ) && in_array( 'sysop', $removed ) ) {
+			$cache->delete( $cache->makeKey( 'last-sysop-id' ) );
 		}
 
 		return true;
