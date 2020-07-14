@@ -68,7 +68,7 @@ class HAWelcomeHooks {
 	/**
 	 * Check if a user can welcome other users
 	 *
-	 * @param User $user Instance of User class
+	 * @param User &$user Instance of User class
 	 * @return bool Status of the operation
 	 */
 	public static function isWelcomer( User &$user ) {
@@ -120,7 +120,7 @@ class HAWelcomeHooks {
 	 * Add the HAWelcomeWelcomeUsername to the list with reserved usernames to prevent users from
 	 * using the welcome bot username.
 	 *
-	 * @param array $reservedUsernames
+	 * @param array &$reservedUsernames
 	 * @return bool
 	 */
 	public static function onUserGetReservedNames( array &$reservedUsernames ) {

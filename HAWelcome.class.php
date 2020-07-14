@@ -9,7 +9,7 @@
  * @author Jack Phoenix
  * @date 2009-12-27 (r8975)
  * @copyright Copyright © Krzysztof Krzyżaniak for Wikia Inc.
- * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ * @license GPL-2.0-or-later
  */
 
 use MediaWiki\MediaWikiServices;
