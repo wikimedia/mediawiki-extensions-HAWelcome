@@ -1,7 +1,7 @@
 {
 	"name": "Highly Automated Welcome Tool",
 	"namemsg": "welcome-user-name",
-	"version": "0.8.1",
+	"version": "0.8.2",
 	"author": [
 		"Krzysztof Krzyżaniak",
 		"Maciej Błaszkowski",
@@ -25,7 +25,7 @@
 		"HAWelcome": "HAWelcomeJob"
 	},
 	"Hooks": {
-		"PageContentSaveComplete": "HAWelcomeHooks::onPageContentSaveComplete",
+		"PageSaveComplete": "HAWelcomeHooks::onPageSaveComplete",
 		"UserGroupsChanged": "HAWelcomeHooks::onUserGroupsChanged",
 		"UserGetReservedNames": "HAWelcomeHooks::onUserGetReservedNames"
 	},
@@ -52,7 +52,7 @@
 		"HAWelcomeSignatureFromPreferences": false
 	},
 	"requires": {
-		"MediaWiki": ">= 1.34.0"
+		"MediaWiki": ">= 1.35.0"
 	},
 	"manifest_version": 1
 }

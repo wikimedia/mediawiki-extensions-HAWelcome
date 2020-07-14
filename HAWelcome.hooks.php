@@ -1,26 +1,17 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentity;
 
 class HAWelcomeHooks {
 	/**
-	 * Static method called as hook for PageContentSaveComplete
+	 * Static method called as hook for PageSaveComplete
 	 *
 	 * @param WikiPage $article
 	 * @param User $user
-	 * @param Content $content
-	 * @param string $summary
-	 * @param bool $isMinor
-	 * @param bool $isWatch (unused)
-	 * @param $section (unused)
-	 * @param int $flags Flags for this revision
-	 * @param Revision $revision Revision object
-	 * @param Status $status
-	 * @param int|bool $baseRevId
-	 * @param int $undidRevId
 	 * @return bool True means process other hooks
 	 */
-	public static function onPageContentSaveComplete( WikiPage $article, User $user, Content $content, $summary, $isMinor, $isWatch, $section, $flags, Revision $revision, $status, $baseRevId, $undidRevId ) {
+	public static function onPageSaveComplete( WikiPage $article, UserIdentity $userIdentity ) {
 		global $wgCommandLineMode;
 
 		$request = RequestContext::getMain();
@@ -30,7 +21,8 @@ class HAWelcomeHooks {
 			return true;
 		}
 
-		$title = $revision->getTitle();
+		$title = $article->getTitle();
+		$user = User::newFromIdentity( $userIdentity );
 
 		// Get groups for user rt#12215
 		$canWelcome = !$user->isAllowed( 'welcomeexempt' );
