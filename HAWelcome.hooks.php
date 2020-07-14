@@ -4,7 +4,7 @@ use MediaWiki\MediaWikiServices;
 
 class HAWelcomeHooks {
 	/**
-	 * Static method called as hook for RevisionInsertComplete
+	 * Static method called as hook for PageContentSaveComplete
 	 *
 	 * @param WikiPage $article
 	 * @param User $user
