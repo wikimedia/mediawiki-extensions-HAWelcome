@@ -366,8 +366,7 @@ class HAWelcomeJob extends Job {
 		if (
 			in_array( $what, $validValues ) &&
 			strpos( $message, $what ) !== false
-		)
-		{
+		) {
 			$return	= true;
 		}
 
@@ -408,8 +407,7 @@ class HAWelcomeJob extends Job {
 					// edit before filling out your profile data, profile data shows up as
 					// empty, even the user_id, which definitely sounds like a bug, but anyway)
 					$profileData['user_page_type'] === 1 || empty( $profileData['user_page_type'] )
-				)
-				{
+				) {
 					// SocialProfile as the User: page, wikitext user page
 					// on the UserWiki: NS
 					$userPage = Title::makeTitle( NS_USER_WIKI, $this->mUser->getName() );
