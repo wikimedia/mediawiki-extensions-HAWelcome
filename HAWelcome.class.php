@@ -182,8 +182,9 @@ class HAWelcomeJob extends Job {
 
 			if ( !in_array( $sysop, [ '@disabled', '-' ] ) ) {
 				if ( in_array( $sysop, [ '@latest', '@sysop' ] ) ) {
+					$services = MediaWikiServices::getInstance();
 					// First: check cache, maybe we have already stored id of sysop
-					$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+					$cache = $services->getMainWANObjectCache();
 					$sysopId = $cache->get( $cache->makeKey( 'last-sysop-id' ) );
 					if ( $sysopId ) {
 						$this->mSysop = User::newFromId( $sysopId );
@@ -201,15 +202,16 @@ class HAWelcomeJob extends Job {
 
 						$bots = [];
 						$admins = [];
+						$groupManager = $services->getUserGroupManager();
 						$res = $dbr->select(
 							'user_groups',
-							UserGroupMembership::selectFields(),
+							$groupManager->getQueryInfo()['fields'],
 							$dbr->makeList( $groups, LIST_OR ),
 							__METHOD__
 						);
 
 						foreach ( $res as $row ) {
-							$ugm = UserGroupMembership::newFromRow( $row );
+							$ugm = $groupManager->newGroupMembershipFromRow( $row );
 							if ( !$ugm->isExpired() ) {
 								if ( $ugm->getGroup() === 'bot' ) {
 									$bots[] = $ugm->getUserId();
@@ -278,7 +280,7 @@ class HAWelcomeJob extends Job {
 							'revactor_actor' => $actorIds
 						];
 
-						$revQuery = MediaWikiServices::getInstance()->getRevisionStore()->getQueryInfo();
+						$revQuery = $services->getRevisionStore()->getQueryInfo();
 
 						$sixtyDaysAgo = time() - 5184000;
 						// Get the sysop who was active last
