@@ -16,43 +16,50 @@ use MediaWiki\MediaWikiServices;
 
 class HAWelcomeJob extends Job {
 
-	private
-		$mUserId,
-		$mUserName,
-		$mUserIP,
-		$mUser,
-		$mAnon,
-		$mSysop;
+	/**
+	 * @var User|false
+	 */
+	private $mUser;
 
 	/**
-	 * Construct a job
-	 *
+	 * @var bool
+	 */
+	private $mAnon;
+
+	/**
+	 * @var bool
+	 */
+	private $mSysop;
+
+	/**
 	 * @param Title $title The title linked to
 	 * @param array $params Job parameters (table, start and end page_ids)
 	 */
 	public function __construct( $title, $params ) {
 		parent::__construct( 'HAWelcome', $title, $params );
 
-		$this->mUserId   = $params['user_id'];
-		$this->mUserIP   = $params['user_ip'];
-		$this->mUserName = $params['user_name'];
+		$userId = $params['user_id'];
+		$userIP = $params['user_ip'];
+		$userName = $params['user_name'];
 		$this->mAnon     = (bool)$params['is_anon'];
 		$this->mSysop    = false;
 
 		if ( $this->mAnon ) {
-			$this->mUser = User::newFromName( $this->mUserIP, false );
+			$this->mUser = User::newFromName( $userIP, false );
 		} else {
-			$this->mUser = User::newFromId( $this->mUserId );
+			$this->mUser = User::newFromId( $userId );
 		}
 
 		// Fallback
 		if ( !$this->mUser ) {
-			$this->mUser = User::newFromName( $this->mUserName );
+			$this->mUser = User::newFromName( $userName );
 		}
 	}
 
 	/**
 	 * Main entry point
+	 *
+	 * @return true
 	 */
 	public function run() {
 		global $wgLanguageCode, $wgHAWelcomeWelcomeUsername;
@@ -220,7 +227,8 @@ class HAWelcomeJob extends Job {
 						// installed.
 						// @author Jack Phoenix <jack@shoutwiki.com>
 						// @date October 13, 2009
-						$wantStaff = $sysop !== '@sysop' && ExtensionRegistry::getInstance()->isLoaded( 'GlobalUserrights' );
+						$wantStaff = $sysop !== '@sysop' &&
+							ExtensionRegistry::getInstance()->isLoaded( 'GlobalUserrights' );
 						$staff = [];
 
 						if ( $wantStaff ) {
@@ -272,6 +280,7 @@ class HAWelcomeJob extends Job {
 
 						$revQuery = MediaWikiServices::getInstance()->getRevisionStore()->getQueryInfo();
 
+						$sixtyDaysAgo = time() - 5184000;
 						// Get the sysop who was active last
 						$row = $dbr->selectRow(
 							$revQuery['tables'],
@@ -279,7 +288,7 @@ class HAWelcomeJob extends Job {
 							[
 								$dbr->makeList( $admins, LIST_OR ),
 								'revactor_timestamp > ' .
-									$dbr->addQuotes( $dbr->timestamp( time() - 5184000 ) ) // 60 days ago (24*60*60*60)
+									$dbr->addQuotes( $dbr->timestamp( $sixtyDaysAgo ) )
 							],
 							__METHOD__,
 							[ 'ORDER BY' => 'revactor_timestamp DESC' ],
@@ -315,6 +324,7 @@ class HAWelcomeJob extends Job {
 
 	/**
 	 * Expand signature from a message or preference for sysop
+	 *
 	 * @return string
 	 */
 	private function expandSig() {

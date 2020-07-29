@@ -8,8 +8,7 @@ class HAWelcomeHooks {
 	 * Static method called as hook for PageSaveComplete
 	 *
 	 * @param WikiPage $article
-	 * @param User $user
-	 * @return bool True means process other hooks
+	 * @param User $userIdentity
 	 */
 	public static function onPageSaveComplete( WikiPage $article, UserIdentity $userIdentity ) {
 		global $wgCommandLineMode;
@@ -18,7 +17,7 @@ class HAWelcomeHooks {
 
 		// Do not create job when DB is locked (rt#12229)
 		if ( wfReadOnly() ) {
-			return true;
+			return;
 		}
 
 		$title = $article->getTitle();
@@ -61,8 +60,6 @@ class HAWelcomeHooks {
 				}
 			}
 		}
-
-		return true;
 	}
 
 	/**
@@ -103,7 +100,6 @@ class HAWelcomeHooks {
 	 * @param array $removed
 	 * @param bool|User $performer
 	 * @param string $reason
-	 * @return bool
 	 */
 	public static function onUserGroupsChanged( User $user, array $added, array $removed, $performer, $reason ) {
 		// Only remove the cache key if the user has the sysop group removed since other group
@@ -112,8 +108,6 @@ class HAWelcomeHooks {
 		if ( $user->getId() === $cache->get( $cache->makeKey( 'last-sysop-id' ) ) && in_array( 'sysop', $removed ) ) {
 			$cache->delete( $cache->makeKey( 'last-sysop-id' ) );
 		}
-
-		return true;
 	}
 
 	/**
@@ -121,13 +115,10 @@ class HAWelcomeHooks {
 	 * using the welcome bot username.
 	 *
 	 * @param array &$reservedUsernames
-	 * @return bool
 	 */
 	public static function onUserGetReservedNames( array &$reservedUsernames ) {
 		global $wgHAWelcomeWelcomeUsername;
 
 		$reservedUsernames[] = $wgHAWelcomeWelcomeUsername;
-
-		return true;
 	}
 }
