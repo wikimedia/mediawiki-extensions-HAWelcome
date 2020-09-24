@@ -2,15 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
-			"Hedda"
+			"Hedda",
+			"MuratTheTurkish"
 		]
 	},
-	"welcome-user-page": "==Hakkımda==\n''Burası kullanıcı sayfan. Topluluğa kendinden bahsetmek için lütfen bu sayfayı düzenleyin!''\n\n==Katkılarım==\n*[[Special:Contributions/{{PAGENAME}}|Kullanıcı katkıları]]\n\n==Favori sayfalarım==\n* Buraya wiki favori sayfalarınıza bağlantılar ekleyin!\n* Favori sayfa #2\n* Favori sayfa #3",
-	"welcome-message-user": "Selam, {{SITENAME}} sitesine hoş geldiniz! [[:$1]] sayfasına yaptığınız değişiklikler için teşekküler.\n\nEğer yardım edecek bir şey varsa lütfen, [[$2|mesaj sayfama]] mesaj bırakınız! $3",
-	"welcome-message-anon": "Selam, {{SITENAME}} sitesine hoş geldiniz! [[:$1]] sayfasına yaptığınız değişiklikler için teşekküler.\n\n'''[[Special:UserLogin|Lütfen giriş yapın ve bir kullanıcı adı oluşturun]]'''. Bu, katkılarınızı takip etmenin ve topluluğun geri kalanıyla iletişim kurmanıza yardımcı olmanın kolay bir yolu.\n\nEğer yardım edecek bir şey varsa lütfen, [[$2|mesaj sayfama]] mesaj bırakınız! $3",
+	"welcome-user-page": "==Hakkımda==\n''Burası kullanıcı sayfan. Topluluğa kendinden bahsetmek için lütfen bu sayfayı düzenleyin!''\n\n==Katkılarım==\n*[[Special:Contributions/{{PAGENAME}}|Kullanıcı katkıları]]\n\n==Favori sayfalarım==\n* Buraya viki favori sayfalarınıza bağlantılar ekleyin!\n* Favori sayfa #2\n* Favori sayfa #3",
+	"welcome-message-user": "Merhaba, {{SITENAME}} sitesine hoş geldiniz! [[:$1]] sayfasına yaptığınız değişiklikler için teşekküler.\n\nEğer yardım edecek bir şey varsa lütfen, [[$2|mesaj sayfama]] mesaj bırakınız! $3",
+	"welcome-message-anon": "Merhaba, {{SITENAME}} sitesine hoş geldiniz! [[:$1]] sayfasına yaptığınız değişiklikler için teşekküler.\n\n'''[[Special:UserLogin|Lütfen oturum açın ve bir kullanıcı adı oluşturun]]'''. Bu, katkılarınızı takip etmenin ve topluluğun geri kalanıyla iletişim kurmanıza yardımcı olmanın kolay bir yolu.\n\nEğer yardım edecek bir şey varsa lütfen, [[$2|mesaj sayfama]] mesaj bırakınız! $3",
 	"welcome-message-log": "yeni katkıda bulunanları hoş karşılama",
 	"welcome-user-name": "Son Derece Otomatikleştirilmiş Hoş Geldiniz Aracı",
 	"welcome-user-desc": "İlk düzenlemelerinden sonra yeni kullanıcıları memnuniyetle karşılar",
-	"action-welcomeexempt": "kullanıcıyı, hoş geldiniz aracı mesajlarından muaf olarak işaretler",
-	"right-welcomeexempt": "Hoş geldiniz araç mesajlarından muaf olarak kullanıcıyı işaretler"
+	"action-welcomeexempt": "kullanıcıyı, karşılama aracı mesajlarından muaf olarak işaretler",
+	"right-welcomeexempt": "Karşılama araç mesajlarından muaf olarak kullanıcıyı işaretler"
 }
