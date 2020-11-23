@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"01miki10",
 			"Jack Phoenix"
 		]
 	},
 	"welcome-user-page": "==Tietoa minusta==\n''Tämä on käyttäjäsivusi. Ole hyvä ja muokkaa tätä sivua kertoaksesi yhteisölle itsestäsi!''\n\n==Omat muokkaukseni==\n*[[Special:Contributions/{{PAGENAME}}|Käyttäjän muokkaukset]]\n\n==Omat suosikkisivuni==\n*Lisää suosikkisivujasi tähän!\n*Suosikkisivu #2\n*Suosikkisivu #3",
-	"welcome-message-user": "Hei ja tervetuloa {{GRAMMAR:illative|{{SITENAME}}}}! Kiitos muokkauksestasi [[:$1]]-sivuun.\n\nLaita rohkeasti viestiä [[$2|keskustelusivulleni]] jos voin auttaa mitenkään! $3",
-	"welcome-message-anon": "Hei ja tervetuloa {{GRAMMAR:illative|{{SITENAME}}}}! Kiitos muokkauksestasi [[:$1]]-sivuun.\n\n'''[[Special:UserLogin|Ole hyvä ja luo tunnus tai kirjaudu sisään]]'''. Se on helppo tapa pitää kirjaa omista muokkauksistasi ja helpottaa yhteydenpitoa muun yhteisön kanssa.\n\nLaita rohkeasti viestiä [[$2|keskustelusivulleni]] jos voin auttaa mitenkään! $3",
-	"welcome-message-log": "toivotettiin tervetulleeksi uusi muokkaaja"
+	"welcome-message-user": "Hei ja tervetuloa {{GRAMMAR:illative|{{SITENAME}}}}! Kiitos muokkauksestasi sivulle [[:$1]].\n\nLaita rohkeasti viestiä [[$2|keskustelusivulleni]] jos voin auttaa mitenkään! $3",
+	"welcome-message-anon": "Hei ja tervetuloa {{GRAMMAR:illative|{{SITENAME}}}}! Kiitos muokkauksestasi sivulle [[:$1]].\n\n'''[[Special:UserLogin|Ole hyvä ja luo tunnus tai kirjaudu sisään]]'''. Se on helppo tapa pitää kirjaa omista muokkauksistasi ja helpottaa yhteydenpitoa muun yhteisön kanssa.\n\nLaita rohkeasti viestiä [[$2|keskustelusivulleni]] jos voin auttaa mitenkään! $3",
+	"welcome-message-log": "toivotettiin tervetulleeksi uusi muokkaaja",
+	"welcome-user-desc": "Toivottaa uudet käyttäjät tervetulleeksi ensimmäisen muokkauksen jälkeen"
 }
