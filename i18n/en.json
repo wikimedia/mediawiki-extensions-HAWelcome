@@ -13,6 +13,6 @@
 	"welcome-message-log": "welcoming new contributor",
 	"welcome-user-name": "Highly Automated Welcome Tool",
 	"welcome-user-desc": "Welcomes new users after their first edit",
-	"action-welcomeexempt": "flags user as exempt from welcome tool messages",
-	"right-welcomeexempt": "Flags user as exempt from welcome tool messages"
+	"action-welcomeexempt": "be exempted from welcome tool messages",
+	"right-welcomeexempt": "Be exempted from welcome tool messages"
 }
