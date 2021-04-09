@@ -7,6 +7,7 @@
 			"Marc-Philipp Beuter",
 			"TulipVorlax",
 			"Urhixidur",
+			"Verdy p",
 			"Wladek92"
 		]
 	},
@@ -16,6 +17,6 @@
 	"welcome-message-log": "Accueillir un nouvel utilisateur",
 	"welcome-user-name": "Outil d'accueil fortement automatisé",
 	"welcome-user-desc": "Accueil des nouveaux utilisateurs après leur première modification",
-	"action-welcomeexempt": "marque l’utilisateur comme dispensé des messages de l’outil d’accueil",
-	"right-welcomeexempt": "Marque l'utilisateur comme exempté des messages de bienvenue dans les outils"
+	"action-welcomeexempt": "marquer l’utilisateur comme dispensé des messages de l’outil de bienvenue",
+	"right-welcomeexempt": "Marquer l’utilisateur comme exempté des messages de l’outil de bienvenue"
 }

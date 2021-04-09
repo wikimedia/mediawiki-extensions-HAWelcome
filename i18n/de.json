@@ -11,6 +11,6 @@
 	"welcome-message-log": "Begrüßung eines neuen Autors",
 	"welcome-user-name": "Highly Automated Welcome Tool",
 	"welcome-user-desc": "Heißt neue Benutzer nach ihrer ersten Bearbeitung willkommen",
-	"action-welcomeexempt": "Benutzer als Ausnahme für Nachrichten des Willkommenswerkzeugs zu markieren",
-	"right-welcomeexempt": "Benutzer als Ausnahme für Nachrichten des Willkommenswerkzeugs markieren"
+	"action-welcomeexempt": "von den Meldungen des Begrüßungstools ausgenommen werden",
+	"right-welcomeexempt": "Von den Meldungen des Begrüßungstools ausgenommen werden"
 }
