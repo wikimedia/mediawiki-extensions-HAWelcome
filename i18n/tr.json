@@ -3,7 +3,8 @@
 		"authors": [
 			"BaRaN6161 TURK",
 			"Hedda",
-			"MuratTheTurkish"
+			"MuratTheTurkish",
+			"SaldırganSincap"
 		]
 	},
 	"welcome-user-page": "==Hakkımda==\n''Burası kullanıcı sayfan. Topluluğa kendinden bahsetmek için lütfen bu sayfayı düzenleyin!''\n\n==Katkılarım==\n*[[Special:Contributions/{{PAGENAME}}|Kullanıcı katkıları]]\n\n==Favori sayfalarım==\n* Buraya viki favori sayfalarınıza bağlantılar ekleyin!\n* Favori sayfa #2\n* Favori sayfa #3",
@@ -12,6 +13,6 @@
 	"welcome-message-log": "yeni katkıda bulunanları hoş karşılama",
 	"welcome-user-name": "Son Derece Otomatikleştirilmiş Hoş Geldiniz Aracı",
 	"welcome-user-desc": "İlk düzenlemelerinden sonra yeni kullanıcıları memnuniyetle karşılar",
-	"action-welcomeexempt": "kullanıcıyı, karşılama aracı mesajlarından muaf olarak işaretler",
-	"right-welcomeexempt": "Karşılama araç mesajlarından muaf olarak kullanıcıyı işaretler"
+	"action-welcomeexempt": "karşılama aracı mesajlarından muaf tutulmaya",
+	"right-welcomeexempt": "Karşılama aracı mesajlarından muaf olun"
 }

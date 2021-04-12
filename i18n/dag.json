@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Abdul Waris"
+			"Abdul Waris",
+			"Chirifo"
 		]
 	},
+	"action-welcomeexempt": "Yihibu",
 	"right-welcomeexempt": "nuuyihibu ni marihaba yeltohili kpan johu"
 }
