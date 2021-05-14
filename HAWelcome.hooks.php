@@ -13,7 +13,7 @@ class HAWelcomeHooks {
 	public static function onPageSaveComplete( WikiPage $article, UserIdentity $userIdentity ) {
 		global $wgCommandLineMode;
 
-		$request = RequestContext::getMain();
+		$context = RequestContext::getMain();
 
 		// Do not create job when DB is locked (rt#12229)
 		if ( wfReadOnly() ) {
@@ -51,7 +51,7 @@ class HAWelcomeHooks {
 							[
 								'is_anon'   => $user->isAnon(),
 								'user_id'   => $user->getId(),
-								'user_ip'   => $request->getRequest()->getIP(),
+								'user_ip'   => $context->getRequest()->getIP(),
 								'user_name' => $user->getName(),
 							]
 						);
