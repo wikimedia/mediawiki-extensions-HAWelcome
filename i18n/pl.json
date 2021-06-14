@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Chrumps",
+			"Matma Rex",
 			"Misiek95",
 			"Rail",
 			"Railfail536",
@@ -14,6 +15,6 @@
 	"welcome-message-log": "powitanie",
 	"welcome-user-name": "Zautomatyzowane narzędzie powitalne",
 	"welcome-user-desc": "Wita nowych użytkowników po pierwszej edycji",
-	"action-welcomeexempt": "oznaczania użytkownika jako wykluczonego z wiadomości powitalnych",
-	"right-welcomeexempt": "Oznacza użytkownika jako wykluczonego z wiadomości powitalnych"
+	"action-welcomeexempt": "bycia {{GENDER:|wykluczonym|wykluczoną}} z wiadomości powitalnych",
+	"right-welcomeexempt": "Możliwość wykluczenia z wiadomości powitalnych"
 }
