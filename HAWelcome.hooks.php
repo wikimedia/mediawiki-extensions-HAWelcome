@@ -16,17 +16,29 @@ class HAWelcomeHooks {
 		$context = RequestContext::getMain();
 
 		// Do not create job when DB is locked (rt#12229)
-		if ( wfReadOnly() ) {
+		// Ditto for when we're in command line mode
+		if ( wfReadOnly() || $wgCommandLineMode ) {
 			return;
 		}
 
 		$title = $article->getTitle();
+		if ( !$title ) {
+			return;
+		}
+
+		// Do nothing if this extension is disabled by on-wiki configuration
+		$welcomer = trim( wfMessage( 'welcome-user' )->inContentLanguage()->plain() );
+		if ( in_array( $welcomer, [ '@disabled', '-' ] ) ) {
+			return;
+		}
+
 		$user = User::newFromIdentity( $userIdentity );
 
 		// Get groups for user rt#12215
 		$canWelcome = !$user->isAllowed( 'welcomeexempt' );
 		if ( !$canWelcome ) {
 			wfDebugLog( 'HAWelcome', 'Skipping welcome since user has welcomeexempt right' );
+			return;
 		}
 
 		// Put possible welcomer into cache, RT#14067
@@ -36,28 +48,22 @@ class HAWelcomeHooks {
 			wfDebugLog( 'HAWelcome', 'Storing possible welcomer in cache' );
 		}
 
-		if ( $title && !$wgCommandLineMode && $canWelcome ) {
-			$welcomer = trim( wfMessage( 'welcome-user' )->inContentLanguage()->plain() );
-
-			if ( !in_array( $welcomer, [ '@disabled', '-' ] ) ) {
-				// Check if talk page for current user exists, if they have made any edits, and
-				// if the content model is wikitext. Only wikitext talk pages are supported.
-				$talkPage = $user->getUserPage()->getTalkPage();
-				if ( $talkPage && $talkPage->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
-					$talkWikiPage = WikiPage::factory( $talkPage );
-					if ( !$talkWikiPage->exists() ) {
-						$welcomeJob = new HAWelcomeJob(
-							$title,
-							[
-								'is_anon'   => $user->isAnon(),
-								'user_id'   => $user->getId(),
-								'user_ip'   => $context->getRequest()->getIP(),
-								'user_name' => $user->getName(),
-							]
-						);
-						JobQueueGroup::singleton()->push( $welcomeJob );
-					}
-				}
+		// Check if talk page for current user exists, if they have made any edits, and
+		// if the content model is wikitext. Only wikitext talk pages are supported.
+		$talkPage = $user->getUserPage()->getTalkPage();
+		if ( $talkPage && $talkPage->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
+			$talkWikiPage = WikiPage::factory( $talkPage );
+			if ( !$talkWikiPage->exists() ) {
+				$welcomeJob = new HAWelcomeJob(
+					$title,
+					[
+						'is_anon'   => $user->isAnon(),
+						'user_id'   => $user->getId(),
+						'user_ip'   => $context->getRequest()->getIP(),
+						'user_name' => $user->getName(),
+					]
+				);
+				JobQueueGroup::singleton()->push( $welcomeJob );
 			}
 		}
 	}
