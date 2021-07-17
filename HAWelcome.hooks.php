@@ -1,16 +1,53 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Storage\EditResult;
+use MediaWiki\Storage\Hook\PageSaveCompleteHook;
+use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
 
-class HAWelcomeHooks {
+class HAWelcomeHooks implements PageSaveCompleteHook {
 	/**
-	 * Static method called as hook for PageSaveComplete
-	 *
-	 * @param WikiPage $article
-	 * @param User $userIdentity
+	 * @var UserGroupManager
 	 */
-	public static function onPageSaveComplete( WikiPage $article, UserIdentity $userIdentity ) {
+	private $userGroupManager;
+
+	/**
+	 * @var UserFactory
+	 */
+	private $userFactory;
+
+	/**
+	 * @param UserGroupManager $userGroupManager
+	 * @param UserFactory $userFactory
+	 */
+	public function __construct(
+		UserGroupManager $userGroupManager,
+		UserFactory $userFactory
+	) {
+		$this->userGroupManager = $userGroupManager;
+		$this->userFactory = $userFactory;
+	}
+
+	/**
+	 * @param WikiPage $article
+	 * @param UserIdentity $userIdentity
+	 * @param string $summary
+	 * @param int $flags
+	 * @param RevisionRecord $revisionRecord
+	 * @param EditResult $editResult
+	 * @throws MWException
+	 */
+	public function onPageSaveComplete(
+		$article,
+		$userIdentity,
+		$summary,
+		$flags,
+		$revisionRecord,
+		$editResult
+	) {
 		global $wgCommandLineMode;
 
 		$context = RequestContext::getMain();
@@ -32,7 +69,7 @@ class HAWelcomeHooks {
 			return;
 		}
 
-		$user = User::newFromIdentity( $userIdentity );
+		$user = $this->userFactory->newFromUserIdentity( $userIdentity );
 
 		// Get groups for user rt#12215
 		$canWelcome = !$user->isAllowed( 'welcomeexempt' );
@@ -42,7 +79,7 @@ class HAWelcomeHooks {
 		}
 
 		// Put possible welcomer into cache, RT#14067
-		if ( $user->getId() && self::isWelcomer( $user ) ) {
+		if ( $user->getId() && $this->isWelcomer( $user ) ) {
 			$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 			$cache->set( $cache->makeKey( 'last-sysop-id' ), $user->getId(), 86400 );
 			wfDebugLog( 'HAWelcome', 'Storing possible welcomer in cache' );
@@ -71,14 +108,14 @@ class HAWelcomeHooks {
 	/**
 	 * Check if a user can welcome other users
 	 *
-	 * @param User &$user Instance of User class
+	 * @param UserIdentity $user Instance of UserIdentity
 	 * @return bool Status of the operation
 	 */
-	public static function isWelcomer( User &$user ) {
+	public function isWelcomer( UserIdentity $user ) {
 		global $wgHAWelcomeStaffGroupName;
 
 		$sysop  = trim( wfMessage( 'welcome-user' )->plain() );
-		$groups = $user->getEffectiveGroups();
+		$groups = $this->userGroupManager->getUserEffectiveGroups( $user );
 		$result = false;
 
 		// Bots can't welcome

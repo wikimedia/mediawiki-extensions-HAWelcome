@@ -109,13 +109,24 @@ class HAWelcomeJob extends Job {
 								if ( !$userWikiPage->exists() ) {
 									$pageMsg = wfMessage( 'welcome-user-page' )->inContentLanguage()->text();
 									$content = ContentHandler::makeContent( $pageMsg, $userPage );
-									$userWikiPage->doEditContent(
-										$content,
-										'',
-										$flags,
-										0,
-										$welcomeUser
-									);
+									if ( method_exists( $userWikiPage, 'doUserEditContent' ) ) {
+										// MW 1.36+
+										$userWikiPage->doUserEditContent(
+											$content,
+											$welcomeUser,
+											'',
+											$flags,
+											0
+										);
+									} else {
+										$userWikiPage->doEditContent(
+											$content,
+											'',
+											$flags,
+											0,
+											$welcomeUser
+										);
+									}
 								}
 							}
 						}
@@ -134,13 +145,24 @@ class HAWelcomeJob extends Job {
 
 					if ( $welcomeMsg ) {
 						$content = ContentHandler::makeContent( $welcomeMsg, $talkPage );
-						$talkWikiPage->doEditContent(
-							$content,
-							wfMessage( 'welcome-message-log' )->inContentLanguage()->escaped(),
-							$flags,
-							0,
-							$welcomeUser
-						);
+						if ( method_exists( $talkWikiPage, 'doUserEditContent' ) ) {
+							// MW 1.36+
+							$talkWikiPage->doUserEditContent(
+								$content,
+								$welcomeUser,
+								wfMessage( 'welcome-message-log' )->inContentLanguage()->escaped(),
+								$flags,
+								0
+							);
+						} else {
+							$talkWikiPage->doEditContent(
+								$content,
+								wfMessage( 'welcome-message-log' )->inContentLanguage()->escaped(),
+								$flags,
+								0,
+								$welcomeUser
+							);
+						}
 					}
 				}
 

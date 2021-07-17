@@ -1,7 +1,7 @@
 {
 	"name": "Highly Automated Welcome Tool",
 	"namemsg": "welcome-user-name",
-	"version": "0.8.2",
+	"version": "0.8.3",
 	"author": [
 		"Krzysztof Krzyżaniak",
 		"Maciej Błaszkowski",
@@ -24,8 +24,17 @@
 	"JobClasses": {
 		"HAWelcome": "HAWelcomeJob"
 	},
+	"HookHandlers": {
+		"default": {
+			"class": "HAWelcomeHooks",
+			"services": [
+				"UserGroupManager",
+				"UserFactory"
+			]
+		}
+	},
 	"Hooks": {
-		"PageSaveComplete": "HAWelcomeHooks::onPageSaveComplete",
+		"PageSaveComplete": "default",
 		"UserGroupsChanged": "HAWelcomeHooks::onUserGroupsChanged",
 		"UserGetReservedNames": "HAWelcomeHooks::onUserGetReservedNames"
 	},
