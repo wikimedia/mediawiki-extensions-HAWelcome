@@ -264,7 +264,12 @@ class HAWelcomeJob extends Job {
 								__METHOD__
 							);
 
-							$lookup = CentralIdLookup::factory();
+							if ( method_exists( MediaWikiServices::class, 'getCentralIdLookupFactory' ) ) {
+								// MW1.37+
+								$lookup = $services->getCentralIdLookupFactory()->getLookup();
+							} else {
+								$lookup = CentralIdLookup::factory();
+							}
 
 							foreach ( $res2 as $row2 ) {
 								$gugm = GlobalUserGroupMembership::newFromRow( $row2 );
