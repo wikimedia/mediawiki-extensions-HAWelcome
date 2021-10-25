@@ -75,7 +75,7 @@ class HAWelcomeJob extends Job {
 			$flags = EDIT_FORCE_BOT;
 		}
 
-		if ( $this->mUser && $this->mUser->getName() !== $wgHAWelcomeWelcomeUsername && !$welcomeUser->isBlocked() ) {
+		if ( $this->mUser && $this->mUser->getName() !== $wgHAWelcomeWelcomeUsername && !$welcomeUser->getBlock() ) {
 			// Check again if talk page exists
 			$talkPage = $this->mUser->getUserPage()->getTalkPage();
 
