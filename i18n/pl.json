@@ -5,7 +5,8 @@
 			"Misiek95",
 			"Rail",
 			"Railfail536",
-			"Sp5uhe"
+			"Sp5uhe",
+			"Matma Rex"
 		]
 	},
 	"welcome-user-page": "== O mnie ==\n''To jest Twoja strona użytkownika. Wyedytuj ją i powiedz społeczności coś o sobie!''\n\n== Mój wkład ==\n* [[Special:Contributions/{{PAGENAME}}|wkład]]\n\n== Moje ulubione strony ==\n* Dodaj tu linki do swoich ulubionych stron wiki!\n* Drugi link.\n* I trzeci.",
@@ -14,6 +15,6 @@
 	"welcome-message-log": "powitanie",
 	"welcome-user-name": "Zautomatyzowane narzędzie powitalne",
 	"welcome-user-desc": "Wita nowych użytkowników po pierwszej edycji",
-	"action-welcomeexempt": "oznaczania użytkownika jako wykluczonego z wiadomości powitalnych",
-	"right-welcomeexempt": "Oznacza użytkownika jako wykluczonego z wiadomości powitalnych"
+	"action-welcomeexempt": "bycia {{GENDER:|wykluczonym|wykluczoną}} z wiadomości powitalnych",
+	"right-welcomeexempt": "Możliwość wykluczenia z wiadomości powitalnych"
 }

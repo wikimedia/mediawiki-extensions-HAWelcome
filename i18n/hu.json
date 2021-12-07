@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Blogadmin",
-			"Glanthor Reviol"
+			"Glanthor Reviol",
+			"Tacsipacsi"
 		]
 	},
 	"welcome-user-page": "==Magamról==\n''Ez a felhasználólapod. Kérlek szerkeszd ezt a lapot és írj magadról a közösségnek!''\n\n==Közreműködéseim==\n*[[Special:Contributions/{{PAGENAME}}|Felhasználó közreműködései]]\n\n==Kedvenc lapjaim==\n*Adj meg hivatkozásokat a kedvenc wiki lapjaidra!\n*Második kedvenc lap\n*Harmadik kedvenc lap",
 	"welcome-message-user": "Szia, üdvözlünk a(z) {{SITENAME}} wikin! Köszönjük a(z) [[:$1]] lapon tett szerkesztésedet.\n\nKérlek hagyj üzenetet a [[$2|vitalapomon]], ha segíthetek valamiben. $3",
-	"welcome-message-anon": "Üdvözöllek a {{SITENAME}} wikin! Köszönjük az első szerkesztésedet a [[:$1]] oldalon!\n'''[[Special:UserLogin|Kérlek regisztrálj egy felhasználónevet!]]''' Ez egy könnyű és ingyenes módja, hogy követhesd a munkád és megkönnyíti a kommunikációt a többi szerkesztővel.",
+	"welcome-message-anon": "Üdvözöllek a(z) {{SITENAME}} wikin! Köszönjük az első szerkesztésedet a(z) [[:$1]] oldalon!\n\n'''Kérlek, [[Special:UserLogin|regisztrálj egy felhasználónevet]]!''' Ez egy könnyű és ingyenes módja, hogy követhesd a munkád, és megkönnyíti a kommunikációt a többi szerkesztővel.\n\nBátran hagyj üzenetet a [[$2|vitalapomon]], ha bármiben segítségre van szükséged! $3",
 	"welcome-message-log": "új közreműködő üdvözlése"
 }

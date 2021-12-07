@@ -4,7 +4,7 @@
 			"McDutchie"
 		]
 	},
-	"welcome-user-page": "==A proposito de me==\n''Isto es tu pagina de ustor. Modifica le pagina pro informar le communitate super te!''\n\n==Mi contributiones==\n*[[Special:Contributions/{{PAGENAME}}|Contributions de usator]]\n\n==My favorite pages==\n*Adde hic ligamines a tu paginas favorite in le wiki!\n*Pagina favorite no. 2\n*Pagina favorite no. 3",
+	"welcome-user-page": "==A proposito de me==\n''Isto es tu pagina de usator. Modifica le pagina pro presentar te al communitate!''\n\n==Mi contributiones==\n*[[Special:Contributions/{{PAGENAME}}|Contributions de iste usator]]\n\n==My favorite pages==\n*Adde hic ligamines a tu paginas favorite in le wiki!\n*Pagina favorite no. 2\n*Pagina favorite no. 3",
 	"welcome-message-user": "Salute, benvenite a {{SITENAME}}! Gratias pro tu contribution al pagina [[:$1]].\n\nNon hesita de lassar un message in [[$2|mi pagina de discussion]] si io pote adjutar te con alcun cosa! $3",
 	"welcome-message-anon": "Salute, benvenite a {{SITENAME}}! Gratias pro tu contribution al pagina [[:$1]].\n\n'''[[Special:UserLogin|Per favor aperi un session o crea un conto]]'''. Isto permitte sequer tu contributiones e facilita le communication con le resto del communitate.\n\nNon hesita de lassar un message in [[$2|mi pagina de discussion]] si io pote adjutar te con alcun cosa! $3",
 	"welcome-message-log": "dava le benvenita a un nove contributor"
