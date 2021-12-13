@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Bola",
-			"Fitoschido"
+			"Fitoschido",
+			"Jakeukalane"
 		]
 	},
-	"welcome-user-page": "==Acerca de mí==\n''Esta es tu página de usuario. ¡Modifícala para que la comunidad se entere de quién eres!''\n\n==Mis contribuciones==\n*[[Special:Contributions/{{PAGENAME}}|Contribuciones de usuario]]\n\n==Mis páginas favoritas==\n*Añade aquí enlaces a tus páginas preferidas del wiki.\n*Página favorita n.º 2\n*Página favorita n.º 3",
+	"welcome-user-page": "==Acerca de mí==\n''Esta es tu página de usuario. ¡Modifícala para que la comunidad se entere de quién eres!''\n\n==Mis contribuciones==\n*[[Special:Contributions/{{PAGENAME}}|Contribuciones de usuario]]\n\n==Mis páginas favoritas==\n*Añade aquí enlaces a tus páginas preferidas de la wiki.\n*Página favorita n.º 2\n*Página favorita n.º 3",
 	"welcome-message-user": "¡Hola! Te damos la bienvenida a {{SITENAME}}. Gracias por tu modificación de la página [[:$1]].\n\nNo dudes en dejar un mensaje en [[$2|mi página de discusión]] por si puedo ayudarte en algo. $3",
 	"welcome-message-anon": "¡Hola! Te damos la bienvenida a {{SITENAME}}. Gracias por tu modificación de la página [[:$1]].\n\n¿Por qué no '''[[Special:UserLogin|te creas una cuenta y te identificas]]'''? De esta forma será mucho más fácil saber qué páginas has modificado y se te atribuirá tu trabajo en el wiki; además, te será de ayuda a la hora de comunicarte con el resto de la comunidad.\n\nNo dudes en dejar un mensaje en [[$2|mi página de discusión]] por si puedo ayudarte en algo. $3",
 	"welcome-message-log": "bienvenida a un colaborador nuevo",
