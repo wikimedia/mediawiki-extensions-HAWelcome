@@ -28,6 +28,7 @@
 		"default": {
 			"class": "HAWelcomeHooks",
 			"services": [
+				"ReadOnlyMode",
 				"UserGroupManager",
 				"UserFactory"
 			]

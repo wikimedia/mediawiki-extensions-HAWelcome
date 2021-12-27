@@ -10,6 +10,11 @@ use MediaWiki\User\UserIdentity;
 
 class HAWelcomeHooks implements PageSaveCompleteHook {
 	/**
+	 * @var ReadOnlyMode
+	 */
+	private $readOnlyMode;
+
+	/**
 	 * @var UserGroupManager
 	 */
 	private $userGroupManager;
@@ -20,13 +25,16 @@ class HAWelcomeHooks implements PageSaveCompleteHook {
 	private $userFactory;
 
 	/**
+	 * @param ReadOnlyMode $readOnlyMode
 	 * @param UserGroupManager $userGroupManager
 	 * @param UserFactory $userFactory
 	 */
 	public function __construct(
+		ReadOnlyMode $readOnlyMode,
 		UserGroupManager $userGroupManager,
 		UserFactory $userFactory
 	) {
+		$this->readOnlyMode = $readOnlyMode;
 		$this->userGroupManager = $userGroupManager;
 		$this->userFactory = $userFactory;
 	}
@@ -54,7 +62,7 @@ class HAWelcomeHooks implements PageSaveCompleteHook {
 
 		// Do not create job when DB is locked (rt#12229)
 		// Ditto for when we're in command line mode
-		if ( wfReadOnly() || $wgCommandLineMode ) {
+		if ( $this->readOnlyMode->isReadOnly() || $wgCommandLineMode ) {
 			return;
 		}
 
