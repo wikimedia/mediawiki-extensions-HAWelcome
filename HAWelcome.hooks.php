@@ -108,7 +108,12 @@ class HAWelcomeHooks implements PageSaveCompleteHook {
 						'user_name' => $user->getName(),
 					]
 				);
-				JobQueueGroup::singleton()->push( $welcomeJob );
+				if ( method_exists( MediaWikiServices::class, 'getJobQueueGroup' ) ) {
+					// MW 1.37+
+					MediaWikiServices::getInstance()->getJobQueueGroup()->push( $welcomeJob );
+				} else {
+					JobQueueGroup::singleton()->push( $welcomeJob );
+				}
 			}
 		}
 	}
