@@ -97,7 +97,12 @@ class HAWelcomeHooks implements PageSaveCompleteHook {
 		// if the content model is wikitext. Only wikitext talk pages are supported.
 		$talkPage = $user->getUserPage()->getTalkPage();
 		if ( $talkPage && $talkPage->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
-			$talkWikiPage = WikiPage::factory( $talkPage );
+			if ( method_exists( MediaWikiServices::class, 'getWikiPageFactory' ) ) {
+				// MW 1.36+
+				$talkWikiPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $talkPage );
+			} else {
+				$talkWikiPage = WikiPage::factory( $talkPage );
+			}
 			if ( !$talkWikiPage->exists() ) {
 				$welcomeJob = new HAWelcomeJob(
 					$title,

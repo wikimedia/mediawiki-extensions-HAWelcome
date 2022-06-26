@@ -85,7 +85,12 @@ class HAWelcomeJob extends Job {
 				$signature = $this->expandSig();
 
 				$welcomeMsg = false;
-				$talkWikiPage = WikiPage::factory( $talkPage );
+				if ( method_exists( MediaWikiServices::class, 'getWikiPageFactory' ) ) {
+					// MW 1.36+
+					$talkWikiPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $talkPage );
+				} else {
+					$talkWikiPage = WikiPage::factory( $talkPage );
+				}
 
 				if ( !$talkWikiPage->exists() ) {
 					if ( $this->mAnon ) {
@@ -104,7 +109,13 @@ class HAWelcomeJob extends Job {
 						if ( $this->isEnabled( 'page-user' ) ) {
 							$userPage = $this->getUserPage();
 							if ( $userPage ) {
-								$userWikiPage = WikiPage::factory( $userPage );
+								if ( method_exists( MediaWikiServices::class, 'getWikiPageFactory' ) ) {
+									// MW 1.36+
+									$userWikiPage = MediaWikiServices::getInstance()->getWikiPageFactory()
+										->newFromTitle( $userPage );
+								} else {
+									$userWikiPage = WikiPage::factory( $userPage );
+								}
 
 								if ( !$userWikiPage->exists() ) {
 									$pageMsg = wfMessage( 'welcome-user-page' )->inContentLanguage()->text();
