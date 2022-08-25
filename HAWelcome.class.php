@@ -380,7 +380,8 @@ class HAWelcomeJob extends Job {
 
 		if ( $wgHAWelcomeSignatureFromPreferences ) {
 			// Nickname references to the preference that stores the custom signature
-			$signature = $this->mSysop->getOption( 'nickname', $signature );
+			$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
+			$signature = $userOptionsManager->getOption( $this->mSysop, 'nickname', $signature );
 		}
 
 		// Append timestamp
