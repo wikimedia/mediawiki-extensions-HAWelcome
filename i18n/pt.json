@@ -10,6 +10,6 @@
 	"welcome-message-log": "boas-vindas a novo colaborador",
 	"welcome-user-name": "Ferramenta de boas-vindas altamente automatizada",
 	"welcome-user-desc": "Dá as boas-vindas aos novos utilizadores após a sua primeira edição",
-	"action-welcomeexempt": "sinaliza o utilizador como isento de receber mensagens da ferramenta de boas-vindas",
-	"right-welcomeexempt": "Sinaliza o utilizador como isento de receber mensagens da ferramenta de boas-vindas"
+	"action-welcomeexempt": "ser isentado de receber mensagens da ferramenta de boas-vindas",
+	"right-welcomeexempt": "Ser isentado de receber mensagens da ferramenta de boas-vindas"
 }
