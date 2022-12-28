@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"welcome-user-page": "==O meni==\n''Ovo je Vaša korisnička stranica. Molimo, promenite je da biste rekli zajednici nešto o sebi!''\n\n==Moji doprinosi==\n*[[Special:Contributions/{{PAGENAME}}|Doprinosi korisnika]]\n\n==Moje omiljene stranice==\n*Dodaje veze ka tvojim omiljenim stranicama na vikiju!\n*Omiljena stranica #2\n*Omiljena stranica #3",
+	"welcome-message-user": "Zdravo i dobro došli u {{SITENAME}}! Hvala Vam na izmeni na [[:$1]] stranici.\n\nMolimo, ostavite komentar na [[$2|mojoj stranici za razgovor]] ako Vam ikako mogu pomoći! $3",
+	"welcome-message-anon": "Zdravo i dobro došli u {{SITENAME}}! Hvala Vam na izmeni na [[:$1]] stranici.\n\n'''[[Special:UserLogin|Molimo, prijavite se i napravite korisničko ime]]'''. To je najlakši način da pristupite Vašim doprinosima i komunicirate s ostatkom zajednice.\n\nMolimo, ostavite komentar na [[$2|mojoj stranici za razgovor]] ako Vam ikako mogu pomoći! $3",
+	"welcome-message-log": "dobrodošlica novom saradniku"
+}
