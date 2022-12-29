@@ -323,7 +323,7 @@ class HAWelcomeJob extends Job {
 						}
 
 						$admins = [
-							'revactor_actor' => $actorIds
+							'rev_actor' => $actorIds
 						];
 
 						$revQuery = $services->getRevisionStore()->getQueryInfo();
@@ -335,17 +335,18 @@ class HAWelcomeJob extends Job {
 							$revQuery['fields'],
 							[
 								$dbr->makeList( $admins, LIST_OR ),
-								'revactor_timestamp > ' .
+								'rev_timestamp > ' .
 									$dbr->addQuotes( $dbr->timestamp( $sixtyDaysAgo ) )
 							],
 							__METHOD__,
-							[ 'ORDER BY' => 'revactor_timestamp DESC' ],
+							[ 'ORDER BY' => 'rev_timestamp DESC' ],
 							$revQuery['joins']
 						);
 
-						if ( $row && $row->rev_user ) {
-							$this->mSysop = User::newFromId( $row->rev_user );
-							$cache->set( $cache->makeKey( 'last-sysop-id' ), $row->rev_user, 86400 );
+						if ( $row && $row->rev_actor ) {
+							$userFactory = $services->getUserFactory();
+							$this->mSysop = $userFactory->newFromActorId( $row->rev_actor );
+							$cache->set( $cache->makeKey( 'last-sysop-id' ), $this->mSysop->getId(), 86400 );
 						} elseif ( $wantStaff ) {
 							$staffCount = count( $staff );
 							// Pick a random staff member so no-one gets left out
