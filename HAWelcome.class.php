@@ -236,7 +236,7 @@ class HAWelcomeJob extends Job {
 						$bots = [];
 						$admins = [];
 						$groupManager = $services->getUserGroupManager();
-						if ( version_compare( MW_VERSION, '1.39', '>=' ) ) {
+						if ( version_compare( MW_VERSION, '1.40', '>=' ) ) {
 							$queryBuilder = $groupManager->newQueryBuilder( $dbr );
 							$res = $queryBuilder
 								->where( $groups )
