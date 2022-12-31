@@ -236,12 +236,20 @@ class HAWelcomeJob extends Job {
 						$bots = [];
 						$admins = [];
 						$groupManager = $services->getUserGroupManager();
-						$res = $dbr->select(
-							'user_groups',
-							$groupManager->getQueryInfo()['fields'],
-							$dbr->makeList( $groups, LIST_OR ),
-							__METHOD__
-						);
+						if ( version_compare( MW_VERSION, '1.39', '>=' ) ) {
+							$queryBuilder = $groupManager->newQueryBuilder( $dbr );
+							$res = $queryBuilder
+								->where( $groups )
+								->caller( __METHOD__ )
+								->fetchResultSet();
+						} else {
+							$res = $dbr->select(
+								'user_groups',
+								$groupManager->getQueryInfo()['fields'],
+								$dbr->makeList( $groups, LIST_OR ),
+								__METHOD__
+							);
+						}
 
 						foreach ( $res as $row ) {
 							$ugm = $groupManager->newGroupMembershipFromRow( $row );
