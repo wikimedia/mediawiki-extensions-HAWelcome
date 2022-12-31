@@ -1,7 +1,7 @@
 {
 	"name": "Highly Automated Welcome Tool",
 	"namemsg": "welcome-user-name",
-	"version": "0.8.3",
+	"version": "0.8.4",
 	"author": [
 		"Krzysztof Krzyżaniak",
 		"Maciej Błaszkowski",
@@ -62,7 +62,7 @@
 		"HAWelcomeSignatureFromPreferences": false
 	},
 	"requires": {
-		"MediaWiki": ">= 1.35.0"
+		"MediaWiki": ">= 1.38.0"
 	},
 	"manifest_version": 1
 }
