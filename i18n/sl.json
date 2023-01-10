@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"welcome-user-page": "==O meni==\n''To je vaša uporabniška stran. Uredite to stran in skupnosti povejte kaj o sebi!''\n\n==Moji prispevki==\n*[[Special:Contributions/{{PAGENAME}}|Uporabniški prispevki]]\n\n==Moje najljubše strani==\n*Tukaj dodajte povezave na svoje priljubljene strani v vikiju!\n*Priljubljena stran št. 2\n*Priljubljena stran št. 3",
+	"welcome-message-user": "Pozdravljeni, dobrodošli v projektu {{SITENAME}}! Hvala za vaše urejanje strani [[:$1]].\n\nČe vam lahko s čim pomagam, mi pustite sporočilo na [[$2|moji pogovorni strani]]! $3",
+	"welcome-message-anon": "Pozdravljeni, dobrodošli v projektu {{SITENAME}}! Hvala vam za vaše urejanje strani [[:$1]].\n\n'''[[Special:UserLogin|Prosim, prijavite se in si ustvarite uporabniško ime]]'''. To je preprost način za spremljanje vaših prispevkov in vam pomaga pri komunikaciji s preostalo skupnostjo.\n\nČe vam lahko s čim pomagam, mi pustite sporočilo na [[$2|moji pogovorni strani]]! $3",
+	"welcome-message-log": "pozdrav novega sodelavca",
+	"welcome-user-name": "Visokoavtomatizirano orodje za pozdravljanje",
+	"welcome-user-desc": "Pozdravlja nove uporabnike po prvem urejanju",
+	"action-welcomeexempt": "izvzem iz sporočil pozdravnega orodja",
+	"right-welcomeexempt": "Izvzetost iz sporočil pozdravnega orodja"
+}
