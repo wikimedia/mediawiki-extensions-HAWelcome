@@ -85,12 +85,8 @@ class HAWelcomeJob extends Job {
 				$signature = $this->expandSig();
 
 				$welcomeMsg = false;
-				if ( method_exists( MediaWikiServices::class, 'getWikiPageFactory' ) ) {
-					// MW 1.36+
-					$talkWikiPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $talkPage );
-				} else {
-					$talkWikiPage = WikiPage::factory( $talkPage );
-				}
+				$services = MediaWikiServices::getInstance();
+				$talkWikiPage = $services->getWikiPageFactory()->newFromTitle( $talkPage );
 
 				if ( !$talkWikiPage->exists() ) {
 					if ( $this->mAnon ) {
@@ -109,35 +105,18 @@ class HAWelcomeJob extends Job {
 						if ( $this->isEnabled( 'page-user' ) ) {
 							$userPage = $this->getUserPage();
 							if ( $userPage ) {
-								if ( method_exists( MediaWikiServices::class, 'getWikiPageFactory' ) ) {
-									// MW 1.36+
-									$userWikiPage = MediaWikiServices::getInstance()->getWikiPageFactory()
-										->newFromTitle( $userPage );
-								} else {
-									$userWikiPage = WikiPage::factory( $userPage );
-								}
+								$userWikiPage = $services->getWikiPageFactory()->newFromTitle( $userPage );
 
 								if ( !$userWikiPage->exists() ) {
 									$pageMsg = wfMessage( 'welcome-user-page' )->inContentLanguage()->text();
 									$content = ContentHandler::makeContent( $pageMsg, $userPage );
-									if ( method_exists( $userWikiPage, 'doUserEditContent' ) ) {
-										// MW 1.36+
-										$userWikiPage->doUserEditContent(
-											$content,
-											$welcomeUser,
-											'',
-											$flags,
-											0
-										);
-									} else {
-										$userWikiPage->doEditContent(
-											$content,
-											'',
-											$flags,
-											0,
-											$welcomeUser
-										);
-									}
+									$userWikiPage->doUserEditContent(
+										$content,
+										$welcomeUser,
+										'',
+										$flags,
+										0
+									);
 								}
 							}
 						}
@@ -156,24 +135,13 @@ class HAWelcomeJob extends Job {
 
 					if ( $welcomeMsg ) {
 						$content = ContentHandler::makeContent( $welcomeMsg, $talkPage );
-						if ( method_exists( $talkWikiPage, 'doUserEditContent' ) ) {
-							// MW 1.36+
-							$talkWikiPage->doUserEditContent(
-								$content,
-								$welcomeUser,
-								wfMessage( 'welcome-message-log' )->inContentLanguage()->escaped(),
-								$flags,
-								0
-							);
-						} else {
-							$talkWikiPage->doEditContent(
-								$content,
-								wfMessage( 'welcome-message-log' )->inContentLanguage()->escaped(),
-								$flags,
-								0,
-								$welcomeUser
-							);
-						}
+						$talkWikiPage->doUserEditContent(
+							$content,
+							$welcomeUser,
+							wfMessage( 'welcome-message-log' )->inContentLanguage()->escaped(),
+							$flags,
+							0
+						);
 					}
 				}
 
@@ -283,12 +251,7 @@ class HAWelcomeJob extends Job {
 								__METHOD__
 							);
 
-							if ( method_exists( MediaWikiServices::class, 'getCentralIdLookupFactory' ) ) {
-								// MW1.37+
-								$lookup = $services->getCentralIdLookupFactory()->getLookup();
-							} else {
-								$lookup = CentralIdLookup::factory();
-							}
+							$lookup = $services->getCentralIdLookupFactory()->getLookup();
 
 							foreach ( $res2 as $row2 ) {
 								$gugm = GlobalUserGroupMembership::newFromRow( $row2 );
@@ -380,7 +343,8 @@ class HAWelcomeJob extends Job {
 		global $wgHAWelcomeSignatureFromPreferences;
 
 		$this->mSysop = $this->getLastSysop();
-		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
+		$services = MediaWikiServices::getInstance();
+		$contLang = $services->getContentLanguage();
 
 		$sysopName = wfEscapeWikiText( $this->mSysop->getName() );
 		$signature = wfMessage( 'signature' )->params( $sysopName, $sysopName )->plain();
@@ -389,7 +353,7 @@ class HAWelcomeJob extends Job {
 
 		if ( $wgHAWelcomeSignatureFromPreferences ) {
 			// Nickname references to the preference that stores the custom signature
-			$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
+			$userOptionsManager = $services->getUserOptionsManager();
 			$signature = $userOptionsManager->getOption( $this->mSysop, 'nickname', $signature );
 		}
 
