@@ -7,14 +7,15 @@
 			"Marc-Philipp Beuter",
 			"TulipVorlax",
 			"Urhixidur",
-			"Wladek92"
+			"Wladek92",
+			"Verdy p"
 		]
 	},
-	"welcome-user-page": "== À propos de moi ==\n''Cette page est votre page personnelle. Cet espace vous permet de vous décrire auprès de la communauté !''\n\n== Mes contributions ==\n*[[Special:Contributions/{{PAGENAME}}|Mes contributions]]\n\n== Mes pages favorisées ==\n*Ici, vous pouvez placer des liens vers vos pages préférées du wiki !\n*Lien vers page #2\n*Lien vers page #3",
-	"welcome-message-user": "Bonjour, bienvenue sur {{SITENAME}}! Nous vous remercions d'avoir modifié la page [[:$1]].\n\nVeuillez laisser un message sur [[$2|ma page de discussion]] si je peux vous être utile sur le sujet ! $3",
+	"welcome-user-page": "== À propos de moi ==\n''Cette page est votre page personnelle. Cet espace vous permet de vous décrire auprès de la communauté !''\n\n== Mes contributions ==\n* [[Special:Contributions/{{PAGENAME}}|Mes contributions]]\n\n== Mes pages favorisées ==\n* Ici, vous pouvez placer des liens vers vos pages préférées du wiki !\n* Lien vers une deuxième page préférée\n* Lien vers une troisième page préférée",
+	"welcome-message-user": "Bonjour, bienvenue sur {{SITENAME}} ! Nous vous remercions d’avoir modifié la page [[:$1]].\n\nVeuillez laisser un message sur [[$2|ma page de discussion]] si je peux vous aider en quoi que ce soit ! $3",
 	"welcome-message-anon": "Bonjour, bienvenue sur {{SITENAME}}. Merci pour votre contribution à la page [[:$1]].\n\n'''Merci de vous [[Special:UserLogin|connecter ou de créer un compte utilisateur]]'''. C'est un moyen simple de garder une trace de vos contributions et facilite la communication avec le reste de la communauté.\n\nN'hésitez pas à laisser un message sur [[$2|ma page de discussion]] si je peux vous aider pour quoi que ce soit ! $3",
-	"welcome-message-log": "Accueillir un nouvel utilisateur",
-	"welcome-user-name": "Outil d'accueil fortement automatisé",
+	"welcome-message-log": "accueillir un nouvel utilisateur",
+	"welcome-user-name": "Outil de bienvenue fortement automatisé",
 	"welcome-user-desc": "Accueil des nouveaux utilisateurs après leur première modification",
 	"action-welcomeexempt": "marque l’utilisateur comme dispensé des messages de l’outil d’accueil",
 	"right-welcomeexempt": "Marque l'utilisateur comme exempté des messages de bienvenue dans les outils"
