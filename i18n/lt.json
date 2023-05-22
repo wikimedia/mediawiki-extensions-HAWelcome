@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"welcome-user-page": "==Apie mane==\n''Tai jūsų naudotojo puslapis. Redaguokite šį puslapį, kad papasakotumėte bendruomenei apie save!''\n\n==Mano indėlis==\n*[[Special:Contributions/{{PAGENAME}}|Naudotojo indėlis]]\n\n==Mano mėgstamiausi puslapiai==\n*Čia pridėkite nuorodas į mėgstamus viki puslapius!\n*Mėgstamiausias puslapis #2\n*Mėgstamiausias puslapis #3",
+	"welcome-message-user": "Sveiki atvykę į {{SITENAME}}! Dėkojame, kad redagavote [[:$1]] puslapį.\n\nJei galiu kuo nors padėti, palikite pranešimą [[$2|mano aptarimo puslapyje]]! $3",
+	"welcome-message-anon": "Sveiki atvykę į {{SITENAME}}! Dėkojame, kad redagavote [[:$1]] puslapį.\n\n'''[[Special:UserLogin|Prisijunkite ir sukurkite naudotojo vardą]]'''. Tai paprastas būdas sekti savo indėlį ir tai padeda bendrauti su likusia bendruomene.\n\nJei galiu kuo nors padėti, palikite pranešimą [[$2|mano aptarimo puslapyje]]! $3",
+	"welcome-message-log": "naujo naudotojo sveikinimas",
+	"welcome-user-desc": "Pasveikina naujus naudotojus po jų pirmojo pakeitimo",
+	"action-welcomeexempt": "būti atleistas nuo sveikinimų įrankio žinučių",
+	"right-welcomeexempt": "Būti atleistas nuo sveikinimų įrankio žinučių"
+}
