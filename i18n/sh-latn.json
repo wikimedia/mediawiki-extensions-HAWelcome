@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"welcome-message-log": "uoči novog sudionika",
+	"welcome-user-name": "Visoko automatizirani alat za prisluškivanje",
+	"welcome-user-desc": "Zainteresira nove korisnike prilikom prvog uređivanja, želeći im dobrodošlicu"
+}
