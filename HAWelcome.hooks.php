@@ -97,12 +97,7 @@ class HAWelcomeHooks implements PageSaveCompleteHook {
 		// if the content model is wikitext. Only wikitext talk pages are supported.
 		$talkPage = $user->getUserPage()->getTalkPage();
 		if ( $talkPage && $talkPage->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
-			if ( method_exists( MediaWikiServices::class, 'getWikiPageFactory' ) ) {
-				// MW 1.36+
-				$talkWikiPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $talkPage );
-			} else {
-				$talkWikiPage = WikiPage::factory( $talkPage );
-			}
+			$talkWikiPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $talkPage );
 			if ( !$talkWikiPage->exists() ) {
 				$welcomeJob = new HAWelcomeJob(
 					$title,
@@ -113,12 +108,7 @@ class HAWelcomeHooks implements PageSaveCompleteHook {
 						'user_name' => $user->getName(),
 					]
 				);
-				if ( method_exists( MediaWikiServices::class, 'getJobQueueGroup' ) ) {
-					// MW 1.37+
-					MediaWikiServices::getInstance()->getJobQueueGroup()->push( $welcomeJob );
-				} else {
-					JobQueueGroup::singleton()->push( $welcomeJob );
-				}
+				MediaWikiServices::getInstance()->getJobQueueGroup()->push( $welcomeJob );
 			}
 		}
 	}
