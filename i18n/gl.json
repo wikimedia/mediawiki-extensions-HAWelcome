@@ -6,11 +6,12 @@
 			"Toliño"
 		]
 	},
-	"welcome-user-page": "==Sobre min==\n''Esta é a súa páxina de usuario. Edita esta páxina para contarlles aos demais o que queiras acerca de ti!''\n\n==As miñas contribucións==\n*[[Special:Contributions/{{PAGENAME}}|As miñas contribucións]]\n\n==As miñas páxinas favoritas==\n*Engada ligazóns cara ás súas páxinas preferidas deste wiki!\n*Ligazón cara á páxina #2\n*Ligazón cara á páxina #3",
-	"welcome-message-user": "Ola, benvido(a) a {{SITENAME}}! Grazas pola súa edición na páxina \"[[:$1]]\".\n\nPor favor, deixe unha mensaxe [[$2|na miña páxina de conversa]] se quere que lle axude con algunha cousa! $3",
-	"welcome-message-anon": "Ola, benvido(a) a {{SITENAME}}! Grazas pola túa edición na páxina \"[[:$1]]\".\n\n'''Por favor, [[Special:UserLogin|rexístrate e crea unha conta de usuario]]'''. É un xeito doado de manter baixo control as túas achegas e axuda á comunicación co resto da comunidade.\n\nPor favor, deixa unha mensaxe [[$2|na miña páxina de conversa]] se queres que che axude con algunha cousa! $3",
+	"welcome-user-page": "==Sobre min==\n''Esta é a túa páxina de usuario. Edita esta páxina para contarlles aos demais o que queiras acerca de ti!''\n\n==As miñas contribucións==\n*[[Special:Contributions/{{PAGENAME}}|As miñas contribucións]]\n\n==As miñas páxinas favoritas==\n*Engade ligazóns cara ás súas páxinas preferidas deste wiki!\n*Ligazón cara á páxina n.º 2\n*Ligazón cara á páxina n.º3",
+	"welcome-message-user": "Ola, benvido(a) a {{SITENAME}}! Grazas pola túa edición na páxina \"[[:$1]]\".\n\nPor favor, deixa unha mensaxe [[$2|na miña páxina de conversa]] se queres que che axude con algunha cousa! $3",
+	"welcome-message-anon": "Ola, benvido(a) a {{SITENAME}}! Grazas pola túa edición na páxina \"[[:$1]]\".\n\n'''[[Special:UserLogin|Por favor, rexístrate e crea unha conta de usuario]]'''. É un xeito doado de manter baixo control as túas achegas e axuda á comunicación co resto da comunidade.\n\nPor favor, deixa unha mensaxe [[$2|na miña páxina de conversa]] se queres que che axude con algunha cousa! $3",
 	"welcome-message-log": "benvida ao novo colaborador",
 	"welcome-user-name": "Ferramenta de benvida altamente automatizada",
-	"welcome-user-desc": "Da a benvida a novos usuarios trala súa primeira edición",
-	"right-welcomeexempt": "Marca o usuario como exento das mensaxes da ferramenta de benvida"
+	"welcome-user-desc": "Dá a benvida aos novos usuarios trala súa primeira edición",
+	"action-welcomeexempt": "estar exento das mensaxes da ferramenta de benvida",
+	"right-welcomeexempt": "Estar exento das mensaxes da ferramenta de benvida"
 }
