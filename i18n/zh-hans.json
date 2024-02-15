@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Anterdc99",
 			"Lakejason0",
 			"Liuxinyu970226"
 		]
@@ -11,5 +12,6 @@
 	"welcome-message-log": "欢迎新贡献者",
 	"welcome-user-name": "高自动化欢迎工具",
 	"welcome-user-desc": "在首次编辑后欢迎新用户",
+	"action-welcomeexempt": "免于接受欢迎工具的消息",
 	"right-welcomeexempt": "豁免欢迎工具消息"
 }
