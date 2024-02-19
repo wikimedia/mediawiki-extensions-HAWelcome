@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Lakejason0",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Anterdc99"
 		]
 	},
 	"welcome-user-page": "==关于我==\n这是您的用户页。请编辑此页面来告诉社群有关您自己的详情！\n\n==我的贡献==\n*[[Special:Contributions/{{PAGENAME}}|用户贡献]]\n\n==我最喜欢的页面==\n*在这里添加至您在wiki上最喜欢的页面链接吧！\n*喜欢的页面#2\n*喜欢的页面#3",
@@ -11,5 +12,6 @@
 	"welcome-message-log": "欢迎新贡献者",
 	"welcome-user-name": "高自动化欢迎工具",
 	"welcome-user-desc": "在首次编辑后欢迎新用户",
+	"action-welcomeexempt": "免于接受欢迎工具的消息",
 	"right-welcomeexempt": "豁免欢迎工具消息"
 }
