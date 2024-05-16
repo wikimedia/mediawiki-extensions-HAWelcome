@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Gwenn-Ael",
 			"Y-M D"
 		]
 	},
-	"welcome-user-page": "==Diwar ma fenn ==\n''War ho pajenn implijer emaoc'h. Kemmit, mar plij, ho pajenn evit en em ginnig d'ar gumuniezh !''\n\n==Ma degasadennoù==\n*[[Special:Contributions/{{PAGENAME}}|Degasadennoù an implijer]]\n\n==Ar pajennoù plijtañ ==\n*Ouzhpennañ liammoù d'ar pajennoù plijetañ  war ar wiki amañ!\n* Pajennoù plijetañ #2\n* Pajennoù plijetañ #3",
+	"welcome-user-page": "==Diwar ma fenn ==\n''War ho pajenn implijer emaoc'h. Kemmit, mar plij, ho pajenn evit en em ginnig d'ar gumuniezh !''\n\n==Ma degasadennoù==\n*[[Special:Contributions/{{PAGENAME}}|Degasadennoù an implijer]]\n\n==Ar pajennoù plijtañ ==\n*Ouzhpennañ liammoù d'ar pajennoù plijetañ war ar wiki amañ!\n* Pajennoù plijetañ #2\n* Pajennoù plijetañ #3",
 	"welcome-message-user": "Demat, Degemer mat war {{SITENAME}} ! Trugarez da vezañ kemmet [[:$1]].\n\nGallout a rit lezel ur gemennadenn war ma fajenn V [[$2|discussion]] ma c'hallan sikour ac'hanoc'h d'ober tra pe dra $3",
 	"welcome-message-anon": "Demat, degemer mat war {{SITENAME}}. Trugarez evit ho tegasadennoù er pajenn [[:$1]].\n\n'''[[Special:UserLogin|Mar plij kevreit pe krouit ur gont]]'''. Un doare aes eo evit derc'hel ur roud eus ho tegasadennoù hag aesaat a ra ar c'hehentiñ gant peurest ar gumuniezh.\n\nArabat kaout aon kas din ur gemenadenn war [[$2|ma fajenn kaozeadenn]] ma c'hellan sikour ac'hanoc'h evit tra pe dra ! $3",
 	"welcome-message-log": "Degemer un implijer nevez"

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
 			"Garrasdalua"
@@ -8,7 +9,7 @@
 	},
 	"welcome-user-page": "==Sobre mim==\n''Esta é sua pagina de usuário. Por favor, edite esta pagina para contar mais sobre voce para a comunidade!''\n\n==Minhas contribuições==\n*[[Special:Contributions/{{PAGENAME}}|Contribuições do usuário]]\n\n==Minhas Páginas favoritas==\n*Adicione links para suas páginas favoritas da wiki!\n*Pagina favorita #2\n*Pagina favorita #3",
 	"welcome-message-user": "Olá, bem vindo(a) a {{SITENAME}}! Obrigada por sua edição em [[:$1]].\n\nPor favor, se tiver alguma duvida, sinta-se a vontade para deixar uma mensagem em [[$2|minha pagina de discussão]] para ver se posso te ajudar com alguma coisa! $3",
-	"welcome-message-anon": "Ola, benvindo(a) a {{SITENAME}}! Muito obrigado por sua edição em [[:$1]].\n\nPorque não '''[[Special:UserLogin|cria uma conta e se identifica]]'''?  Desta forma será muito máis fácil saber qué páginas voce editou e o trabalho será atribuido a voce na wiki, alem do mais será de grande ajuda na hora de se comunicar com o resto da comunidade.\n\nPor favor, se tiver alguma duvida, sinta-se a vontade para deixar uma mensagem em [[$2|minha pagina de discussão]] para ver se posso te ajudar com alguma coisa! $3",
+	"welcome-message-anon": "Ola, benvindo(a) a {{SITENAME}}! Muito obrigado por sua edição em [[:$1]].\n\nPorque não '''[[Special:UserLogin|cria uma conta e se identifica]]'''? Desta forma será muito máis fácil saber qué páginas voce editou e o trabalho será atribuido a voce na wiki, alem do mais será de grande ajuda na hora de se comunicar com o resto da comunidade.\n\nPor favor, se tiver alguma duvida, sinta-se a vontade para deixar uma mensagem em [[$2|minha pagina de discussão]] para ver se posso te ajudar com alguma coisa! $3",
 	"welcome-message-log": "bem vindo novo contribuidor",
 	"welcome-user-name": "Ferramenta de boas-vindas altamente automatizada",
 	"welcome-user-desc": "Dá as boas-vindas aos novos usuários após a sua primeira edição",
