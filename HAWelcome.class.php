@@ -191,7 +191,13 @@ class HAWelcomeJob extends Job {
 						$this->mSysop = User::newFromId( $sysopId );
 					} else {
 						// Second: check database, could be expensive for database
-						$dbr = wfGetDB( DB_REPLICA );
+						if ( version_compare( MW_VERSION, '1.42', '>=' ) ) {
+							$dbr = MediaWikiServices::getInstance()
+								->getConnectionProvider()
+								->getReplicaDatabase();
+						} else {
+							$dbr = wfGetDB( DB_REPLICA );
+						}
 
 						/**
 						 * Get all users which are sysops/sysops or staff but not bots
