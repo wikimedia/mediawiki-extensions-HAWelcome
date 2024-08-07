@@ -3,12 +3,15 @@
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\EditResult;
-use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
 
-class HAWelcomeHooks implements PageSaveCompleteHook {
+class HAWelcomeHooks implements
+	\MediaWiki\Storage\Hook\PageSaveCompleteHook,
+	\MediaWiki\User\Hook\UserGetReservedNamesHook,
+	\MediaWiki\User\Hook\UserGroupsChangedHook
+{
 	/**
 	 * @var ReadOnlyMode
 	 */
@@ -150,8 +153,10 @@ class HAWelcomeHooks implements PageSaveCompleteHook {
 	 * @param array $removed
 	 * @param bool|User $performer
 	 * @param string $reason
+	 * @param UserGroupMembership[] $oldUGMs
+	 * @param UserGroupMembership[] $newUGMs
 	 */
-	public static function onUserGroupsChanged( User $user, array $added, array $removed, $performer, $reason ) {
+	public function onUserGroupsChanged( $user, $added, $removed, $performer, $reason, $oldUGMs, $newUGMs ) {
 		// Only remove the cache key if the user has the sysop group removed since other group
 		// changes are not relevant
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
@@ -166,7 +171,7 @@ class HAWelcomeHooks implements PageSaveCompleteHook {
 	 *
 	 * @param array &$reservedUsernames
 	 */
-	public static function onUserGetReservedNames( array &$reservedUsernames ) {
+	public function onUserGetReservedNames( &$reservedUsernames ) {
 		global $wgHAWelcomeWelcomeUsername;
 
 		$reservedUsernames[] = $wgHAWelcomeWelcomeUsername;

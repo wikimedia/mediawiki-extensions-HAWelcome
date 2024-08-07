@@ -41,8 +41,8 @@
 	},
 	"Hooks": {
 		"PageSaveComplete": "default",
-		"UserGroupsChanged": "HAWelcomeHooks::onUserGroupsChanged",
-		"UserGetReservedNames": "HAWelcomeHooks::onUserGetReservedNames"
+		"UserGroupsChanged": "default",
+		"UserGetReservedNames": "default"
 	},
 	"GroupPermissions": {
 		"bot": {
