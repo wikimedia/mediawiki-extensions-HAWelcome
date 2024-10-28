@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Piano1forte2"
+			"Piano1forte2",
+			"Samthecrazyman"
 		]
 	},
-	"welcome-user-page": "==About me==\n''This is your user page. Please edit this page to tell the community about yourself!''\n\n==My contributions==\n*[[Special:Contributions/{{PAGENAME}}|User contributions]]\n\n==My favorite pages==\n*Add links to your favourite pages on the wiki here!\n*Favorite page #2\n*Favorite page #3"
+	"welcome-user-page": "==About me==\n''This is your user page. Please edit this page to tell the community about yourself!''\n\n==My contributions==\n*[[Special:Contributions/{{PAGENAME}}|User contributions]]\n\n==My favourite pages==\n*Add links to your favourite pages on the wiki here!\n*Favourite page #2\n*Favourite page #3"
 }
