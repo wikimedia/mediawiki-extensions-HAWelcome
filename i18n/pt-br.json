@@ -3,8 +3,7 @@
 		"authors": [
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
-			"Garrasdalua",
-			"Amire80"
+			"Garrasdalua"
 		]
 	},
 	"welcome-user-page": "==Sobre mim==\n''Esta é sua pagina de usuário. Por favor, edite esta pagina para contar mais sobre voce para a comunidade!''\n\n==Minhas contribuições==\n*[[Special:Contributions/{{PAGENAME}}|Contribuições do usuário]]\n\n==Minhas Páginas favoritas==\n*Adicione links para suas páginas favoritas da wiki!\n*Pagina favorita #2\n*Pagina favorita #3",
