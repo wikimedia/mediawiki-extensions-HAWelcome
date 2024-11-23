@@ -13,6 +13,7 @@
  */
 
 use MediaWiki\MediaWikiServices;
+use Wikimedia\IPUtils;
 
 class HAWelcomeJob extends Job {
 
@@ -45,7 +46,7 @@ class HAWelcomeJob extends Job {
 		$this->mSysop    = false;
 
 		if ( $this->mAnon ) {
-			$this->mUser = User::newFromName( $userIP, false );
+			$this->mUser = User::newFromName( IPUtils::sanitizeIP( $userIP ), false );
 		} else {
 			$this->mUser = User::newFromId( $userId );
 		}
