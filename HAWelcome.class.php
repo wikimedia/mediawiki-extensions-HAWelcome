@@ -94,6 +94,8 @@ class HAWelcomeJob extends Job {
 						if ( $this->isEnabled( 'message-anon' ) ) {
 							$welcomeMsg = wfMessage(
 								'welcome-message-anon'
+							)->page(
+								$this->mUser->getUserPage()->getTalkPage()
 							)->inLanguage( $wgLanguageCode )->params(
 								$this->getPrefixedText(),
 								$sysopTalkPage->getPrefixedText(),
@@ -125,6 +127,8 @@ class HAWelcomeJob extends Job {
 						if ( $this->isEnabled( 'message-user' ) ) {
 							$welcomeMsg = wfMessage(
 								'welcome-message-user'
+							)->page(
+								$this->getUserPage()
 							)->inLanguage( $wgLanguageCode )->params(
 								$this->getPrefixedText(),
 								$sysopTalkPage->getPrefixedText(),
@@ -160,7 +164,11 @@ class HAWelcomeJob extends Job {
 						$this->mUser,
 						// passing the senderName as an argument here so that we can do
 						// stuff like [[User talk:$1|contact me]] or w/e in the message
-						$msgObj->params( $this->mSysop->getName() )->text()
+						// treat the page we're posting on as if it's the user's "User:<their name>" page
+						// this intentionally does NOT use $this->getUserPage() because the user board
+						// lives on the user's User: page and NOT on the UserWiki: page, and $this->getUserPage()
+						// can intentionally return that sometimes
+						$msgObj->page( $this->mUser->getUserPage() )->params( $this->mSysop->getName() )->text()
 						// the final argument is message type: 0 (default) for public
 					);
 				}
