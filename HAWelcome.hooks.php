@@ -56,13 +56,11 @@ class HAWelcomeHooks implements PageSaveCompleteHook {
 		$revisionRecord,
 		$editResult
 	) {
-		global $wgCommandLineMode;
-
 		$context = RequestContext::getMain();
 
 		// Do not create job when DB is locked (rt#12229)
 		// Ditto for when we're in command line mode
-		if ( $this->readOnlyMode->isReadOnly() || $wgCommandLineMode ) {
+		if ( $this->readOnlyMode->isReadOnly() || MW_ENTRY_POINT === 'cli' ) {
 			return;
 		}
 
@@ -106,7 +104,8 @@ class HAWelcomeHooks implements PageSaveCompleteHook {
 						'user_id'   => $user->getId(),
 						'user_ip'   => $context->getRequest()->getIP(),
 						'user_name' => $user->getName(),
-					]
+					],
+					$this->userFactory,
 				);
 				MediaWikiServices::getInstance()->getJobQueueGroup()->push( $welcomeJob );
 			}

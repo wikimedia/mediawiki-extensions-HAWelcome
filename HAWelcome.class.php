@@ -13,6 +13,10 @@
  */
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
+use MediaWiki\User\User;
+use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserRigorOptions;
 use Wikimedia\IPUtils;
 
 class HAWelcomeJob extends Job {
@@ -35,8 +39,13 @@ class HAWelcomeJob extends Job {
 	/**
 	 * @param Title $title The title linked to
 	 * @param array $params Job parameters (table, start and end page_ids)
+	 * @param UserFactory $userFactory
 	 */
-	public function __construct( $title, $params ) {
+	public function __construct(
+		$title,
+		$params,
+		private readonly UserFactory $userFactory
+	) {
 		parent::__construct( 'HAWelcome', $title, $params );
 
 		$userId = $params['user_id'];
@@ -46,14 +55,15 @@ class HAWelcomeJob extends Job {
 		$this->mSysop    = false;
 
 		if ( $this->mAnon ) {
-			$this->mUser = User::newFromName( IPUtils::sanitizeIP( $userIP ), false );
+			$this->mUser = $this->userFactory->newFromName( IPUtils::sanitizeIP( $userIP ),
+				UserRigorOptions::RIGOR_NONE );
 		} else {
-			$this->mUser = User::newFromId( $userId );
+			$this->mUser = $this->userFactory->newFromId( $userId );
 		}
 
 		// Fallback
 		if ( !$this->mUser ) {
-			$this->mUser = User::newFromName( $userName );
+			$this->mUser = $this->userFactory->newFromName( $userName );
 		}
 	}
 
@@ -70,7 +80,7 @@ class HAWelcomeJob extends Job {
 			return true;
 		}
 
-		$welcomeUser = User::newFromName( $wgHAWelcomeWelcomeUsername );
+		$welcomeUser = $this->userFactory->newFromName( $wgHAWelcomeWelcomeUsername );
 		$flags = 0;
 		if ( $welcomeUser && $welcomeUser->isBot() ) {
 			$flags = EDIT_FORCE_BOT;
@@ -197,16 +207,12 @@ class HAWelcomeJob extends Job {
 					$cache = $services->getMainWANObjectCache();
 					$sysopId = $cache->get( $cache->makeKey( 'last-sysop-id' ) );
 					if ( $sysopId ) {
-						$this->mSysop = User::newFromId( $sysopId );
+						$this->mSysop = $this->userFactory->newFromId( $sysopId );
 					} else {
 						// Second: check database, could be expensive for database
-						if ( version_compare( MW_VERSION, '1.42', '>=' ) ) {
-							$dbr = MediaWikiServices::getInstance()
-								->getConnectionProvider()
-								->getReplicaDatabase();
-						} else {
-							$dbr = wfGetDB( DB_REPLICA );
-						}
+						$dbr = MediaWikiServices::getInstance()
+							->getConnectionProvider()
+							->getReplicaDatabase();
 
 						/**
 						 * Get all users which are sysops/sysops or staff but not bots
@@ -219,20 +225,11 @@ class HAWelcomeJob extends Job {
 						$bots = [];
 						$admins = [];
 						$groupManager = $services->getUserGroupManager();
-						if ( version_compare( MW_VERSION, '1.40', '>=' ) ) {
-							$queryBuilder = $groupManager->newQueryBuilder( $dbr );
-							$res = $queryBuilder
-								->where( $groups )
-								->caller( __METHOD__ )
-								->fetchResultSet();
-						} else {
-							$res = $dbr->select(
-								'user_groups',
-								$groupManager->getQueryInfo()['fields'],
-								$dbr->makeList( $groups, LIST_OR ),
-								__METHOD__
-							);
-						}
+						$queryBuilder = $groupManager->newQueryBuilder( $dbr );
+						$res = $queryBuilder
+							->where( $groups )
+							->caller( __METHOD__ )
+							->fetchResultSet();
 
 						foreach ( $res as $row ) {
 							$ugm = $groupManager->newGroupMembershipFromRow( $row );
@@ -294,10 +291,8 @@ class HAWelcomeJob extends Job {
 
 						// Convert user IDs to actor IDs because new tables don't care about UIDs
 						foreach ( $uniqueHumanAdmins as $uniqueHumanAdmin ) {
-							$user = User::newFromId( $uniqueHumanAdmin );
-							if ( $user ) {
-								$actorIds[] = $user->getActorId();
-							}
+							$user = $this->userFactory->newFromId( $uniqueHumanAdmin );
+							$actorIds[] = $user->getActorId();
 						}
 
 						$admins = [
@@ -329,12 +324,12 @@ class HAWelcomeJob extends Job {
 							$staffCount = count( $staff );
 							// Pick a random staff member so no-one gets left out
 							$index = mt_rand( 0, $staffCount - 1 );
-							$this->mSysop = User::newFromId( $staffCount[$index] );
+							$this->mSysop = $this->userFactory->newFromId( $staffCount[$index] );
 							$cache->set( $cache->makeKey( 'last-sysop-id' ), $staffCount[$index], 86400 );
 						}
 					}
 				} else {
-					$this->mSysop = User::newFromName( $sysop );
+					$this->mSysop = $this->userFactory->newFromName( $sysop );
 				}
 			}
 
@@ -342,7 +337,7 @@ class HAWelcomeJob extends Job {
 			if ( $this->mSysop instanceof User && $this->mSysop->getId() ) {
 				wfDebugLog( 'HAWelcome', 'Found sysop: ' . $this->mSysop->getName() );
 			} else {
-				$this->mSysop = User::newFromName( $wgHAWelcomeWelcomeUsername );
+				$this->mSysop = $this->userFactory->newFromName( $wgHAWelcomeWelcomeUsername );
 			}
 		}
 

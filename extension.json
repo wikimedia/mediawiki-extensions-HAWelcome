@@ -22,7 +22,12 @@
 		"HAWelcomeHooks": "HAWelcome.hooks.php"
 	},
 	"JobClasses": {
-		"HAWelcome": "HAWelcomeJob"
+		"HAWelcome": {
+			"class": "HAWelcomeJob",
+			"services": [
+				"UserFactory"
+			]
+		}
 	},
 	"HookHandlers": {
 		"default": {
@@ -62,7 +67,7 @@
 		"HAWelcomeSignatureFromPreferences": false
 	},
 	"requires": {
-		"MediaWiki": ">= 1.38.0"
+		"MediaWiki": ">= 1.43"
 	},
 	"manifest_version": 1
 }
