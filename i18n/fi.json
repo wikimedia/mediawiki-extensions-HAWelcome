@@ -9,5 +9,6 @@
 	"welcome-message-user": "Hei ja tervetuloa {{GRAMMAR:illative|{{SITENAME}}}}! Kiitos muokkauksestasi sivulle [[:$1]].\n\nLaita rohkeasti viestiä [[$2|keskustelusivulleni]] jos voin auttaa mitenkään! $3",
 	"welcome-message-anon": "Hei ja tervetuloa {{GRAMMAR:illative|{{SITENAME}}}}! Kiitos muokkauksestasi sivulle [[:$1]].\n\n'''[[Special:UserLogin|Ole hyvä ja luo tunnus tai kirjaudu sisään]]'''. Se on helppo tapa pitää kirjaa omista muokkauksistasi ja helpottaa yhteydenpitoa muun yhteisön kanssa.\n\nLaita rohkeasti viestiä [[$2|keskustelusivulleni]] jos voin auttaa mitenkään! $3",
 	"welcome-message-log": "toivotettiin tervetulleeksi uusi muokkaaja",
-	"welcome-user-desc": "Toivottaa uudet käyttäjät tervetulleeksi ensimmäisen muokkauksen jälkeen"
+	"welcome-user-desc": "Toivottaa uudet käyttäjät tervetulleeksi ensimmäisen muokkauksen jälkeen",
+	"right-welcomeexempt": "Vapautettu tervetulotyökalun viesteistä"
 }
