@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Kozley",
+			"Stefan2255",
 			"WikiPhoenix"
 		]
 	},
@@ -11,5 +12,6 @@
 	"welcome-message-log": "välkomna nya bidragsgivare",
 	"welcome-user-name": "Mycket automatiserat välkomstverktyg",
 	"welcome-user-desc": "Välkomnar nya användare efter deras första redigering",
-	"right-welcomeexempt": "Flaggar användare som undantag från välkomstverktygets meddelanden"
+	"action-welcomeexempt": "bli undantagen från välkomstmeddelanden i verktyget",
+	"right-welcomeexempt": "Bli undantagen från välkomstmeddelanden i verktyget"
 }
