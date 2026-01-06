@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kozley",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Stefan2255"
 		]
 	},
 	"welcome-user-page": "==Om mig==\n''Detta är din användarsida. Redigera den här sidan för att berätta gemenskapen om dig själv!''\n\n==Mina bidrager==\n*[[Special:Contributions/{{PAGENAME}}|Användarbidrager]]\n\n==Mina favoritsidor==\n*Lägg till länkar till dina favoritsidor på wikin här!\n*Favoritsida #2\n*Favoritsida #3",
@@ -11,5 +12,6 @@
 	"welcome-message-log": "välkomna nya bidragsgivare",
 	"welcome-user-name": "Mycket automatiserat välkomstverktyg",
 	"welcome-user-desc": "Välkomnar nya användare efter deras första redigering",
-	"right-welcomeexempt": "Flaggar användare som undantag från välkomstverktygets meddelanden"
+	"action-welcomeexempt": "bli undantagen från välkomstmeddelanden i verktyget",
+	"right-welcomeexempt": "Bli undantagen från välkomstmeddelanden i verktyget"
 }
