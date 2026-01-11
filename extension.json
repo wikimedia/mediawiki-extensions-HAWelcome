@@ -25,7 +25,16 @@
 		"HAWelcome": {
 			"class": "HAWelcomeJob",
 			"services": [
-				"UserFactory"
+				"CentralIdLookup",
+				"ConnectionProvider",
+				"ContentLanguage",
+				"ExtensionRegistry",
+				"RevisionStore",
+				"UserFactory",
+				"UserGroupManager",
+				"UserOptionsManager",
+				"MainWANObjectCache",
+				"WikiPageFactory"
 			]
 		}
 	},
@@ -33,9 +42,18 @@
 		"default": {
 			"class": "HAWelcomeHooks",
 			"services": [
+				"CentralIdLookup",
+				"ConnectionProvider",
+				"ContentLanguage",
+				"ExtensionRegistry",
+				"JobQueueGroup",
 				"ReadOnlyMode",
+				"RevisionStore",
+				"UserFactory",
 				"UserGroupManager",
-				"UserFactory"
+				"UserOptionsManager",
+				"MainWANObjectCache",
+				"WikiPageFactory"
 			]
 		}
 	},

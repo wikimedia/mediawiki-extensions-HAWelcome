@@ -1,11 +1,18 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Language\Language;
+use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Storage\EditResult;
+use MediaWiki\User\CentralId\CentralIdLookup;
+use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
+use Wikimedia\ObjectCache\WANObjectCache;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 class HAWelcomeHooks implements
 	\MediaWiki\Storage\Hook\PageSaveCompleteHook,
@@ -13,9 +20,18 @@ class HAWelcomeHooks implements
 	\MediaWiki\User\Hook\UserGroupsChangedHook
 {
 	public function __construct(
+		private readonly CentralIdLookup $centralIdLookup,
+		private readonly IConnectionProvider $dbProvider,
+		private readonly Language $contentLanguage,
+		private readonly ExtensionRegistry $extensionRegistry,
+		private readonly JobQueueGroup $jobQueueGroup,
 		private readonly ReadOnlyMode $readOnlyMode,
-		private readonly UserGroupManager $userGroupManager,
+		private readonly RevisionStore $revisionStore,
 		private readonly UserFactory $userFactory,
+		private readonly UserGroupManager $userGroupManager,
+		private readonly UserOptionsManager $userOptionsManager,
+		private readonly WANObjectCache $cache,
+		private readonly WikiPageFactory $wikiPageFactory,
 	) {
 	}
 
@@ -66,8 +82,7 @@ class HAWelcomeHooks implements
 
 		// Put possible welcomer into cache, RT#14067
 		if ( $user->getId() && $this->isWelcomer( $user ) ) {
-			$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-			$cache->set( $cache->makeKey( 'last-sysop-id' ), $user->getId(), 86400 );
+			$this->cache->set( $this->cache->makeKey( 'last-sysop-id' ), $user->getId(), 86400 );
 			wfDebugLog( 'HAWelcome', 'Storing possible welcomer in cache' );
 		}
 
@@ -75,7 +90,7 @@ class HAWelcomeHooks implements
 		// if the content model is wikitext. Only wikitext talk pages are supported.
 		$talkPage = $user->getUserPage()->getTalkPage();
 		if ( $talkPage && $talkPage->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
-			$talkWikiPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $talkPage );
+			$talkWikiPage = $this->wikiPageFactory->newFromTitle( $talkPage );
 			if ( !$talkWikiPage->exists() ) {
 				$welcomeJob = new HAWelcomeJob(
 					$title,
@@ -85,9 +100,18 @@ class HAWelcomeHooks implements
 						'user_ip'   => $context->getRequest()->getIP(),
 						'user_name' => $user->getName(),
 					],
+					$this->centralIdLookup,
+					$this->dbProvider,
+					$this->contentLanguage,
+					$this->extensionRegistry,
+					$this->revisionStore,
 					$this->userFactory,
+					$this->userGroupManager,
+					$this->userOptionsManager,
+					$this->cache,
+					$this->wikiPageFactory
 				);
-				MediaWikiServices::getInstance()->getJobQueueGroup()->push( $welcomeJob );
+				$this->jobQueueGroup->push( $welcomeJob );
 			}
 		}
 	}
@@ -136,9 +160,11 @@ class HAWelcomeHooks implements
 	public function onUserGroupsChanged( $user, $added, $removed, $performer, $reason, $oldUGMs, $newUGMs ) {
 		// Only remove the cache key if the user has the sysop group removed since other group
 		// changes are not relevant
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-		if ( $user->getId() === $cache->get( $cache->makeKey( 'last-sysop-id' ) ) && in_array( 'sysop', $removed ) ) {
-			$cache->delete( $cache->makeKey( 'last-sysop-id' ) );
+		if (
+			$user->getId() === $this->cache->get( $this->cache->makeKey( 'last-sysop-id' ) ) &&
+			in_array( 'sysop', $removed )
+		) {
+			$this->cache->delete( $this->cache->makeKey( 'last-sysop-id' ) );
 		}
 	}
 
