@@ -26,10 +26,7 @@ class HAWelcomeJob extends Job {
 	 */
 	private $mUser;
 
-	/**
-	 * @var bool
-	 */
-	private $mAnon;
+	private readonly bool $mAnon;
 
 	/**
 	 * @var bool
@@ -44,7 +41,7 @@ class HAWelcomeJob extends Job {
 	public function __construct(
 		$title,
 		$params,
-		private readonly UserFactory $userFactory
+		private readonly UserFactory $userFactory,
 	) {
 		parent::__construct( 'HAWelcome', $title, $params );
 

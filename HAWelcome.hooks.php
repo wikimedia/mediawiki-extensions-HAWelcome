@@ -12,34 +12,11 @@ class HAWelcomeHooks implements
 	\MediaWiki\User\Hook\UserGetReservedNamesHook,
 	\MediaWiki\User\Hook\UserGroupsChangedHook
 {
-	/**
-	 * @var ReadOnlyMode
-	 */
-	private $readOnlyMode;
-
-	/**
-	 * @var UserGroupManager
-	 */
-	private $userGroupManager;
-
-	/**
-	 * @var UserFactory
-	 */
-	private $userFactory;
-
-	/**
-	 * @param ReadOnlyMode $readOnlyMode
-	 * @param UserGroupManager $userGroupManager
-	 * @param UserFactory $userFactory
-	 */
 	public function __construct(
-		ReadOnlyMode $readOnlyMode,
-		UserGroupManager $userGroupManager,
-		UserFactory $userFactory
+		private readonly ReadOnlyMode $readOnlyMode,
+		private readonly UserGroupManager $userGroupManager,
+		private readonly UserFactory $userFactory,
 	) {
-		$this->readOnlyMode = $readOnlyMode;
-		$this->userGroupManager = $userGroupManager;
-		$this->userFactory = $userFactory;
 	}
 
 	/**
