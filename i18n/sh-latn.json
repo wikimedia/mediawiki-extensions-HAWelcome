@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aca",
 			"Winston Sung"
 		]
 	},
 	"welcome-message-log": "uoči novog sudionika",
 	"welcome-user-name": "Visoko automatizirani alat za prisluškivanje",
-	"welcome-user-desc": "Zainteresira nove korisnike prilikom prvog uređivanja, želeći im dobrodošlicu",
+	"welcome-user-desc": "Pruža dobrodošlicu novajlijama nakon prve izmjene",
 	"action-welcomeexempt": "biti izuzeti iz poruka alata dobrodošlice",
 	"right-welcomeexempt": "Biti izuzeti iz poruka alata dobrodošlice"
 }
