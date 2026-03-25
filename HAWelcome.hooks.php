@@ -1,18 +1,13 @@
 <?php
 
-use MediaWiki\Language\Language;
+use MediaWiki\JobQueue\JobFactory;
 use MediaWiki\Page\WikiPageFactory;
-use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionRecord;
-use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Storage\EditResult;
-use MediaWiki\User\CentralId\CentralIdLookup;
-use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\ObjectCache\WANObjectCache;
-use Wikimedia\Rdbms\IConnectionProvider;
 
 class HAWelcomeHooks implements
 	\MediaWiki\Storage\Hook\PageSaveCompleteHook,
@@ -20,16 +15,11 @@ class HAWelcomeHooks implements
 	\MediaWiki\User\Hook\UserGroupsChangedHook
 {
 	public function __construct(
-		private readonly CentralIdLookup $centralIdLookup,
-		private readonly IConnectionProvider $dbProvider,
-		private readonly Language $contentLanguage,
-		private readonly ExtensionRegistry $extensionRegistry,
+		private readonly JobFactory $jobFactory,
 		private readonly JobQueueGroup $jobQueueGroup,
 		private readonly ReadOnlyMode $readOnlyMode,
-		private readonly RevisionStore $revisionStore,
 		private readonly UserFactory $userFactory,
 		private readonly UserGroupManager $userGroupManager,
-		private readonly UserOptionsManager $userOptionsManager,
 		private readonly WANObjectCache $cache,
 		private readonly WikiPageFactory $wikiPageFactory,
 	) {
@@ -92,24 +82,16 @@ class HAWelcomeHooks implements
 		if ( $talkPage && $talkPage->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
 			$talkWikiPage = $this->wikiPageFactory->newFromTitle( $talkPage );
 			if ( !$talkWikiPage->exists() ) {
-				$welcomeJob = new HAWelcomeJob(
-					$title,
+				$welcomeJob = $this->jobFactory->newJob(
+					'HAWelcome',
 					[
+						'namespace' => $title->getNamespace(),
+						'title'     => $title->getDBkey(),
 						'is_anon'   => $user->isAnon(),
 						'user_id'   => $user->getId(),
 						'user_ip'   => $context->getRequest()->getIP(),
 						'user_name' => $user->getName(),
-					],
-					$this->centralIdLookup,
-					$this->dbProvider,
-					$this->contentLanguage,
-					$this->extensionRegistry,
-					$this->revisionStore,
-					$this->userFactory,
-					$this->userGroupManager,
-					$this->userOptionsManager,
-					$this->cache,
-					$this->wikiPageFactory
+					]
 				);
 				$this->jobQueueGroup->push( $welcomeJob );
 			}

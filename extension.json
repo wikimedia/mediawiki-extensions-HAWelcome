@@ -42,16 +42,11 @@
 		"default": {
 			"class": "HAWelcomeHooks",
 			"services": [
-				"CentralIdLookup",
-				"ConnectionProvider",
-				"ContentLanguage",
-				"ExtensionRegistry",
+				"JobFactory",
 				"JobQueueGroup",
 				"ReadOnlyMode",
-				"RevisionStore",
 				"UserFactory",
 				"UserGroupManager",
-				"UserOptionsManager",
 				"MainWANObjectCache",
 				"WikiPageFactory"
 			]
