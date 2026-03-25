@@ -82,7 +82,7 @@
 		"HAWelcomeSignatureFromPreferences": false
 	},
 	"requires": {
-		"MediaWiki": ">= 1.43"
+		"MediaWiki": ">= 1.44"
 	},
 	"manifest_version": 1
 }

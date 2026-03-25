@@ -1,14 +1,20 @@
 <?php
 
 use MediaWiki\Config\Config;
+use MediaWiki\Exception\MWException;
 use MediaWiki\JobQueue\JobFactory;
+use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\Page\WikiPage;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\EditResult;
+use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserGroupManager;
+use MediaWiki\User\UserGroupMembership;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\ObjectCache\WANObjectCache;
+use Wikimedia\Rdbms\ReadOnlyMode;
 
 class HAWelcomeHooks implements
 	\MediaWiki\Storage\Hook\PageSaveCompleteHook,
