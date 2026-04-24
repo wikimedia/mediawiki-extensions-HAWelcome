@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Grace C. Infinity",
+			"Tensama0415",
 			"Ykhwong"
 		]
 	},
@@ -10,5 +11,7 @@
 	"welcome-message-anon": "안녕하세요, {{SITENAME}}에 오신 것을 환영합니다. [[:$1]] 문서를 편집해주셔서 감사드립니다.\n\n'''[[Special:UserLogin|먼저 계정을 만드셔서 활동하시는 것을 권해드립니다.]]''' 이는 당신의 기여를 쉽게 추적하고 공동체의 다른 사용자분들과 쉽게 소통할 수 있는 좋은 방법입니다.\n\n만약 도움이 필요하시다면 [[$2|제 사용자 토론 문서]]에 메시지를 남겨주세요! $3",
 	"welcome-message-log": "새 기여자 환영",
 	"welcome-user-name": "고도로 자동화된 환영 도구",
-	"welcome-user-desc": "최초 편집 이후의 새로운 사용자를 환영합니다"
+	"welcome-user-desc": "최초 편집 이후의 새로운 사용자를 환영합니다",
+	"action-welcomeexempt": "환영 도구 메세지에서 제외될",
+	"right-welcomeexempt": "환영 도구 메세지에서 제외됨"
 }
