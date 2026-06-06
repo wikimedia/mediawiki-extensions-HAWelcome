@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Config\Config;
 use MediaWiki\JobQueue\JobFactory;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\RevisionRecord;
@@ -15,6 +16,7 @@ class HAWelcomeHooks implements
 	\MediaWiki\User\Hook\UserGroupsChangedHook
 {
 	public function __construct(
+		private readonly Config $config,
 		private readonly JobFactory $jobFactory,
 		private readonly JobQueueGroup $jobQueueGroup,
 		private readonly ReadOnlyMode $readOnlyMode,
@@ -105,8 +107,6 @@ class HAWelcomeHooks implements
 	 * @return bool Status of the operation
 	 */
 	public function isWelcomer( UserIdentity $user ) {
-		global $wgHAWelcomeStaffGroupName;
-
 		$sysop  = trim( wfMessage( 'welcome-user' )->plain() );
 		$groups = $this->userGroupManager->getUserEffectiveGroups( $user );
 		$result = false;
@@ -116,7 +116,8 @@ class HAWelcomeHooks implements
 			if ( $sysop === '@sysop' ) {
 				$result = in_array( 'sysop', $groups );
 			} else {
-				$result = in_array( 'sysop', $groups ) || in_array( $wgHAWelcomeStaffGroupName, $groups );
+				$staffGroupName = $this->config->get( 'HAWelcomeStaffGroupName' );
+				$result = in_array( 'sysop', $groups ) || in_array( $staffGroupName, $groups );
 			}
 		}
 
@@ -157,8 +158,6 @@ class HAWelcomeHooks implements
 	 * @param array &$reservedUsernames
 	 */
 	public function onUserGetReservedNames( &$reservedUsernames ) {
-		global $wgHAWelcomeWelcomeUsername;
-
-		$reservedUsernames[] = $wgHAWelcomeWelcomeUsername;
+		$reservedUsernames[] = $this->config->get( 'HAWelcomeWelcomeUsername' );
 	}
 }

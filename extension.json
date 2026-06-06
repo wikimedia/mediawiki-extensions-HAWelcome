@@ -26,6 +26,7 @@
 			"class": "HAWelcomeJob",
 			"services": [
 				"CentralIdLookup",
+				"MainConfig",
 				"ConnectionProvider",
 				"ContentLanguage",
 				"ExtensionRegistry",
@@ -42,6 +43,7 @@
 		"default": {
 			"class": "HAWelcomeHooks",
 			"services": [
+				"MainConfig",
 				"JobFactory",
 				"JobQueueGroup",
 				"ReadOnlyMode",

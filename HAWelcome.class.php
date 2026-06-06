@@ -12,7 +12,9 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\Config\Config;
 use MediaWiki\Language\Language;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionStore;
@@ -45,6 +47,7 @@ class HAWelcomeJob extends Job {
 	 * @param Title $title The title linked to
 	 * @param array $params Job parameters (table, start and end page_ids)
 	 * @param CentralIdLookup $centralIdLookup
+	 * @param Config $config
 	 * @param IConnectionProvider $dbProvider
 	 * @param Language $contentLanguage
 	 * @param ExtensionRegistry $extensionRegistry
@@ -59,6 +62,7 @@ class HAWelcomeJob extends Job {
 		$title,
 		$params,
 		private readonly CentralIdLookup $centralIdLookup,
+		private readonly Config $config,
 		private readonly IConnectionProvider $dbProvider,
 		private readonly Language $contentLanguage,
 		private readonly ExtensionRegistry $extensionRegistry,
@@ -96,20 +100,19 @@ class HAWelcomeJob extends Job {
 	 * @return true
 	 */
 	public function run() {
-		global $wgLanguageCode, $wgHAWelcomeWelcomeUsername;
-
 		$sysop = trim( wfMessage( 'welcome-user' )->plain() );
 		if ( in_array( $sysop, [ '@disabled', '-' ] ) ) {
 			return true;
 		}
 
-		$welcomeUser = $this->userFactory->newFromName( $wgHAWelcomeWelcomeUsername );
+		$welcomeUsername = $this->config->get( 'HAWelcomeWelcomeUsername' );
+		$welcomeUser = $this->userFactory->newFromName( $welcomeUsername );
 		$flags = 0;
 		if ( $welcomeUser && $welcomeUser->isBot() ) {
 			$flags = EDIT_FORCE_BOT;
 		}
 
-		if ( $this->mUser && $this->mUser->getName() !== $wgHAWelcomeWelcomeUsername && !$welcomeUser->getBlock() ) {
+		if ( $this->mUser && $this->mUser->getName() !== $welcomeUsername && !$welcomeUser->getBlock() ) {
 			// Check again if talk page exists
 			$talkPage = $this->mUser->getUserPage()->getTalkPage();
 
@@ -128,7 +131,7 @@ class HAWelcomeJob extends Job {
 								'welcome-message-anon'
 							)->page(
 								$this->mUser->getUserPage()->getTalkPage()
-							)->inLanguage( $wgLanguageCode )->params(
+							)->inLanguage( $this->config->get( MainConfigNames::LanguageCode ) )->params(
 								$this->getPrefixedText(),
 								$sysopTalkPage->getPrefixedText(),
 								$signature,
@@ -161,7 +164,7 @@ class HAWelcomeJob extends Job {
 								'welcome-message-user'
 							)->page(
 								$this->getUserPage()
-							)->inLanguage( $wgLanguageCode )->params(
+							)->inLanguage( $this->config->get( MainConfigNames::LanguageCode ) )->params(
 								$this->getPrefixedText(),
 								$sysopTalkPage->getPrefixedText(),
 								$signature,
@@ -216,8 +219,6 @@ class HAWelcomeJob extends Job {
 	 * @return User class instance
 	 */
 	public function getLastSysop() {
-		global $wgHAWelcomeWelcomeUsername, $wgHAWelcomeStaffGroupName;
-
 		// Maybe already loaded?
 		if ( !$this->mSysop ) {
 			$sysop = trim( wfMessage( 'welcome-user' )->plain() );
@@ -276,7 +277,7 @@ class HAWelcomeJob extends Job {
 							$res2 = $dbr->select(
 								'global_user_groups',
 								GlobalUserGroupMembership::selectFields(),
-								[ 'gug_group' => $wgHAWelcomeStaffGroupName ],
+								[ 'gug_group' => $this->config->get( 'HAWelcomeStaffGroupName' ) ],
 								__METHOD__
 							);
 
@@ -355,7 +356,8 @@ class HAWelcomeJob extends Job {
 			if ( $this->mSysop instanceof User && $this->mSysop->getId() ) {
 				wfDebugLog( 'HAWelcome', 'Found sysop: ' . $this->mSysop->getName() );
 			} else {
-				$this->mSysop = $this->userFactory->newFromName( $wgHAWelcomeWelcomeUsername );
+				$welcomeUsername = $this->config->get( 'HAWelcomeWelcomeUsername' );
+				$this->mSysop = $this->userFactory->newFromName( $welcomeUsername );
 			}
 		}
 
@@ -368,8 +370,6 @@ class HAWelcomeJob extends Job {
 	 * @return string
 	 */
 	private function expandSig() {
-		global $wgHAWelcomeSignatureFromPreferences;
-
 		$this->mSysop = $this->getLastSysop();
 
 		$sysopName = wfEscapeWikiText( $this->mSysop->getName() );
@@ -377,7 +377,7 @@ class HAWelcomeJob extends Job {
 
 		$signature = "-- $signature";
 
-		if ( $wgHAWelcomeSignatureFromPreferences ) {
+		if ( $this->config->get( 'HAWelcomeSignatureFromPreferences' ) ) {
 			// Nickname references to the preference that stores the custom signature
 			$signature = $this->userOptionsManager->getOption( $this->mSysop, 'nickname', $signature );
 		}
@@ -443,9 +443,7 @@ class HAWelcomeJob extends Job {
 			// page instead...let's figure that out.
 			// This is somewhat c+p from UserProfile's
 			// UserProfile.php, the ArticleFromTitle hook callback
-			global $wgUserPageChoice;
-
-			if ( $wgUserPageChoice ) {
+			if ( $this->config->get( 'UserPageChoice' ) ) {
 				$profile = new UserProfile( $this->mUser->getName() );
 				$profileData = $profile->getProfile();
 				if (
