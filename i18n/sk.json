@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"welcome-user-page": "==O mne==\n''Toto je vaša používateľská stránka. Upravte ju, prosím, a povedzte komunite niečo o sebe!''\n\n==Moje príspevky==\n*[[Special:Contributions/{{PAGENAME}}|Príspevky používateľa]]\n\n==Moje obľúbené stránky==\n*Sem si pridajte odkazy na svoje obľúbené stránky na tejto wiki!\n*Obľúbená stránka č. 2\n*Obľúbená stránka č. 3",
+	"welcome-message-user": "Dobrý deň, vitajte na {{GRAMMAR:lokál|{{SITENAME}}}}! Ďakujeme za vašu úpravu stránky [[:$1]].\n\nAk vám s niečím môžem pomôcť, zanechajte mi, prosím, správu na [[$2|mojej diskusnej stránke]]! $3",
+	"welcome-message-anon": "Dobrý deň, vitajte na {{GRAMMAR:lokál|{{SITENAME}}}}! Ďakujeme za vašu úpravu stránky [[:$1]].\n\n'''[[Special:UserLogin|Prihláste sa, prosím, a vytvorte si používateľské meno]]'''. Je to jednoduchý spôsob, ako mať prehľad o svojich príspevkoch, a pomáha vám to komunikovať so zvyškom komunity.\n\nAk vám s niečím môžem pomôcť, zanechajte mi, prosím, správu na [[$2|mojej diskusnej stránke]]! $3",
+	"welcome-message-log": "privítanie nového prispievateľa",
+	"welcome-user-desc": "Víta nových používateľov po ich prvej úprave",
+	"action-welcomeexempt": "byť vyňatý zo správ uvítacieho nástroja",
+	"right-welcomeexempt": "Byť vyňatý zo správ uvítacieho nástroja"
+}
