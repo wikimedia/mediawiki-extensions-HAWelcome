@@ -58,6 +58,11 @@ class HAWelcomeHooks implements
 			return;
 		}
 
+		// Don't process null edits
+		if ( $editResult->isNullEdit() ) {
+			return;
+		}
+
 		$title = $article->getTitle();
 		if ( !$title ) {
 			return;
